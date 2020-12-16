@@ -9,5 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //GIUSTO PER VEDERE SE FUNZIONA: VEDETE QUESTO?
+        //mattepelliz vede
     }
 }

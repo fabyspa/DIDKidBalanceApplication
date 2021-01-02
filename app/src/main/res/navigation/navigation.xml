@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/BHomeFragment">
+
+    <fragment
+        android:id="@+id/BHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.BHomeFragment"
+        android:label="BHomeFragment" >
+        <action
+            android:id="@+id/action_BHomeFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" />
+</navigation>

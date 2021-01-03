@@ -72,7 +72,7 @@
                 app:srcCompat="@android:drawable/radiobutton_off_background" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/userPicture"
                 android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -159,7 +159,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar"
         app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/navigation" />
+        app:navGraph="@navigation/navigation2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

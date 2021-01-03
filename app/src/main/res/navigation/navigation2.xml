@@ -33,5 +33,13 @@
     <fragment
         android:id="@+id/GHomeFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
-        android:label="GHomeFragment" />
+        android:label="GHomeFragment" >
+        <action
+            android:id="@+id/action_GHomeFragment_to_GGraphFragment"
+            app:destination="@id/GGraphFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/GGraphFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GGraphFragment"
+        android:label="GGraphFragment" />
 </navigation>

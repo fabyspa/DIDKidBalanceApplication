@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,12 +35,12 @@ class loginFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentLoginBinding> (inflater, R.layout.fragment_login,container,false)
 
         binding.childView.setOnClickListener{
-                view: View -> view.findNavController().navigate (//percorso)
+            view: View -> view.findNavController().navigate(R.id.action_loginFragment_to_BHomeFragment)
+        }
+        binding.parentView.setOnClickListener{
+            view : View -> view.findNavController().navigate(R.id.action_loginFragment_to_GHomeFragment)
         }
         return binding.root
     }
-
-}
-
 
 }

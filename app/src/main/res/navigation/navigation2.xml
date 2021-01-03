@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/BHomeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/BHomeFragment"
@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_BHomeFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
-        <action
-            android:id="@+id/action_BHomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -30,8 +27,11 @@
             android:id="@+id/action_loginFragment_to_BHomeFragment"
             app:destination="@id/BHomeFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_placeholder"
-            app:destination="@id/placeholder" />
+            android:id="@+id/action_loginFragment_to_GHomeFragment"
+            app:destination="@id/GHomeFragment" />
     </fragment>
-    <fragment android:id="@+id/placeholder" />
+    <fragment
+        android:id="@+id/GHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:label="GHomeFragment" />
 </navigation>

@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.userPicture.setOnClickListener {
-            it.findNavController().navigate(R.id.fragment
-            )
+            it.findNavController().navigate(R.id.navigation_login)
         }
     }
 

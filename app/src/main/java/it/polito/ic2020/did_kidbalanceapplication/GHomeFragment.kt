@@ -24,7 +24,7 @@ class GHomeFragment : Fragment() {
             val pin = binding.pin.text.toString()
             if(pin == savedPin.toString() && check)
                 view.findNavController().navigate(R.id.action_GHomeFragment_to_GGraphFragment)
-            else if(!check) binding.pin.error="inserire massimo 4 numeri"
+            else if(!check) binding.pin.error="inserire 4 numeri"
             else binding.pin.error="pin non corretto"
 
         }

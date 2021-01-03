@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
+import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,13 +17,18 @@ import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBindi
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        @Suppress("UNUSED_VARIABLE")
-        val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        binding.userPicture.setOnClickListener { changeUserPicture() }
+
     }
 
-    private fun changeUserPicture(){
-        Toast.makeText(this,"Change Image", Toast.LENGTH_SHORT).show()
+    override fun onStart() {
+        super.onStart()
+        val binding =
+            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding.userPicture.setOnClickListener {
+            it.findNavController().navigate(R.id.fragment
+            )
+        }
     }
+
+
 }

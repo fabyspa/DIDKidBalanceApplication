@@ -15,7 +15,7 @@ class GHomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentGHomeBinding> (inflater, R.layout.fragment_b_home,container,false)
+        val binding = DataBindingUtil.inflate<FragmentGHomeBinding> (inflater, R.layout.fragment_g_home,container,false)
         //binding.button.setOnClickListener{
         //        view: View ->
         //    view.findNavController().navigate (R.id.action_BHomeFragment_to_gameFragment)

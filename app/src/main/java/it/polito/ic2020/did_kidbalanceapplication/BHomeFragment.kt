@@ -22,7 +22,7 @@ class BHomeFragment : Fragment() {
          view.findNavController().navigate (R.id.action_BHomeFragment_to_gameFragment)
         }
         binding.goHome.setOnClickListener{
-            view: View -> view.findNavController().navigate (R.id.loginActivity)
+            view: View -> view.findNavController().navigate (R.id.action_BHomeFragment_to_loginFragment)
         }
         return binding.root
     }

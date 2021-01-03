@@ -13,17 +13,25 @@
             android:id="@+id/action_BHomeFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
         <action
-            android:id="@+id/action_BHomeFragment_to_loginActivity"
-            app:destination="@id/loginActivity" />
+            android:id="@+id/action_BHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" />
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.LoginActivity"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.loginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_BHomeFragment"
+            app:destination="@id/BHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_placeholder"
+            app:destination="@id/placeholder" />
+    </fragment>
+    <fragment android:id="@+id/placeholder" />
 </navigation>

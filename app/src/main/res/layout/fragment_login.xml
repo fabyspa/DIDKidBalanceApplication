@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="10dp"
+    tools:context=".loginFragment">
+
+    <Button
+        android:id="@+id/parent_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Genitore" />
+
+    <Button
+        android:id="@+id/child_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Mariolino" />
+</FrameLayout>

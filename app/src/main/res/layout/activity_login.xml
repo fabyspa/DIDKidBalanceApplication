@@ -7,23 +7,23 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:id="@+id/Genitore"
+        android:id="@+id/genitore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genitore"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/Bambino"
+        app:layout_constraintStart_toEndOf="@+id/bambino"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Bambino"
+        android:id="@+id/bambino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bambino"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Genitore"
+        app:layout_constraintEnd_toStartOf="@+id/genitore"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

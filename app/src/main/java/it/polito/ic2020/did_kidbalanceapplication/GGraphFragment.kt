@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.android.synthetic.main.fragment_graph_g.view.*
 import kotlin.time.days
 
-class GGraphFragment : Fragment(){
+/*class GGraphFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,6 +54,40 @@ class GGraphFragment : Fragment(){
 
         return binding.root
 
+
+    }
+}
+
+ */
+
+class GGraphFragment: Fragment(R.layout.fragment_graph_g){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        println("bella1")
+
+        //val g = mutableListOf<DataPointInterface>()
+
+        fun DP(a: Int, b: Int): DataPoint{
+            return DataPoint(a.toDouble(), b.toDouble())
+        }
+
+        val points = arrayOf( DP (100,18),
+            DP (200,21),
+            DP(600,19),
+            DP(700,24)
+        )
+
+        val series = LineGraphSeries<DataPoint>(points)
+        series.setColor(Color.CYAN)
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10F)
+
+        graph.addSeries(series)
+        graph.setBackgroundColor(Color.argb(100,255,91,0))
+        textView.text=("Ultima Pesata:  24Kg")
+
+        println("bella2")
 
     }
 }

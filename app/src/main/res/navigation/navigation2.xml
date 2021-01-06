@@ -7,11 +7,14 @@
 
     <fragment
         android:id="@+id/BHomeFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.BHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.BHome.BHomeFragment"
         android:label="BHomeFragment" >
         <action
             android:id="@+id/action_BHomeFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_BHomeFragment_to_BDayFragment"
+            app:destination="@id/BDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -42,4 +45,9 @@
         android:id="@+id/GGraphFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GGraphFragment"
         android:label="GGraphFragment" />
+    <fragment
+        android:id="@+id/BDayFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.BDayAction.BDayFragment"
+        android:label="fragment_b_day"
+        tools:layout="@layout/fragment_b_day" />
 </navigation>

@@ -19,6 +19,7 @@ import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityMainBindin
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBinding
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

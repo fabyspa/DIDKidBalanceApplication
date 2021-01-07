@@ -3,6 +3,7 @@ package it.polito.ic2020.did_kidbalanceapplication.AddChild
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,8 @@ import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildRegisterBinding
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.activity_child_register.*
+import java.net.URL
+import java.nio.charset.Charset
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,14 +38,13 @@ class Home : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var sp: SharedPreferences
     private  lateinit var viewModel: HomeViewModel
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Log.i("Home","onCreateView")
         val viewModel by activityViewModels<HomeViewModel>()
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
             inflater,
@@ -52,12 +54,12 @@ class Home : Fragment() {
        // Log.i("Home", "Called ViewModelProvider.get")
         //viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        viewModel.childUser.observe(viewLifecycleOwner,Observer{
+       /* viewModel.childUser.observe(viewLifecycleOwner,Observer{
                 newChild ->
             Log.i("Home","entro")
              binding.tvChild.text= newChild.name
-        })
-
+        })*/
+      //  binding.tvChild.text=str
         return binding.root
     }
     private fun onNameChanged (){

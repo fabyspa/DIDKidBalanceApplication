@@ -10,7 +10,12 @@
         android:id="@+id/data_from_ESP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Game" />
+        android:gravity="center" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/abc_vector_test" />
+
 </FrameLayout>
 </layout>

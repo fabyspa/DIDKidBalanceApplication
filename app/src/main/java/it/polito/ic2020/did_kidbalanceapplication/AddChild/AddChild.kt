@@ -43,13 +43,13 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
             viewModel.addUser(
                     et_name.text.toString()
             )
-            context?.openFileInput(fileName).use { stream ->
+            context?.openFileInput("Users.txt").use { stream ->
                 val text = stream?.bufferedReader().use {
                     it?.readText()
                 }
                 val fileBody = text.toString() + et_name.text.toString()
 
-                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                context?.openFileOutput("Users.txt", Context.MODE_PRIVATE).use { output ->
                     output?.write(fileBody.toByteArray())
                 }
                 /*

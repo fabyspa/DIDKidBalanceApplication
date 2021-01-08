@@ -1,25 +1,27 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.R.attr.data
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import it.polito.ic2020.did_kidbalanceapplication.R
-import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildRegisterBinding
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.activity_child_register.*
-import java.net.URL
-import java.nio.charset.Charset
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
+import org.xmlpull.v1.XmlPullParserFactory
+import java.io.FileNotFoundException
+import java.io.IOException
+import java.io.InputStreamReader
+import java.io.StringReader
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,14 +41,14 @@ class Home : Fragment() {
     lateinit var sp: SharedPreferences
     private  lateinit var viewModel: HomeViewModel
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         val fileName = "Users.txt"
         Log.i("Home", "onCreateView")
         val viewModel by activityViewModels<HomeViewModel>()
-
+        var dataBuffer:String =""
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater,
@@ -61,18 +63,90 @@ class Home : Fragment() {
         })*/
         //for writing Output
         //for reading
-        context?.openFileInput(fileName).use { stream ->
+       /*context?.openFileInput(fileName).use { stream ->
             val text = stream?.bufferedReader().use {
                 it?.readText()
             }
             Log.i("Home",text.toString())
         binding.tvChild.text=text.toString()
-            return binding.root
+        }*/
+        val xmlFile = "userData"
+        val userData = ArrayList<String>()
+        try {
+            val fis = requireContext().openFileInput(xmlFile)
+            val isr = InputStreamReader(fis)
+            val inputBuffer = CharArray(fis.available())
+            isr.read(inputBuffer)
+            dataBuffer = String(inputBuffer)
+            isr.close()
+            fis.close()
+        } catch (e3: FileNotFoundException) {
+            // TODO Auto-generated catch block
+            e3.printStackTrace()
+        } catch (e: IOException) {
+            // TODO Auto-generated catch block
+            e.printStackTrace()
         }
+        var factory: XmlPullParserFactory? = null
+        try {
+            factory = XmlPullParserFactory.newInstance()
+        } catch (e2: XmlPullParserException) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace()
+        }
+        factory!!.isNamespaceAware = true
+        var xpp: XmlPullParser? = null
+        try {
+            xpp = factory!!.newPullParser()
+        } catch (e2: XmlPullParserException) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace()
+        }
+        try {
+            xpp!!.setInput(StringReader(dataBuffer))
+        } catch (e1: XmlPullParserException) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace()
+        }
+        var eventType = 0
+        try {
+            eventType = xpp!!.eventType
+        } catch (e1: XmlPullParserException) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace()
+        }
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            if (eventType == XmlPullParser.START_DOCUMENT) {
+                Log.i("Home","Start document")
+            } else if (eventType == XmlPullParser.START_TAG) {
+                Log.i("Home","Start tag " + xpp!!.name)
+            } else if (eventType == XmlPullParser.END_TAG) {
+                Log.i("Home","End tag " + xpp!!.name)
+            } else if (eventType == XmlPullParser.TEXT) {
+                Log.i("Home","text " + xpp!!.text)
+
+                userData.add(xpp!!.text)
+            }
+            try {
+                eventType = xpp!!.next()
+            } catch (e: XmlPullParserException) {
+                // TODO Auto-generated catch block
+                e.printStackTrace()
+            } catch (e: IOException) {
+                // TODO Auto-generated catch block
+                e.printStackTrace()
+            }
+        }
+
+        val string=userData[0].toString()
+        Log.i("Home",string )
+        binding.tvChild.text=string
+        return binding.root
+
     }
     private fun onNameChanged (){
         sp = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)!!
-        val savedString = sp.getString("STRING_KEY",null)
+        val savedString = sp.getString("STRING_KEY", null)
         //binding.tvChild.text= savedString
     }
 

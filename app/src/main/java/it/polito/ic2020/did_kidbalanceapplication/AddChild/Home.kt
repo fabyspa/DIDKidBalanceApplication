@@ -4,6 +4,7 @@ import android.R.attr.data
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -72,6 +73,7 @@ class Home : Fragment() {
         }*/
         val xmlFile = "userData"
         val userData = ArrayList<String>()
+
         try {
             val fis = requireContext().openFileInput(xmlFile)
             val isr = InputStreamReader(fis)
@@ -81,10 +83,8 @@ class Home : Fragment() {
             isr.close()
             fis.close()
         } catch (e3: FileNotFoundException) {
-            // TODO Auto-generated catch block
             e3.printStackTrace()
         } catch (e: IOException) {
-            // TODO Auto-generated catch block
             e.printStackTrace()
         }
         var factory: XmlPullParserFactory? = null
@@ -99,33 +99,35 @@ class Home : Fragment() {
         try {
             xpp = factory!!.newPullParser()
         } catch (e2: XmlPullParserException) {
-            // TODO Auto-generated catch block
             e2.printStackTrace()
         }
         try {
             xpp!!.setInput(StringReader(dataBuffer))
         } catch (e1: XmlPullParserException) {
-            // TODO Auto-generated catch block
             e1.printStackTrace()
         }
         var eventType = 0
         try {
             eventType = xpp!!.eventType
         } catch (e1: XmlPullParserException) {
-            // TODO Auto-generated catch block
             e1.printStackTrace()
         }
         while (eventType != XmlPullParser.END_DOCUMENT) {
+            val users= ArrayList<String>()
+
             if (eventType == XmlPullParser.START_DOCUMENT) {
                 Log.i("Home","Start document")
             } else if (eventType == XmlPullParser.START_TAG) {
-                Log.i("Home","Start tag " + xpp!!.name)
+                if(xpp!!.name.toString().endsWith("_Data",false))
+                        {
+                            userData.add(xpp!!.name.toString())
+                        }
+               //Log.i("Home","Start tag " + xpp!!.name)
             } else if (eventType == XmlPullParser.END_TAG) {
                 Log.i("Home","End tag " + xpp!!.name)
             } else if (eventType == XmlPullParser.TEXT) {
                 Log.i("Home","text " + xpp!!.text)
-
-                userData.add(xpp!!.text)
+                //userData.add(xpp!!.text)
             }
             try {
                 eventType = xpp!!.next()
@@ -137,18 +139,18 @@ class Home : Fragment() {
                 e.printStackTrace()
             }
         }
+        Log.i("Home",userData.size.toString())
+        var string=""
+        for(i in userData){
+            string = "$string $i"
+        }
 
-        val string=userData[0].toString()
         Log.i("Home",string )
         binding.tvChild.text=string
         return binding.root
 
     }
-    private fun onNameChanged (){
-        sp = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)!!
-        val savedString = sp.getString("STRING_KEY", null)
-        //binding.tvChild.text= savedString
-    }
+
 
     companion object {
         /**

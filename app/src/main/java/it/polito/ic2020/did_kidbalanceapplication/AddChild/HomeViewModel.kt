@@ -20,13 +20,13 @@ class HomeViewModel:ViewModel() {
         super.onCleared()
         Log.i("GameViewModel", "HomeViewModel destroyed")
     }
-    fun addUser(name: String){
+    /*fun addUser(name: String){
         val newUser= NewChildUser(name)
         //_items.add(newUser)
         _childUser.value=newUser
         Log.i("HomeViewModels", "${_childUser.value}")
 
-    }
+    }*/
 
 
 

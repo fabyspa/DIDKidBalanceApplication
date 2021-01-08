@@ -38,7 +38,8 @@ import java.nio.charset.Charset
 class AddChild : Fragment(R.layout.fragment_add_child) {
 
     lateinit var binding: FragmentAddChildBinding
-
+    val xmlSerializer: XmlSerializer = Xml.newSerializer()
+    val childs= ArrayList<NewChildUser>()
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +50,7 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
         val viewModel by activityViewModels<HomeViewModel>()
         val fileName = "Users.txt"
         val xmlFile = "userData"
+
         binding = DataBindingUtil.inflate(
                 inflater,
                 R.layout.fragment_add_child, container,
@@ -60,41 +62,37 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
 
 
         binding.saveName.setOnClickListener {
-            viewModel.addUser(
+          /*  viewModel.addUser(
                     et_name.text.toString()
-            )
+            )*/
             try {
+
+                val name: String=binding.etName.text.toString()
+                val height:Int =binding.etAltezza.text.toString().toInt()
+                val gender: Boolean = binding.checkBox.text.toString().toBoolean()
+
+                childs.add(NewChildUser(name,height,gender))
                 //val fos = FileOutputStream("userData.xml")
                 val fileos: FileOutputStream = requireContext().openFileOutput(xmlFile, Context.MODE_PRIVATE)
-                val xmlSerializer: XmlSerializer = Xml.newSerializer()
+
                 val writer = StringWriter()
                 xmlSerializer.setOutput(writer)
                 xmlSerializer.startDocument("UTF-8", true)
-                xmlSerializer.startTag(null, "userData")
-                xmlSerializer.startTag(null, "userName")
-                xmlSerializer.text(binding.etName.text.toString())
-
-                xmlSerializer.endTag(null, "userName")
-                xmlSerializer.startTag(null, "password")
-                xmlSerializer.text("caccola")
-                xmlSerializer.endTag(null, "password")
-                xmlSerializer.endTag(null, "userData")
+                for(i in childs){
+                    NewChild(i.name,i.altezza, i.gender)
+                }
                 xmlSerializer.endDocument()
                 xmlSerializer.flush()
                 val dataWrite: String = writer.toString()
                 fileos.write(dataWrite.toByteArray())
                 fileos.close()
             } catch (e: FileNotFoundException) {
-                // TODO Auto-generated catch block
                 e.printStackTrace()
             } catch (e: IllegalArgumentException) {
-                // TODO Auto-generated catch block
                 e.printStackTrace()
             } catch (e: IllegalStateException) {
-                // TODO Auto-generated catch block
                 e.printStackTrace()
             } catch (e: IOException) {
-                // TODO Auto-generated catch block
                 e.printStackTrace()
             }
 //            context?.openFileInput(fileName).use { stream ->
@@ -152,7 +150,7 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
             } catch (e: SecurityException) {
                 Log.e(TAG, e.message!!)
             }
-
+//PER LA CONNESSIONE IN AUTOMATICO NON CANCELLARE
             /*val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val builder = NetworkRequest.Builder()
@@ -192,6 +190,22 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
 
        // }
         return binding.root
+    }
+
+    fun  NewChild(name:String, height:Int, gender:Boolean) {
+
+        xmlSerializer.startTag(null, name +"_Data")
+        xmlSerializer.startTag(null, "childName")
+        xmlSerializer.text(name)
+        xmlSerializer.endTag(null, "childName")
+        xmlSerializer.startTag(null, "height")
+        xmlSerializer.text(height.toString())
+        xmlSerializer.endTag(null, "height")
+        xmlSerializer.startTag(null, "gender")
+        xmlSerializer.text(gender.toString())
+        xmlSerializer.endTag(null, "gender")
+        xmlSerializer.endTag(null, name+ "_Data")
+
     }
 
 }

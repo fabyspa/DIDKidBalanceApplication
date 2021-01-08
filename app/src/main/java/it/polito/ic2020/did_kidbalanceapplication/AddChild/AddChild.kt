@@ -1,15 +1,14 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.net.wifi.WifiNetworkSpecifier
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -43,12 +42,44 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
             findNavController().navigate(R.id.action_addChild_to_home2)
 
         }
+        val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val builder = NetworkRequest.Builder()
+
+//set the transport type to WIFI
+
+//set the transport type to WIFI
+        builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+
+        try {
+            manager.requestNetwork(builder.build(), object : NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        manager.bindProcessToNetwork(network)
+                        Log.d("esp","network connected")
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            val str= URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
+                            // Log.i("Home",str)
+                            withContext(Dispatchers.Main) {
+                                textView2.text = str;
+                            }
+                        }
+
+                    } else {
+                        ConnectivityManager.setProcessDefaultNetwork(network)
+                    }
+                    manager.unregisterNetworkCallback(this)
+                }
+            })
+        } catch (e: SecurityException) {
+            Log.e(TAG, e.message!!)
+        }
         // Inflate the layout for this fragment
         /*binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_add_child,container,
             false*/
-        val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        /*val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val builder = NetworkRequest.Builder()
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
@@ -82,7 +113,7 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
             })
         } catch (e: SecurityException) {
             Log.e("Ciao", e.message!!)
-        }
+        }*/
 
 
 

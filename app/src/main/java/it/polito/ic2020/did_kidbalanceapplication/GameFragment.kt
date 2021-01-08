@@ -88,7 +88,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
         super.onViewCreated(view, savedInstanceState)
 
         println("bella1")
-        data_from_ESP.text="ciao"
+        data_from_ESP.text= "Connettiti alla rete WiFi 'KidBalance'"
         val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val builder = NetworkRequest.Builder()
         var salvo:Float = 2.0F
@@ -110,8 +110,10 @@ class GameFragment: Fragment(R.layout.fragment_game){
                                 salvo = str.toFloat()
                                this@GameFragment.context?.openFileOutput("weight_data.txt",Context.MODE_APPEND).use { stream ->
                                    DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
-                                       dataOS.writeChars(str)
+                                       dataOS.writeFloat(str.toFloat())
+                                       println(str.toFloat())
                                        println("Bel file scritto")
+                                       println(str.toFloat().toString())
                                    }
                                }
                             }

@@ -42,25 +42,33 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("Home","onCreateView")
+
+        val fileName = "Users.txt"
+        Log.i("Home", "onCreateView")
         val viewModel by activityViewModels<HomeViewModel>()
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_home,container,
-            false
+                inflater,
+                R.layout.fragment_home, container,
+                false
         )
-       // Log.i("Home", "Called ViewModelProvider.get")
-        //viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-       /* viewModel.childUser.observe(viewLifecycleOwner,Observer{
+        //chiamo il viewmodel in cui è salvato il childUser
+        /*viewModel.childUser.observe(viewLifecycleOwner,Observer{
                 newChild ->
             Log.i("Home","entro")
              binding.tvChild.text= newChild.name
         })*/
-      //  binding.tvChild.text=str
-        return binding.root
+        //for writing Output
+        //for reading
+        context?.openFileInput(fileName).use { stream ->
+            val text = stream?.bufferedReader().use {
+                it?.readText()
+            }
+            Log.i("Home",text.toString())
+        binding.tvChild.text=text.toString()
+            return binding.root
+        }
     }
     private fun onNameChanged (){
         sp = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)!!

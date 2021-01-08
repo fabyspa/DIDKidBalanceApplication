@@ -29,57 +29,81 @@ import java.nio.charset.Charset
 class AddChild : Fragment(R.layout.fragment_add_child) {
 
     lateinit var binding: FragmentAddChildBinding
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
         val viewModel by activityViewModels<HomeViewModel>()
+        val fileName = "Users.txt"
 
-        saveName.setOnClickListener{
+
+
+        saveName.setOnClickListener {
             viewModel.addUser(
                     et_name.text.toString()
             )
-            findNavController().navigate(R.id.action_addChild_to_home2)
-
-        }
-        val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        val builder = NetworkRequest.Builder()
-
-//set the transport type to WIFI
-
-//set the transport type to WIFI
-        builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-
-        try {
-            manager.requestNetwork(builder.build(), object : NetworkCallback() {
-                override fun onAvailable(network: Network) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        manager.bindProcessToNetwork(network)
-                        Log.d("esp","network connected")
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            val str= URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
-                            // Log.i("Home",str)
-                            withContext(Dispatchers.Main) {
-                                textView2.text = str;
-                            }
-                        }
-
-                    } else {
-                        ConnectivityManager.setProcessDefaultNetwork(network)
-                    }
-                    manager.unregisterNetworkCallback(this)
+            context?.openFileInput(fileName).use { stream ->
+                val text = stream?.bufferedReader().use {
+                    it?.readText()
                 }
-            })
-        } catch (e: SecurityException) {
-            Log.e(TAG, e.message!!)
-        }
-        // Inflate the layout for this fragment
-        /*binding = DataBindingUtil.inflate(
+                val fileBody = text.toString() + et_name.text.toString()
+
+                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                    output?.write(fileBody.toByteArray())
+                }
+                /*
+            context?.openFileInput(fileName).use { stream ->
+                val text = stream?.bufferedReader().use {
+                    it?.readText()
+
+                }
+
+                Log.d("TAG", "LOADED: $text")
+            }*/
+
+
+                findNavController().navigate(R.id.action_addChild_to_home2)
+
+            }
+            val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+            val builder = NetworkRequest.Builder()
+
+//set the transport type to WIFI
+
+//set the transport type to WIFI
+            builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+
+            try {
+                manager.requestNetwork(builder.build(), object : NetworkCallback() {
+                    override fun onAvailable(network: Network) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            manager.bindProcessToNetwork(network)
+                            Log.d("esp", "network connected")
+                            lifecycleScope.launch(Dispatchers.IO) {
+                                val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
+                                // Log.i("Home",str)
+                                withContext(Dispatchers.Main) {
+                                    textView2.text = str;
+                                }
+                            }
+
+                        } else {
+                            ConnectivityManager.setProcessDefaultNetwork(network)
+                        }
+                        manager.unregisterNetworkCallback(this)
+                    }
+                })
+            } catch (e: SecurityException) {
+                Log.e(TAG, e.message!!)
+            }
+            // Inflate the layout for this fragment
+            /*binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_add_child,container,
             false*/
-        /*val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            /*val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val builder = NetworkRequest.Builder()
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
@@ -116,7 +140,7 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
         }*/
 
 
+        }
 
     }
-
 }

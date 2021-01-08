@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import kotlinx.android.synthetic.main.fragment_graph_g.*
+import java.io.BufferedOutputStream
+import java.io.DataInputStream
+import java.io.DataOutputStream
 import java.util.*
 
 /*class GGraphFragment : Fragment(){
@@ -137,6 +141,22 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         textView.text=(l[l.lastIndex].toString())
 
         println("bella2")
+
+
+        //check FIle
+        val tmp:MutableList<Float> = mutableListOf()
+        val f = "weight_data.txt"
+        context?.openFileInput("weight_data.txt").use {
+                it ->
+            DataInputStream(it). use {
+                    dis ->
+                while (dis.available()>0){
+                    tmp.add(dis.read().toFloat())
+                    textView.text=tmp.toString()
+                    println("bel file letto")
+                }
+            }
+        }
 
     }
 }

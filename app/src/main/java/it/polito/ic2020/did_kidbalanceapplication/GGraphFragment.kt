@@ -137,7 +137,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         //graph.addSeries(series)
         graph.addSeries(s)
-        graph.setBackgroundColor(Color.argb(100, 255, 91, 0))
+        graph.setBackgroundColor(Color.argb(100,255,236,179))
         textView.text=(l[l.lastIndex].toString())
 
         println("bella2")

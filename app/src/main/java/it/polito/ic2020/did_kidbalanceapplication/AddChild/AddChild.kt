@@ -27,10 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.xmlpull.v1.XmlSerializer
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.StringWriter
+import java.io.*
 import java.net.URL
 import java.nio.charset.Charset
 
@@ -44,12 +41,12 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View?{
+    ): View? {
 
 
         val viewModel by activityViewModels<HomeViewModel>()
         val fileName = "Users.txt"
-        val xmlFile = "userData"
+
 
         binding = DataBindingUtil.inflate(
                 inflater,
@@ -62,30 +59,19 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
 
 
         binding.saveName.setOnClickListener {
-          /*  viewModel.addUser(
+            Log.i("AddChild", "schiacciato")
+            /*  viewModel.addUser(
                     et_name.text.toString()
             )*/
             try {
 
-                val name: String=binding.etName.text.toString()
-                val height:Int =binding.etAltezza.text.toString().toInt()
+                val name: String = binding.etName.text.toString()
+                val height: Int = binding.etAltezza.text.toString().toInt()
                 val gender: Boolean = binding.checkBox.text.toString().toBoolean()
-
-                childs.add(NewChildUser(name,height,gender))
-                //val fos = FileOutputStream("userData.xml")
-                val fileos: FileOutputStream = requireContext().openFileOutput(xmlFile, Context.MODE_PRIVATE)
-
-                val writer = StringWriter()
-                xmlSerializer.setOutput(writer)
-                xmlSerializer.startDocument("UTF-8", true)
-                for(i in childs){
-                    NewChild(i.name,i.altezza, i.gender)
-                }
-                xmlSerializer.endDocument()
-                xmlSerializer.flush()
-                val dataWrite: String = writer.toString()
-                fileos.write(dataWrite.toByteArray())
-                fileos.close()
+                createXMLFile(name, height, gender)
+               /* val child = NewChildUser(name, height, gender)
+                childs.add(child)*/
+                findNavController().navigate(R.id.action_addChild_to_home2)
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
             } catch (e: IllegalArgumentException) {
@@ -95,29 +81,18 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-//            context?.openFileInput(fileName).use { stream ->
-//                val text = stream?.bufferedReader().use {
-//                    it?.readText()
-//                }
-//                val fileBody = et_name.text.toString()
-//
-//                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
-//                    output?.write(fileBody.toByteArray())
-//                }
-                /*
-            context?.openFileInput(fileName).use { stream ->
-                val text = stream?.bufferedReader().use {
-                    it?.readText()
 
+        }
+        binding.resetButton.setOnClickListener{
+            val dir: File = requireContext().filesDir
+            if(dir.isDirectory){
+                val children = dir.list()
+                for (i in children.indices) {
+                    File(dir, children[i]).delete()
                 }
 
-                Log.d("TAG", "LOADED: $text")
-            }*/
-
-
-                findNavController().navigate(R.id.action_addChild_to_home2)
-
             }
+        }
             val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             val builder = NetworkRequest.Builder()
@@ -188,24 +163,38 @@ class AddChild : Fragment(R.layout.fragment_add_child) {
         }*/
 
 
-       // }
-        return binding.root
-    }
+            // }
+            return binding.root
+        }
 
-    fun  NewChild(name:String, height:Int, gender:Boolean) {
 
-        xmlSerializer.startTag(null, name +"_Data")
-        xmlSerializer.startTag(null, "childName")
-        xmlSerializer.text(name)
-        xmlSerializer.endTag(null, "childName")
-        xmlSerializer.startTag(null, "height")
-        xmlSerializer.text(height.toString())
-        xmlSerializer.endTag(null, "height")
-        xmlSerializer.startTag(null, "gender")
-        xmlSerializer.text(gender.toString())
-        xmlSerializer.endTag(null, "gender")
-        xmlSerializer.endTag(null, name+ "_Data")
+        private fun createXMLFile(name: String, height: Int, gender: Boolean) {
+            val xmlFile = "$name"+"Data"
+            Log.i("AddChild", xmlFile)
+            val fileos: FileOutputStream = requireContext().openFileOutput(xmlFile, Context.MODE_PRIVATE)
+            val writer = StringWriter()
+            xmlSerializer.setOutput(writer)
+            xmlSerializer.startDocument("UTF-8", true)
+            xmlSerializer.startTag(null, name + "_Data")
+            xmlSerializer.startTag(null, "childName")
+            xmlSerializer.text(name)
+            xmlSerializer.endTag(null, "childName")
+            xmlSerializer.startTag(null, "height")
+            xmlSerializer.text(height.toString())
+            xmlSerializer.endTag(null, "height")
+            xmlSerializer.startTag(null, "gender")
+            xmlSerializer.text(gender.toString())
+            xmlSerializer.endTag(null, "gender")
+            xmlSerializer.endTag(null, name + "_Data")
+            xmlSerializer.endDocument()
+            xmlSerializer.flush()
+            val dataWrite: String = writer.toString()
+            Log.i("AddChild", dataWrite)
+            fileos.write(dataWrite.toByteArray())
+            fileos.close()
 
-    }
+        }
+
 
 }
+

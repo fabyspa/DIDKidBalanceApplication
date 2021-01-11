@@ -11,8 +11,12 @@ import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityMainBindin
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.activity_child_register.*
 
-class ChildRegister : AppCompatActivity() {
+class ChildRegister : SingleFragment() {
 lateinit var binding: ActivityChildRegisterBinding
+    override fun createFragment(): Fragment {
+        TODO("Not yet implemented")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        binding = DataBindingUtil.setContentView<ActivityChildRegisterBinding>(this, R.layout.activity_child_register)

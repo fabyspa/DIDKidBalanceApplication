@@ -74,7 +74,7 @@ class Home : Fragment() {
             Log.i("Home",text.toString())
         binding.tvChild.text=text.toString()
         }*/
-        val xmlFile = "userData"
+        val xmlFile = "MarioData"
         val userData = ArrayList<String>()
 
         try {

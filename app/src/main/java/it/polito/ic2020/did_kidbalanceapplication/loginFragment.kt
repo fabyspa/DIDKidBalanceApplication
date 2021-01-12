@@ -17,19 +17,18 @@ class loginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //prima di fare questa cosa devi andare in fragment_login.xml e mettere <layout> esterno, vai a vedere (purtrollo nell xml non posso scrivere commenti
-        //il  <layou> </layout> l'ho aggiunto io, prima c'era solo il FrameLayout
+
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
             inflater,
             R.layout.fragment_login,
             container,
             false
         )
-//        change.setOnClickListener {
-//            val `in` = Intent(activity, BasicActivity::class.java)
-//            `in`.putExtra("some", "some data")
-//            startActivity(`in`)
-//        }
+        binding.change.setOnClickListener {
+            val `in` = Intent(activity, BasicActivity::class.java)
+            `in`.putExtra("some", "some data")
+            startActivity(`in`)
+        }
 
 
         binding.childView.setOnClickListener{ view: View -> view.findNavController().navigate(R.id.action_loginFragment_to_BHomeFragment)

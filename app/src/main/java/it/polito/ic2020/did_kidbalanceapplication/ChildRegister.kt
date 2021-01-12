@@ -1,28 +1,16 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
-import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildRegisterBinding
-import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityMainBinding
-import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.activity_child_register.*
 
 class ChildRegister : SingleFragment() {
 lateinit var binding: ActivityChildRegisterBinding
     override fun createFragment(): Fragment {
-        TODO("Not yet implemented")
+        return RecyclerFragment().newInstance()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-       binding = DataBindingUtil.setContentView<ActivityChildRegisterBinding>(this, R.layout.activity_child_register)
 
-
-    }
 
 //    private fun saveData() {
 //        val insertedText: String = eTName.text.toString()

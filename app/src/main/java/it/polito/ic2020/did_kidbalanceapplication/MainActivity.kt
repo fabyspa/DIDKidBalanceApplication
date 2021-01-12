@@ -18,7 +18,7 @@ import androidx.navigation.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityMainBinding
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +27,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val binding =
+       /* val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.userPicture.setOnClickListener {
             it.findNavController().navigate(R.id.navigation_login)
         }
+
+        */
     }
 
 }

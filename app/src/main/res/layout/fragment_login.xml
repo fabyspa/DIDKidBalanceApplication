@@ -25,5 +25,11 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:text="Mariolino" />
+
+    <Button
+        android:id="@+id/change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="changeActivity" />
 </FrameLayout>
 </layout>

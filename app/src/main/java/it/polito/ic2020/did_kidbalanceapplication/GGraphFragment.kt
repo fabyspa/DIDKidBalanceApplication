@@ -153,7 +153,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     tmp.add(dis.readFloat())
                     //per la data, sarebbe bene inserirla al momento della scrittura nel file
                     //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
-                    println("bel file letto")
+                    println("bel file letto1")
                 }
             }
         }

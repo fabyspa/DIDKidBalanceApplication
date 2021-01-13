@@ -41,7 +41,7 @@ class BHomeFragment : Fragment() {
         })
         binding.button.setOnClickListener{
          view: View ->
-         view.findNavController().navigate (R.id.action_BHomeFragment_to_gameFragment)
+         view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)
         }
 
         binding.dayActionButton.setOnClickListener{onDisableButton(this.view)}
@@ -54,7 +54,7 @@ class BHomeFragment : Fragment() {
 
     fun onDisableButton(view: View?){
         Toast.makeText(activity, "actionDayDone", Toast.LENGTH_SHORT).show()
-        view?.findNavController()?.navigate(R.id.action_BHomeFragment_to_BDayFragment)
+        view?.findNavController()?.navigate(R.id.action_BHomeFragment2_to_BDayFragment)
         viewModel.onActionDayDone()
 
 

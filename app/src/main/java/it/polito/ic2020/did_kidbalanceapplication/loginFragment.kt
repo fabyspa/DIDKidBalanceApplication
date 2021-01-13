@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class loginFragment : Fragment() {
 
@@ -24,14 +23,11 @@ class loginFragment : Fragment() {
             container,
             false
         )
-        binding.change.setOnClickListener {
-            val `in` = Intent(activity, BasicActivity::class.java)
+
+        binding.childView.setOnClickListener{
+            val `in` = Intent(activity, ChildActivity::class.java)
             `in`.putExtra("some", "some data")
             startActivity(`in`)
-        }
-
-
-        binding.childView.setOnClickListener{ view: View -> view.findNavController().navigate(R.id.action_loginFragment_to_BHomeFragment)
         }
         binding.parentView.setOnClickListener{ view: View -> view.findNavController().navigate(R.id.action_loginFragment_to_GHomeFragment)
         }

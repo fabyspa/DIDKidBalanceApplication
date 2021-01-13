@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.DIDKidBalanceApplication">
-        <activity android:name=".BasicActivity">
+        <activity android:name=".ChildActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".MainActivity">
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_child"
+    app:startDestination="@id/BHomeFragment2">
+
+    <fragment
+        android:id="@+id/BHomeFragment2"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.BHome.BHomeFragment"
+        android:label="BHomeFragment" >
+        <action
+            android:id="@+id/action_BHomeFragment2_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_BHomeFragment2_to_BDayFragment"
+            app:destination="@id/BDayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GameFragment"
+        android:label="GameFragment" />
+    <fragment
+        android:id="@+id/BDayFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.BDayAction.BDayFragment"
+        android:label="fragment_b_day"
+        tools:layout="@layout/fragment_b_day" />
+</navigation>

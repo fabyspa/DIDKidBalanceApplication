@@ -66,13 +66,13 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             return DataPoint(a.toDouble(), b.toDouble())
         }
 
-  /*      val points = arrayOf(DP((System.currentTimeMillis() / 1000) as Int, 18),
-                DP(200, 21),
-                DP(600, 19),
-                DP(700, 24)
-        )
+        /*      val points = arrayOf(DP((System.currentTimeMillis() / 1000) as Int, 18),
+                      DP(200, 21),
+                      DP(600, 19),
+                      DP(700, 24)
+              )
 
-   */
+         */
         val l = mutableListOf<DataPoint>()
         l.add(DP(Calendar.DAY_OF_MONTH - 1, 18))
         l.add(DP(Calendar.DAY_OF_MONTH - 2, 20))
@@ -102,12 +102,12 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         l.add(DP(Calendar.DAY_OF_MONTH + 22, 25))
         l.add(DP(Calendar.DAY_OF_MONTH + 23, 26))
         l.add(DP(Calendar.DAY_OF_MONTH + 24, 25))
-       /* l.removeFirst()
-        l.add(DP((System.currentTimeMillis()/1000) as Int,25))
-        val p = arrayOf(l.);
-        val s = LineGraphSeries<DataPoint>(p)
+        /* l.removeFirst()
+         l.add(DP((System.currentTimeMillis()/1000) as Int,25))
+         val p = arrayOf(l.);
+         val s = LineGraphSeries<DataPoint>(p)
 
-        */
+         */
         while(l.size>10) l.removeFirst() //needs 30gg
 
         val dataPoints = arrayOfNulls<DataPoint>(l.size) // declare an array of DataPoint objects with the same size as your list
@@ -167,10 +167,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         mailToBtn.setOnClickListener {
             sendMail(
-                "Dati Bambino",
-                tmp.toString(),
-                "",
-                ""
+                    "Dati Bambino",
+                    tmp.toString(),
+                    "",
+                    ""
             )
         }
     }

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "it.polito.ic2020.did_kidbalanceapplication"
-        minSdkVersion 29
+        minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -55,4 +55,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     compile 'com.jjoe64:graphview:4.2.1'
+    implementation 'com.sun.mail:android-mail:1.6.0'
+    implementation 'com.sun.mail:android-activation:1.6.0'
 }

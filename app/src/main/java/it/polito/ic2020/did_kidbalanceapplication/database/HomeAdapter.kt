@@ -4,6 +4,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import it.polito.ic2020.did_kidbalanceapplication.R
@@ -14,7 +16,9 @@ import kotlinx.android.synthetic.main.fragment_add_child.view.*
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
     private var userList= emptyList<ChildWeight>()
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
     return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_view,parent,false))
@@ -35,6 +39,11 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
         }
 
         holder.itemView.picture.setImageResource(imgResId)
+        holder.itemView.setOnClickListener( View.OnClickListener() {
+            findNavController(holder.itemView).navigate(R.id.action_homeFragment_to_navigation_child)
+            }
+
+        )
 //        holder.itemView.surname_tv.text=currentItem.surname
 //        holder.itemView.height_tv.text=currentItem.altezza.toString()
     }

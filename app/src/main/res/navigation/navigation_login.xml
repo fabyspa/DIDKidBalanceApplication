@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_login"
-    app:startDestination="@id/addChild">
+    app:startDestination="@id/homeFragment">
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/addChild">
+        <fragment
+            android:id="@+id/addChild"
+            android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.AddChild"
+            android:label="AddChild" />
+    </navigation>
     <fragment
-        android:id="@+id/addChild"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.AddChild"
-        android:label="AddChild" >
+        android:id="@+id/homeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.homeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_addChild_to_home2"
-            app:destination="@id/home2" />
+            android:id="@+id/action_homeFragment_to_addChild2"
+            app:destination="@id/addChild2" />
     </fragment>
     <fragment
-        android:id="@+id/home2"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.Home"
-        android:label="Home" />
+        android:id="@+id/addChild2"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.AddChild"
+        android:label="Add" >
+        <action
+            android:id="@+id/action_addChild2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

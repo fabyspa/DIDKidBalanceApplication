@@ -1,15 +1,23 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildRegisterBinding
+import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentAddChildBinding
 import kotlinx.android.synthetic.main.activity_child_register.*
+import kotlinx.android.synthetic.main.activity_main.*
+class ChildRegister : AppCompatActivity() {
 
-class ChildRegister : SingleFragment() {
-lateinit var binding: ActivityChildRegisterBinding
-    override fun createFragment(): Fragment {
-        return RecyclerFragment().newInstance()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_child_register)
+        setSupportActionBar(findViewById(R.id.toolbar2))
+
+
     }
-
 
 
 //    private fun saveData() {

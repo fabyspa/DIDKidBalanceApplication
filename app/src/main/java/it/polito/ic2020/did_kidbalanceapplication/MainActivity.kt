@@ -15,8 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityMainBinding
-import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBinding
+import androidx.navigation.ui.setupActionBarWithNavController
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
     }
     /*

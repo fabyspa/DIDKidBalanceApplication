@@ -19,7 +19,7 @@
         <activity android:name=".ChildActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ChildRegister">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

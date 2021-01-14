@@ -10,11 +10,11 @@ import android.widget.ListAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.HomeAdapter
-import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentAddChildBinding
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class homeFragment : Fragment() {
@@ -34,7 +34,7 @@ class homeFragment : Fragment() {
         val adapter= HomeAdapter()
         val recyclerView= view.recyclerView
         recyclerView.adapter= adapter
-        recyclerView.layoutManager= LinearLayoutManager(requireContext())
+        recyclerView.layoutManager= GridLayoutManager(requireContext(),3)
 
         //UserViewModel
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)

@@ -27,18 +27,11 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem =userList[position]
         val imgResId:Int
-        //holder.itemView.id_tv.text= currentItem.id.toString()
         holder.itemView.name.text= currentItem.nome
-        Log.i("Addchild", currentItem.gender.toString())
 
-        if(currentItem.gender== R.id.female_rb){
-            imgResId= R.drawable.woman
-        }
-        else{
-            imgResId= R.drawable.alieno
-        }
 
-        holder.itemView.picture.setImageResource(imgResId)
+
+        holder.itemView.picture.setImageResource(currentItem.picture)
         holder.itemView.setOnClickListener( View.OnClickListener() {
             findNavController(holder.itemView).navigate(R.id.action_homeFragment_to_navigation_child)
             }

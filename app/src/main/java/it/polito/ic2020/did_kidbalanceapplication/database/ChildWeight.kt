@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.database
 
+import android.widget.ImageView
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -12,5 +13,6 @@ data class ChildWeight (
     var nome: String,
     val surname: String,
     val altezza: Double,
-    val gender: Int
+    val gender: Int,
+    val picture: Int
 )

@@ -180,10 +180,16 @@ class AddChild : Fragment() {
         val surname = et_surname.text.toString()
         val height = et_altezza.text
         val gender = radio_button_group.checkedRadioButtonId
+        val picture :Int;
 
-
-        if(inputCheck(firstName,surname,height)){
-            val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender)
+        if(inputCheck(firstName,surname,height,gender)){
+            if(gender==R.id.female_rb) {
+            picture=R.drawable.woman
+            }
+            else{
+                picture=R.drawable.kid
+            }
+            val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender,picture)
 
             //Add Data to Database
             childWeightViewModel.addChildWeight(user)
@@ -198,8 +204,8 @@ class AddChild : Fragment() {
 
     }
 
-    private fun inputCheck(firstName:String, surname:String, height:Editable):Boolean{
-        return !(TextUtils.isEmpty(firstName)&&TextUtils.isEmpty(surname)&&height.isEmpty())
+    private fun inputCheck(firstName:String, surname:String, height:Editable,gender:Int):Boolean{
+        return !(TextUtils.isEmpty(firstName)&&TextUtils.isEmpty(surname)&&height.isEmpty()&&gender==null)
     }
 
 

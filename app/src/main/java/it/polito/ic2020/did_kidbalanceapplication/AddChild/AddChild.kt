@@ -179,14 +179,18 @@ class AddChild : Fragment() {
         val firstName = et_name.text.toString()
         val surname = et_surname.text.toString()
         val height = et_altezza.text
-        val gender = radio_button_group.checkedRadioButtonId
-        val picture :Int;
+        val genderCode = radio_button_group.checkedRadioButtonId
+        val picture :Int
+        val gender: String
 
-        if(inputCheck(firstName,surname,height,gender)){
-            if(gender==R.id.female_rb) {
+        if(inputCheck(firstName,surname,height,genderCode)){
+            if(genderCode==R.id.female_rb) {
+                gender= 'F'.toString()
             picture=R.drawable.woman
             }
             else{
+                gender= 'M'.toString()
+
                 picture=R.drawable.kid
             }
             val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender,picture)

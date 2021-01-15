@@ -13,6 +13,6 @@ data class ChildWeight (
     var nome: String,
     val surname: String,
     val altezza: Double,
-    val gender: Int,
+    val gender: String,
     val picture: Int
 )

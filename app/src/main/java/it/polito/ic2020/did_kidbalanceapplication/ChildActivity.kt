@@ -13,7 +13,7 @@ import androidx.databinding.DataBindingUtil
 import it.polito.ic2020.did_kidbalanceapplication.BHome.BHomeFragment
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildBinding
 
-class ChildActivity : AppCompatActivity(R.layout.activity_child){
+class ChildActivity : AppCompatActivity(){
 
 private lateinit var binding:ActivityChildBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ private lateinit var binding:ActivityChildBinding
         val extra: Bundle?= intent.extras
 
         if(extra!=null) {
-            val childName = extra?.get("name").toString()
+            val childName = extra.get("name").toString()
             binding.userId.text = childName
         }
         else{

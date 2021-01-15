@@ -24,6 +24,13 @@ class BHomeFragment : Fragment() {
     private  lateinit var viewModel: BHomeViewModel
 
     private lateinit var binding: FragmentBHomeBinding
+
+    public fun newInstance(): BHomeFragment {
+        val args = Bundle()
+        val fragment = BHomeFragment()
+        fragment.arguments = args
+        return fragment
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,8 +40,6 @@ class BHomeFragment : Fragment() {
              R.layout.fragment_b_home,container,
             false
          )
-        Log.i("GameFragment", "Called ViewModelProvider.get")
-
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
         viewModel.actionDayDone.observe(viewLifecycleOwner, {
                 hasBeenClicked-> if(hasBeenClicked) binding.dayActionButton.isEnabled= false

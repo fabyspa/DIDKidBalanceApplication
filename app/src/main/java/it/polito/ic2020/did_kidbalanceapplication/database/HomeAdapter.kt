@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import kotlinx.android.synthetic.main.card_view.view.*
-import kotlinx.android.synthetic.main.custom_raw.view.*
 import kotlinx.android.synthetic.main.fragment_add_child.view.*
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
@@ -34,13 +33,12 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
         holder.itemView.setOnClickListener( View.OnClickListener() {
             //findNavController(holder.itemView).navigate(R.id.action_homeFragment_to_navigation_child)
             val `in` = Intent(holder.itemView.context, ChildActivity::class.java)
-            `in`.putExtra("some", "some data")
+            `in`.putExtra("name", currentItem.nome)
             holder.itemView.context.startActivity(`in`)
             }
 
         )
-//        holder.itemView.surname_tv.text=currentItem.surname
-//        holder.itemView.height_tv.text=currentItem.altezza.toString()
+
     }
 
     override fun getItemCount(): Int {

@@ -37,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Mariolino"
                 android:textColor="#3E3A3A"
                 android:textSize="24sp" />
 

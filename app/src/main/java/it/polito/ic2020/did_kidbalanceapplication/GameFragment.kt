@@ -79,6 +79,7 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.Charset
+import javax.net.ssl.HttpsURLConnection
 
 
 class GameFragment: Fragment(R.layout.fragment_game){
@@ -133,8 +134,43 @@ class GameFragment: Fragment(R.layout.fragment_game){
 
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
+            fun post(url:String,body:String) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                return@launch URL(url)
+                    .openConnection()
+                    .let {
+                        it as HttpURLConnection
+                    }.apply {
+                        setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                        requestMethod = "POST"
+
+                        doOutput = true
+                        val outputWriter = OutputStreamWriter(outputStream.buffered())
+                        outputWriter.write(body)
+                        outputWriter.flush()
+                    }.let {
+                        if (it.responseCode == 200) it.inputStream else it.errorStream
+                    }.let { streamToRead ->
+                        BufferedReader(InputStreamReader(streamToRead)).use {
+                            val response = StringBuffer()
+
+                            var inputLine = it.readLine()
+                            while (inputLine != null) {
+                                response.append(inputLine)
+                                inputLine = it.readLine()
+                            }
+                            it.close()
+                            response.toString()
+                            println(response.toString())
+                        }
+                    }
+            }
+        }
+
+
 
         send.setOnClickListener {
+            /*
                     val urlString = "http://192.168.4.1/" // URL to call
                     val data = "prova invio" //data to post
                     var out: OutputStream? = null
@@ -153,8 +189,11 @@ class GameFragment: Fragment(R.layout.fragment_game){
                     } catch (e: Exception) {
                         println(e.message)
                     }
+            */
             //val httpclient: HttpClient = DefaultHttpClient()
             //val httppost = HttpPost("LINK TO SERVER")
+            post("http://192.168.4.1/c","Check")
+
         }
     }
 }

@@ -141,7 +141,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
                     .let {
                         it as HttpURLConnection
                     }.apply {
-                        setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                        setRequestProperty("Content-Type", "text/html")
                         requestMethod = "POST"
 
                         doOutput = true
@@ -151,11 +151,14 @@ class GameFragment: Fragment(R.layout.fragment_game){
                     }.let {
                         if (it.responseCode == 200) it.inputStream else it.errorStream
                     }.let { streamToRead ->
+                        println("streamToRead.toString()")
                         BufferedReader(InputStreamReader(streamToRead)).use {
                             val response = StringBuffer()
-
                             var inputLine = it.readLine()
+                            println(inputLine)
+                            inputLine = "testo scritto a mano"
                             while (inputLine != null) {
+                                println("sono dentro inputline")
                                 response.append(inputLine)
                                 inputLine = it.readLine()
                             }
@@ -192,7 +195,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
             */
             //val httpclient: HttpClient = DefaultHttpClient()
             //val httppost = HttpPost("LINK TO SERVER")
-            post("http://192.168.4.1/c","Check")
+            post("http://192.168.4.1/c","Check \n")
 
         }
     }

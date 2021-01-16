@@ -60,7 +60,6 @@ package it.polito.ic2020.did_kidbalanceapplication
 
 import android.content.ContentValues.TAG
 import android.content.Context
-import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
@@ -76,12 +75,11 @@ import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.*
+import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.Charset
-import java.io.File
-import java.io.BufferedOutputStream
-import java.io.DataOutputStream
-import java.io.InputStream
+
 
 class GameFragment: Fragment(R.layout.fragment_game){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,24 +96,28 @@ class GameFragment: Fragment(R.layout.fragment_game){
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
 
         try {
-            manager.requestNetwork(builder.build(), object : NetworkCallback(){
+            manager.requestNetwork(builder.build(), object : NetworkCallback() {
                 override fun onAvailable(network: Network) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         manager.bindProcessToNetwork(network)
-                        Log.d("esp","Network Connected")
+                        Log.d("esp", "Network Connected")
                         lifecycleScope.launch(Dispatchers.IO) {
                             val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
-                            withContext(Dispatchers.Main){
+                            withContext(Dispatchers.Main) {
                                 data_from_ESP.text = str
                                 salvo = str.toFloat()
-                               this@GameFragment.context?.openFileOutput("weight_data.txt",Context.MODE_APPEND).use { stream ->
-                                   DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
-                                       dataOS.writeFloat(str.toFloat())
-                                       println(str.toFloat())
-                                       println("Bel file scritto")
-                                       println(str.toFloat().toString())
-                                   }
-                               }
+                                //inserire salvo in database
+                                this@GameFragment.context?.openFileOutput(
+                                    "weight_data.txt",
+                                    Context.MODE_APPEND
+                                ).use { stream ->
+                                    DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
+                                        dataOS.writeFloat(str.toFloat())
+                                        println(str.toFloat())
+                                        println("Bel file scritto")
+                                        println(str.toFloat().toString())
+                                    }
+                                }
                             }
                         }
                     } else {
@@ -132,5 +134,27 @@ class GameFragment: Fragment(R.layout.fragment_game){
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
 
+        send.setOnClickListener {
+                    val urlString = "http://192.168.4.1/" // URL to call
+                    val data = "prova invio" //data to post
+                    var out: OutputStream? = null
+                    try {
+                        val url = URL(urlString)
+                        val urlConnection: HttpURLConnection =
+                            url.openConnection() as HttpURLConnection
+                        out = BufferedOutputStream(urlConnection.getOutputStream())
+                        println("urlConnected")
+                        val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
+                        writer.write(data)
+                        writer.flush()
+                        writer.close()
+                        out.close()
+                        urlConnection.connect()
+                    } catch (e: Exception) {
+                        println(e.message)
+                    }
+            //val httpclient: HttpClient = DefaultHttpClient()
+            //val httppost = HttpPost("LINK TO SERVER")
+        }
     }
 }

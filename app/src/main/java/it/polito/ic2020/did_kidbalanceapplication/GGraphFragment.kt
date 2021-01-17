@@ -13,47 +13,6 @@ import kotlinx.android.synthetic.main.fragment_graph_g.*
 import java.io.DataInputStream
 import java.util.*
 
-
-/*class GGraphFragment : Fragment(){
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<FragmentGraphGBinding> (inflater, R.layout.fragment_graph_g,container,false)
-        println("bella1")
-
-        val g = mutableListOf<DataPointInterface>()
-
-        fun DP(a: Int, b: Int): DataPoint{
-            return DataPoint(a.toDouble(), b.toDouble())
-        }
-
-        val points = arrayOf( DP (100,18),
-            DP (200,21),
-            DP(600,19),
-            DP(700,24)
-        )
-
-        val series = LineGraphSeries<DataPoint>(points)
-        series.setColor(Color.CYAN)
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(10F)
-
-        binding.graph.addSeries(series)
-        binding.graph.setBackgroundColor(Color.argb(100,255,91,0))
-        binding.textView.text=("Ultima Pesata:  24Kg")
-
-        println("bella2")
-
-        return binding.root
-
-
-    }
-}
-
- */
-
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +20,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         println("bella1")
 
         //val g = mutableListOf<DataPointInterface>()
+        val b = this.arguments
 
         fun DP(a: Int, b: Int): DataPoint{
             return DataPoint(a.toDouble(), b.toDouble())
@@ -185,11 +145,11 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         mI.putExtra(Intent.EXTRA_TEXT, message)
 
         try {
-            startActivity(Intent.createChooser(mI,"Chose Email Client..."))
-            Toast.makeText(context,"Make sure you're disconnected to the scale",Toast.LENGTH_LONG).show()
-        } catch (e:Exception){
+            startActivity(Intent.createChooser(mI, "Chose Email Client..."))
+            Toast.makeText(context, "Make sure you're disconnected to the scale", Toast.LENGTH_LONG).show()
+        } catch (e: Exception){
             //errori vari
-            Toast.makeText(context,e.message,Toast.LENGTH_LONG).show()
+            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
 }

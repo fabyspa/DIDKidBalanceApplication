@@ -8,23 +8,38 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
-import kotlinx.android.synthetic.main.fragment_g_home.*
+import java.io.DataInputStream
 
 class GHomeFragment : Fragment() {
-    val savedPin = 1234;
+    var savedPin = 1234;
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentGHomeBinding> (inflater, R.layout.fragment_g_home,container,false)
-        binding.login.setOnClickListener{
-            view : View ->
+        context?.openFileInput("logIN.txt").use { it ->
+            DataInputStream(it). use { dis ->
+                while (dis.available()>0){
+                    savedPin = dis.readInt()
+                }
+                println(savedPin)
+            }
+        }
+        val binding = DataBindingUtil.inflate<FragmentGHomeBinding>(inflater, R.layout.fragment_g_home, container, false)
+        binding.login.setOnClickListener{ view: View ->
             val check = binding.pin.text.toString().trim().length in 4..4
             val pin = binding.pin.text.toString()
-            if(pin == savedPin.toString() && check)
+            if(pin == savedPin.toString() && check) {
+
+                val b = Bundle()
+                b.putInt("id", 1)
+                println(b)
+
+                val GGraphFragment = Fragment()
+                GGraphFragment.setArguments(b)
+
                 view.findNavController().navigate(R.id.action_GHomeFragment2_to_GGraphFragment2)
-            else if(!check) binding.pin.error="inserire 4 numeri"
+            } else if(!check) binding.pin.error="inserire 4 numeri"
             else binding.pin.error="pin non corretto"
 
         }

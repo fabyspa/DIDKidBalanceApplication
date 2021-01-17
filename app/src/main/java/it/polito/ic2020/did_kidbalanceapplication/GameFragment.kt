@@ -134,9 +134,12 @@ class GameFragment: Fragment(R.layout.fragment_game){
 
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
-            fun post(url:String,body:String) {
+
+        //invio flag alla ESP
+
+        fun post(url: String, body: String) {
             lifecycleScope.launch(Dispatchers.IO) {
-                return@launch URL(url)
+                return@launch URL("http://192.168.4.1/c")
                     .openConnection()
                     .let {
                         it as HttpURLConnection
@@ -156,7 +159,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
                             val response = StringBuffer()
                             var inputLine = it.readLine()
                             println(inputLine)
-                            inputLine = "testo scritto a mano"
+                            //inputLine = "testo scritto a mano"
                             while (inputLine != null) {
                                 println("sono dentro inputline")
                                 response.append(inputLine)

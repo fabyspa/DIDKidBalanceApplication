@@ -30,6 +30,10 @@ class homeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_addChild2)
         }
 
+        view.genitore.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_GHomeFragment2)
+        }
+
         //Recyclerview
         val adapter= HomeAdapter()
         val recyclerView= view.recyclerView

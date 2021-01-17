@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLoginBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class loginFragment : Fragment() {
 

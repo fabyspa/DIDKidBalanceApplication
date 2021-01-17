@@ -34,6 +34,7 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
             //findNavController(holder.itemView).navigate(R.id.action_homeFragment_to_navigation_child)
             val `in` = Intent(holder.itemView.context, ChildActivity::class.java)
             `in`.putExtra("name", currentItem.nome)
+            `in`.putExtra("id", currentItem.id)
             println(`in`.extras.toString())
             println("ciao")
             holder.itemView.context.startActivity(`in`)

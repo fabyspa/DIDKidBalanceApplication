@@ -60,6 +60,7 @@ package it.polito.ic2020.did_kidbalanceapplication
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
@@ -76,14 +77,10 @@ import androidx.lifecycle.lifecycleScope
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.Response
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -111,8 +108,8 @@ class GameFragment: Fragment(R.layout.fragment_game) {
         data_from_ESP.text = "Connettiti alla rete WiFi 'KidBalance'"
         val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val builder = NetworkRequest.Builder()
-        var salvo: Float = 2.0F
         val fileName = "weight_data.txt"
+        var salvo= 0F
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
 
@@ -126,34 +123,46 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                         manager.bindProcessToNetwork(network)
                         Log.d("esp", "Network Connected")
                         lifecycleScope.launch(Dispatchers.IO) {
-                            val str = URL("http://192.168.4.1/c").readText(Charset.forName("UTF-8"))
+                            val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
                             withContext(Dispatchers.Main) {
-                                fun insertGameWeightToDatabase(){
-                                    val weight= str.toFloat()
-                                    val date= System.currentTimeMillis()
-                                    val id= 1
-
-                                    val gameWeight= GameWeight(id,date,weight)
-                                    childWeightViewModel.addGameWeight(gameWeight)
-                                }
                                 data_from_ESP.text = str
-                                // salvo = str.toFloat()
+                                //salvo = str.toFloat()
                                 //inserire salvo in database
-                                insertGameWeightToDatabase()
                                 this@GameFragment.context?.openFileOutput(
                                     "weight_data.txt",
                                     Context.MODE_APPEND
                                 ).use { stream ->
                                     DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
                                         dataOS.writeFloat(str.toFloat())
-                                        println(str.toFloat())
-                                        println("Bel file scritto")
-                                        println(str.toFloat().toString())
+                                        //println(str.toFloat())
+                                        //println("Bel file scritto")
                                     }
                                 }
-
                             }
                         }
+                        fun insertGameWeightToDatabase(){
+                            context?.openFileInput("weight_data.txt").use { it ->
+                                DataInputStream(it). use { dis ->
+                                    while (dis.available()>0){
+                                        salvo = dis.readFloat()
+                                        //per la data, sarebbe bene inserirla al momento della scrittura nel file
+                                        //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
+                                        println(salvo)
+                                        println("bel file letto")
+                                    }
+                                }
+                            }
+                            val weight = salvo
+                            print("salvo: ")
+                            println(salvo)
+                            val date= System.currentTimeMillis()
+                            val id= activity!!.intent!!.extras?.get("id").toString().toInt()
+                            println("id  from extra  "+id)
+
+                            val gameWeight= GameWeight(id,date,weight)
+                            childWeightViewModel.addGameWeight(gameWeight)
+                        }
+                        insertGameWeightToDatabase()
                     } else {
                         ConnectivityManager.setProcessDefaultNetwork(network)
                     }

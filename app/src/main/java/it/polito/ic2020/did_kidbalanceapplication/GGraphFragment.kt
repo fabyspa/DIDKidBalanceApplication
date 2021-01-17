@@ -108,7 +108,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
          val s = LineGraphSeries<DataPoint>(p)
 
          */
-        while(l.size>10) l.removeFirst() //needs 30gg
+        while(l.size>30) l.removeFirst() //needs 30gg
 
         val dataPoints = arrayOfNulls<DataPoint>(l.size) // declare an array of DataPoint objects with the same size as your list
 

@@ -71,7 +71,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
+import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -88,27 +91,30 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
 
-class GameFragment: Fragment(R.layout.fragment_game){
-    internal class IOAsyncTask : AsyncTask<String, Void?, String>() {
-
-        override fun onPostExecute(response: String) {
-            Log.d("networking", response)
-        }
-
-        override fun doInBackground(vararg params: String): String {
-            return GameFragment().sendData("Ciaooo")!!;
-        }
-    }
-
+class GameFragment: Fragment(R.layout.fragment_game) {
+//    internal class IOAsyncTask : AsyncTask<String, Void?, String>() {
+//
+//        override fun onPostExecute(response: String) {
+//            Log.d("networking", response)
+//        }
+//
+////        override fun doInBackground(vararg params: String): String {
+////           //return GameFragment().sendData("Ciaooo")!!;
+////            return null
+////        }
+//    }
+    lateinit var childWeightViewModel: ChildWeightViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         println("bella1")
-        data_from_ESP.text= "Connettiti alla rete WiFi 'KidBalance'"
+        data_from_ESP.text = "Connettiti alla rete WiFi 'KidBalance'"
         val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val builder = NetworkRequest.Builder()
-        var salvo:Float = 2.0F
+        var salvo: Float = 2.0F
         val fileName = "weight_data.txt"
+        childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
+
 
         //set Transport Type to WIFI
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
@@ -122,10 +128,19 @@ class GameFragment: Fragment(R.layout.fragment_game){
                         lifecycleScope.launch(Dispatchers.IO) {
                             val str = URL("http://192.168.4.1/c").readText(Charset.forName("UTF-8"))
                             withContext(Dispatchers.Main) {
+                                fun insertGameWeightToDatabase(){
+                                    val weight= str.toFloat()
+                                    val date= System.currentTimeMillis()
+                                    val id= 1
+
+                                    val gameWeight= GameWeight(id,date,weight)
+                                    childWeightViewModel.addGameWeight(gameWeight)
+                                }
                                 data_from_ESP.text = str
                                 // salvo = str.toFloat()
                                 //inserire salvo in database
-                                /* this@GameFragment.context?.openFileOutput(
+                                insertGameWeightToDatabase()
+                                this@GameFragment.context?.openFileOutput(
                                     "weight_data.txt",
                                     Context.MODE_APPEND
                                 ).use { stream ->
@@ -135,7 +150,8 @@ class GameFragment: Fragment(R.layout.fragment_game){
                                         println("Bel file scritto")
                                         println(str.toFloat().toString())
                                     }
-                                }*/
+                                }
+
                             }
                         }
                     } else {
@@ -174,9 +190,11 @@ class GameFragment: Fragment(R.layout.fragment_game){
             */
             //val httpclient: HttpClient = DefaultHttpClient()
             //val httppost = HttpPost("LINK TO SERVER")
-            IOAsyncTask().execute("CIAOOOOO")
+            //IOAsyncTask().execute("CIAOOOOO")
 
         }
+
+
 
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
@@ -186,54 +204,56 @@ class GameFragment: Fragment(R.layout.fragment_game){
         fun post(url: String, body: String) {
             lifecycleScope.launch(Dispatchers.IO) {
                 return@launch URL("http://192.168.4.1/c")
-                    .openConnection()
-                    .let {
-                        it as HttpURLConnection
-                    }.apply {
-                        setRequestProperty("Content-Type", "text/html")
-                        requestMethod = "POST"
+                        .openConnection()
+                        .let {
+                            it as HttpURLConnection
+                        }.apply {
+                            setRequestProperty("Content-Type", "text/html")
+                            requestMethod = "POST"
 
-                        doOutput = true
-                        val outputWriter = OutputStreamWriter(outputStream.buffered())
-                        outputWriter.write(body)
-                        outputWriter.flush()
-                    }.let {
-                        if (it.responseCode == 200) it.inputStream else it.errorStream
-                    }.let { streamToRead ->
-                        println("streamToRead.toString()")
-                        BufferedReader(InputStreamReader(streamToRead)).use {
-                            val response = StringBuffer()
-                            var inputLine = it.readLine()
-                            println(inputLine)
-                            //inputLine = "testo scritto a mano"
-                            while (inputLine != null) {
-                                println("sono dentro inputline")
-                                response.append(inputLine)
-                                inputLine = it.readLine()
+                            doOutput = true
+                            val outputWriter = OutputStreamWriter(outputStream.buffered())
+                            outputWriter.write(body)
+                            outputWriter.flush()
+                        }.let {
+                            if (it.responseCode == 200) it.inputStream else it.errorStream
+                        }.let { streamToRead ->
+                            println("streamToRead.toString()")
+                            BufferedReader(InputStreamReader(streamToRead)).use {
+                                val response = StringBuffer()
+                                var inputLine = it.readLine()
+                                println(inputLine)
+                                //inputLine = "testo scritto a mano"
+                                while (inputLine != null) {
+                                    println("sono dentro inputline")
+                                    response.append(inputLine)
+                                    inputLine = it.readLine()
+                                }
+                                it.close()
+                                response.toString()
+                                println(response.toString())
                             }
-                            it.close()
-                            response.toString()
-                            println(response.toString())
                         }
-                    }
+            }
+
         }
 
-    }
-     fun sendData(message: String): String? {
-        return try {
+//        fun sendData(message: String): String? {
+//            return try {
+//
+//                val request: Request = Request.Builder()
+//                        .url("http://192.168.4.1/c")
+//                        .header("Connection", "close")
+//                        .post(message.toRequestBody(MEDIA_TYPE_MARKDOWN))
+//                        .build()
+//                val response: Response = client.newCall(request).execute()
+//                response.body?.string()
+//            } catch (e: IOException) {
+//                "Error: " + e.message
+//            }
 
-            val request: Request = Request.Builder()
-                    .url("http://192.168.4.1/c")
-                    .header("Connection", "close")
-                    .post(message.toRequestBody(MEDIA_TYPE_MARKDOWN))
-                    .build()
-            val response: Response = client.newCall(request).execute()
-            response.body?.string()
-        } catch (e: IOException) {
-            "Error: " + e.message
-
-        send.setOnClickListener {
-            /*
+            send.setOnClickListener {
+                /*
                     val urlString = "http://192.168.4.1/" // URL to call
                     val data = "prova invio" //data to post
                     var out: OutputStream? = null
@@ -253,17 +273,19 @@ class GameFragment: Fragment(R.layout.fragment_game){
                         println(e.message)
                     }
             */
-            //val httpclient: HttpClient = DefaultHttpClient()
-            //val httppost = HttpPost("LINK TO SERVER")
-            post("http://192.168.4.1/c","Check \n")
+                //val httpclient: HttpClient = DefaultHttpClient()
+                //val httppost = HttpPost("LINK TO SERVER")
+                post("http://192.168.4.1/c", "Check \n")
 
+            }
         }
-    }
-    companion object {
-        val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
+//    companion object {
+//        val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
+//    }
+
     }
 
-}
+
 
 
 

@@ -65,6 +65,7 @@ import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -75,14 +76,30 @@ import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.Charset
-import javax.net.ssl.HttpsURLConnection
+import java.nio.charset.StandardCharsets
 
 
 class GameFragment: Fragment(R.layout.fragment_game){
+    internal class IOAsyncTask : AsyncTask<String, Void?, String>() {
+
+        override fun onPostExecute(response: String) {
+            Log.d("networking", response)
+        }
+
+        override fun doInBackground(vararg params: String): String {
+            return GameFragment().sendData("Ciaooo")!!;
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -103,12 +120,12 @@ class GameFragment: Fragment(R.layout.fragment_game){
                         manager.bindProcessToNetwork(network)
                         Log.d("esp", "Network Connected")
                         lifecycleScope.launch(Dispatchers.IO) {
-                            val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
+                            val str = URL("http://192.168.4.1/c").readText(Charset.forName("UTF-8"))
                             withContext(Dispatchers.Main) {
                                 data_from_ESP.text = str
-                                salvo = str.toFloat()
+                                // salvo = str.toFloat()
                                 //inserire salvo in database
-                                this@GameFragment.context?.openFileOutput(
+                                /* this@GameFragment.context?.openFileOutput(
                                     "weight_data.txt",
                                     Context.MODE_APPEND
                                 ).use { stream ->
@@ -118,7 +135,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
                                         println("Bel file scritto")
                                         println(str.toFloat().toString())
                                     }
-                                }
+                                }*/
                             }
                         }
                     } else {
@@ -132,11 +149,88 @@ class GameFragment: Fragment(R.layout.fragment_game){
         }
         println(salvo)
 
+        send.setOnClickListener {
+            /*
+                    val urlString = "http://192.168.4.1/" // URL to call
+            val data = "prova invio" //data to post
+            var out: OutputStream? = null
+                val url = URL(urlString)
+                val urlConnection: HttpURLConnection =
+                            url.openConnection() as HttpURLConnection
+                out = BufferedOutputStream(urlConnection.outputStream)
+                try {
+                    val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
+                    println("")
+                    writer.write(data)
+                    writer.flush()
+                    writer.close()
+                    out.close()
+                    urlConnection.connect()
+                }catch (e: Exception) {
+                    println(e.message)
+                }
+
+
+            */
+            //val httpclient: HttpClient = DefaultHttpClient()
+            //val httppost = HttpPost("LINK TO SERVER")
+            IOAsyncTask().execute("CIAOOOOO")
+
+        }
+
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
-            fun post(url:String,body:String) {
-            lifecycleScope.launch(Dispatchers.IO) {
-                return@launch URL(url)
+
+        }
+    fun pushToChat(message: String) {
+
+        val serverURL: String = " http://192.168.4.1/c"
+        val url = URL(serverURL)
+        val connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = "POST"
+        connection.connectTimeout = 300000
+        connection.connectTimeout = 300000
+        connection.doOutput = true
+
+        val postData: ByteArray = message.toByteArray(StandardCharsets.UTF_8)
+        connection.setRequestProperty("charset", "utf-8")
+        connection.setRequestProperty("Content-lenght", postData.size.toString())
+        connection.setRequestProperty("Content-Type", "application/json")
+
+        try {
+            val outputStream: DataOutputStream = DataOutputStream(connection.outputStream)
+            outputStream.write(postData)
+            Log.i("GameFragment", outputStream.write(postData).toString())
+
+            outputStream.flush()
+        } catch (exception: Exception) {
+
+        }
+
+       /* if (connection.responseCode != HttpURLConnection.HTTP_OK && connection.responseCode != HttpURLConnection.HTTP_CREATED) {
+            try {
+                val inputStream: DataInputStream = DataInputStream(connection.inputStream)
+                val reader: BufferedReader = BufferedReader(InputStreamReader(inputStream))
+                val output: String = reader.readLine()
+
+                println("There was error while connecting the chat $output")
+                System.exit(0)
+
+            } catch (exception: Exception) {
+                throw Exception("Exception while push the notification  $exception.message")
+            }
+        }*/
+
+
+    }
+    private val client: OkHttpClient = OkHttpClient()
+
+
+
+
+    fun post(url: String, body: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            return@launch URL(url)
                     .openConnection()
                     .let {
                         it as HttpURLConnection
@@ -164,36 +258,29 @@ class GameFragment: Fragment(R.layout.fragment_game){
                             println(response.toString())
                         }
                     }
-            }
         }
 
+    }
+     fun sendData(message: String): String? {
+        return try {
 
-
-        send.setOnClickListener {
-            /*
-                    val urlString = "http://192.168.4.1/" // URL to call
-                    val data = "prova invio" //data to post
-                    var out: OutputStream? = null
-                    try {
-                        val url = URL(urlString)
-                        val urlConnection: HttpURLConnection =
-                            url.openConnection() as HttpURLConnection
-                        out = BufferedOutputStream(urlConnection.getOutputStream())
-                        println("urlConnected")
-                        val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
-                        writer.write(data)
-                        writer.flush()
-                        writer.close()
-                        out.close()
-                        urlConnection.connect()
-                    } catch (e: Exception) {
-                        println(e.message)
-                    }
-            */
-            //val httpclient: HttpClient = DefaultHttpClient()
-            //val httppost = HttpPost("LINK TO SERVER")
-            post("http://192.168.4.1/c","Check")
-
+            val request: Request = Request.Builder()
+                    .url("http://192.168.4.1/c")
+                    .header("Connection", "close")
+                    .post(message.toRequestBody(MEDIA_TYPE_MARKDOWN))
+                    .build()
+            val response: Response = client.newCall(request).execute()
+            response.body?.string()
+        } catch (e: IOException) {
+            "Error: " + e.message
         }
     }
+    companion object {
+        val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
+    }
+
 }
+
+
+
+

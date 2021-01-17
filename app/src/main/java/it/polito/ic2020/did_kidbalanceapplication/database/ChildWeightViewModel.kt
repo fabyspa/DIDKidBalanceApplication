@@ -24,5 +24,10 @@ class ChildWeightViewModel(application: Application): AndroidViewModel(applicati
 
         }
     }
+    fun addGameWeight( gameWeight: GameWeight){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.addGameWeight(gameWeight)
+        }
+    }
 
 }

@@ -14,7 +14,7 @@ class ChildRegister : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_child_register)
-        setSupportActionBar(findViewById(R.id.toolbar2))
+//        setSupportActionBar(findViewById(R.id.toolbar2))
 
 
     }

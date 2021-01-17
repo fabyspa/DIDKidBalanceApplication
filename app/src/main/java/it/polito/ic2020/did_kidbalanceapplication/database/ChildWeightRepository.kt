@@ -10,4 +10,8 @@ class ChildWeightRepository (private val childDatabaseDao: ChildDatabaseDao) {
     suspend fun addChild(user: ChildWeight){
         childDatabaseDao.insert(user)
     }
+
+    suspend fun addGameWeight( gameWeight: GameWeight){
+        childDatabaseDao.insertGameWeight(gameWeight)
+    }
 }

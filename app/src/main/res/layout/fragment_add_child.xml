@@ -10,79 +10,77 @@
         tools:context=".AddChild.AddChild">
 
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/et_surname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/et_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Surname"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/et_altezza"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_name" />
-
-        <Button
-            android:id="@+id/saveName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
-            android:text="SAVE"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_altezza" />
-
-        <EditText
-            android:id="@+id/et_altezza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="altezza"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/saveName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
-
-        <RadioGroup
-            android:id="@+id/radio_button_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/saveName"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_altezza">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:id="@+id/male_rb"
-                android:layout_width="136dp"
-                android:layout_height="wrap_content"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/female_rb"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Female" />
-        </RadioGroup>
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="80dp"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/et_surname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:hint="Surname"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/et_altezza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:hint="altezza"
+                    android:inputType="numberDecimal" />
+
+                <RadioGroup
+                    android:id="@+id/radio_button_group"
+                    android:layout_width="206dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/male_rb"
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/female_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/saveName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="100dp"
+                    android:text="SAVE" />
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

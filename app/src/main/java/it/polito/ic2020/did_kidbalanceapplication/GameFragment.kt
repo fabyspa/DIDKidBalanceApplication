@@ -112,7 +112,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
 
         //set Transport Type to WIFI
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-
+        //prelevo peso
         try {
             manager.requestNetwork(builder.build(), object : NetworkCallback() {
                 override fun onAvailable(network: Network) {
@@ -181,61 +181,16 @@ class GameFragment: Fragment(R.layout.fragment_game){
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
 
-        }
-    fun pushToChat(message: String) {
+        //invio flag alla ESP
 
-        val serverURL: String = " http://192.168.4.1/c"
-        val url = URL(serverURL)
-        val connection = url.openConnection() as HttpURLConnection
-        connection.requestMethod = "POST"
-        connection.connectTimeout = 300000
-        connection.connectTimeout = 300000
-        connection.doOutput = true
-
-        val postData: ByteArray = message.toByteArray(StandardCharsets.UTF_8)
-        connection.setRequestProperty("charset", "utf-8")
-        connection.setRequestProperty("Content-lenght", postData.size.toString())
-        connection.setRequestProperty("Content-Type", "application/json")
-
-        try {
-            val outputStream: DataOutputStream = DataOutputStream(connection.outputStream)
-            outputStream.write(postData)
-            Log.i("GameFragment", outputStream.write(postData).toString())
-
-            outputStream.flush()
-        } catch (exception: Exception) {
-
-        }
-
-       /* if (connection.responseCode != HttpURLConnection.HTTP_OK && connection.responseCode != HttpURLConnection.HTTP_CREATED) {
-            try {
-                val inputStream: DataInputStream = DataInputStream(connection.inputStream)
-                val reader: BufferedReader = BufferedReader(InputStreamReader(inputStream))
-                val output: String = reader.readLine()
-
-                println("There was error while connecting the chat $output")
-                System.exit(0)
-
-            } catch (exception: Exception) {
-                throw Exception("Exception while push the notification  $exception.message")
-            }
-        }*/
-
-
-    }
-    private val client: OkHttpClient = OkHttpClient()
-
-
-
-
-    fun post(url: String, body: String) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            return@launch URL(url)
+        fun post(url: String, body: String) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                return@launch URL("http://192.168.4.1/c")
                     .openConnection()
                     .let {
                         it as HttpURLConnection
                     }.apply {
-                        setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                        setRequestProperty("Content-Type", "text/html")
                         requestMethod = "POST"
 
                         doOutput = true
@@ -245,11 +200,14 @@ class GameFragment: Fragment(R.layout.fragment_game){
                     }.let {
                         if (it.responseCode == 200) it.inputStream else it.errorStream
                     }.let { streamToRead ->
+                        println("streamToRead.toString()")
                         BufferedReader(InputStreamReader(streamToRead)).use {
                             val response = StringBuffer()
-
                             var inputLine = it.readLine()
+                            println(inputLine)
+                            //inputLine = "testo scritto a mano"
                             while (inputLine != null) {
+                                println("sono dentro inputline")
                                 response.append(inputLine)
                                 inputLine = it.readLine()
                             }
@@ -273,6 +231,32 @@ class GameFragment: Fragment(R.layout.fragment_game){
             response.body?.string()
         } catch (e: IOException) {
             "Error: " + e.message
+
+        send.setOnClickListener {
+            /*
+                    val urlString = "http://192.168.4.1/" // URL to call
+                    val data = "prova invio" //data to post
+                    var out: OutputStream? = null
+                    try {
+                        val url = URL(urlString)
+                        val urlConnection: HttpURLConnection =
+                            url.openConnection() as HttpURLConnection
+                        out = BufferedOutputStream(urlConnection.getOutputStream())
+                        println("urlConnected")
+                        val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
+                        writer.write(data)
+                        writer.flush()
+                        writer.close()
+                        out.close()
+                        urlConnection.connect()
+                    } catch (e: Exception) {
+                        println(e.message)
+                    }
+            */
+            //val httpclient: HttpClient = DefaultHttpClient()
+            //val httppost = HttpPost("LINK TO SERVER")
+            post("http://192.168.4.1/c","Check \n")
+
         }
     }
     companion object {

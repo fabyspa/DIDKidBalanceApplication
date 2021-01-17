@@ -16,6 +16,7 @@ import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.HomeAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.io.File
 
 class homeFragment : Fragment() {
    lateinit var childWeightViewModel: ChildWeightViewModel
@@ -28,6 +29,17 @@ class homeFragment : Fragment() {
        val view= inflater.inflate(R.layout.fragment_home, container, false)
         view.floatingActionButton.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addChild2)
+        }
+
+        view.genitore.setOnClickListener {
+            val filename = "logIN.txt"
+            var file = File(context?.filesDir?.absolutePath, filename)
+            var fileExists = file.exists()
+            if(fileExists){
+                findNavController().navigate(R.id.action_homeFragment_to_GHomeFragment2)
+            } else {
+                findNavController().navigate(R.id.action_homeFragment_to_logGFragment)
+            }
         }
 
         //Recyclerview

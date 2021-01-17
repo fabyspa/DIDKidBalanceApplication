@@ -15,6 +15,12 @@
         <action
             android:id="@+id/action_homeFragment_to_navigation_child"
             app:destination="@id/navigation_child" />
+        <action
+            android:id="@+id/action_homeFragment_to_GHomeFragment2"
+            app:destination="@id/GHomeFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_logGFragment"
+            app:destination="@id/logGFragment" />
     </fragment>
     <fragment
         android:id="@+id/addChild2"
@@ -25,4 +31,24 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <include app:graph="@navigation/navigation_child" />
+    <fragment
+        android:id="@+id/GHomeFragment2"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:label="GHomeFragment" >
+        <action
+            android:id="@+id/action_GHomeFragment2_to_GGraphFragment2"
+            app:destination="@id/GGraphFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/GGraphFragment2"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GGraphFragment"
+        android:label="GGraphFragment" />
+    <fragment
+        android:id="@+id/logGFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.logGFragment"
+        android:label="logGFragment" >
+        <action
+            android:id="@+id/action_logGFragment_to_GHomeFragment2"
+            app:destination="@id/GHomeFragment2" />
+    </fragment>
 </navigation>

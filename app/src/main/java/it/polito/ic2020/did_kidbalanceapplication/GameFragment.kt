@@ -95,7 +95,7 @@ class GameFragment: Fragment(R.layout.fragment_game){
 
         //set Transport Type to WIFI
         builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-
+        //prelevo peso
         try {
             manager.requestNetwork(builder.build(), object : NetworkCallback() {
                 override fun onAvailable(network: Network) {

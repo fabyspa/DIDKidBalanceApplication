@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import it.polito.ic2020.did_kidbalanceapplication.AddChild.AddChild
 
-@Database(entities = [ChildWeight::class], version = 1, exportSchema = false)
+@Database(entities = [ChildWeight::class, GameWeight::class], version = 1, exportSchema = false)
 abstract class ChildWeightDatabase :RoomDatabase(){
     abstract fun childDataBaseDao():ChildDatabaseDao
 

@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLogGBinding
+import kotlinx.android.synthetic.main.activity_main_old.*
+import kotlinx.android.synthetic.main.fragment_log_g.*
 import java.io.BufferedOutputStream
 import java.io.DataOutputStream
 
@@ -31,20 +33,28 @@ class logGFragment: Fragment(){
             }
 
             binding.setPin.setOnClickListener {
-                if (binding.pin1.text.toString() == binding.pin2.text.toString()){
+                    val check = pin1.text.toString().trim().length in 4..4
+                if(!check) pin1.error="Insert 4 numbers"
+                else if (binding.pin1.text.toString() == binding.pin2.text.toString() && answer.text.toString() != ""){
                     context?.openFileOutput(
                             "logIN.txt",
                             Context.MODE_APPEND
                     ).use { stream ->
                         DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
-                            dataOS.writeInt(binding.pin1.text.toString().toInt())
+                            dataOS.writeInt(pin1.text.toString().toInt())
+                            dataOS.writeUTF(answer.text.toString())
                             println(binding.pin1.text)
+                            println(answer.text.toString())
                             println("logIN.txt scritto")
                             findNavController().navigate(R.id.action_logGFragment_to_GHomeFragment2)
+                            childFragmentManager.popBackStack()
                         }
                     }
+                } else if (pin2.text.toString().trim().length !in 4..4){
+                    //Toast.makeText(context,"Check Pin, seems to be wrong",Toast.LENGTH_LONG).show()
+                    pin2.error="Check Pin, seems to be wrong"
                 } else {
-                    Toast.makeText(context,"Check Pin, seems to be wrong",Toast.LENGTH_LONG).show()
+                    answer.error="You forgot to answer the question"
                 }
             }
         return binding.root

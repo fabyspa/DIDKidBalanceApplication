@@ -141,6 +141,10 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                             }
                         }
                         fun insertGameWeightToDatabase(){
+                            val filename = "weight_data.txt"
+                            var file = File(context?.filesDir?.absolutePath, filename)
+                            var fileExists = file.exists()
+                            if(fileExists){
                             context?.openFileInput("weight_data.txt").use { it ->
                                 DataInputStream(it). use { dis ->
                                     while (dis.available()>0){
@@ -161,6 +165,7 @@ class GameFragment: Fragment(R.layout.fragment_game) {
 
                             val gameWeight= GameWeight(id,date,weight)
                             childWeightViewModel.addGameWeight(gameWeight)
+                        }
                         }
                         insertGameWeightToDatabase()
                     } else {

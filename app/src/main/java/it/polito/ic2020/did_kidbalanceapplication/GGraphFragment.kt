@@ -11,6 +11,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import java.io.DataInputStream
+import java.io.File
 import java.util.*
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
@@ -106,14 +107,18 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         //check FIle
         val tmp:MutableList<Float> = mutableListOf()
-        val f = "weight_data.txt"
-        context?.openFileInput("weight_data.txt").use { it ->
-            DataInputStream(it). use { dis ->
-                while (dis.available()>0){
-                    tmp.add(dis.readFloat())
-                    //per la data, sarebbe bene inserirla al momento della scrittura nel file
-                    //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
-                    println("bel file letto1")
+        val filename = "weight_data.txt"
+        var file = File(context?.filesDir?.absolutePath, filename)
+        var fileExists = file.exists()
+        if (fileExists){
+            context?.openFileInput("weight_data.txt").use { it ->
+                DataInputStream(it). use { dis ->
+                    while (dis.available()>0){
+                        tmp.add(dis.readFloat())
+                        //per la data, sarebbe bene inserirla al momento della scrittura nel file
+                        //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
+                        println("bel file letto1")
+                    }
                 }
             }
         }

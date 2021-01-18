@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_GHomeFragment2_to_GGraphFragment2"
             app:destination="@id/GGraphFragment2" />
+        <action
+            android:id="@+id/action_GHomeFragment2_to_restorePinFragment"
+            app:destination="@id/restorePinFragment" />
     </fragment>
     <fragment
         android:id="@+id/GGraphFragment2"
@@ -50,5 +53,13 @@
         <action
             android:id="@+id/action_logGFragment_to_GHomeFragment2"
             app:destination="@id/GHomeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/restorePinFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.RestorePinFragment"
+        android:label="RestorePinFragment" >
+        <action
+            android:id="@+id/action_restorePinFragment_to_logGFragment"
+            app:destination="@id/logGFragment" />
     </fragment>
 </navigation>

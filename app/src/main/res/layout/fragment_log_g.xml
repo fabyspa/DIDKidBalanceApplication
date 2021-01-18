@@ -25,7 +25,8 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
                 android:hint="insert 4 number pin"
-                android:inputType="number" />
+                android:inputType="number|textPassword|numberPassword|textWebPassword"
+                android:password="true" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pin2"
@@ -35,7 +36,26 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:hint="insert pin again"
-                android:inputType="number" />
+                android:inputType="number|textPassword|numberPassword|textWebPassword"
+                android:password="true" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="What's the name of your best friend when you was child?" />
+
+            <EditText
+                android:id="@+id/answer"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/setPin"

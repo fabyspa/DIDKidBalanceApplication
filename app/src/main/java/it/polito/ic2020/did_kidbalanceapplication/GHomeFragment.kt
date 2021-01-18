@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
+import okio.Utf8
 import java.io.DataInputStream
 
 class GHomeFragment : Fragment() {
     var savedPin = 1234;
+    var answer = ""
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -21,6 +24,8 @@ class GHomeFragment : Fragment() {
             DataInputStream(it). use { dis ->
                 while (dis.available()>0){
                     savedPin = dis.readInt()
+                    answer = dis.readLine()
+                    println(answer)
                 }
                 println(savedPin)
             }
@@ -42,6 +47,10 @@ class GHomeFragment : Fragment() {
             } else if(!check) binding.pin.error="inserire 4 numeri"
             else binding.pin.error="pin non corretto"
 
+        }
+        binding.pinForgot.setOnClickListener{
+            println("pin dimenticato")
+            findNavController().navigate(R.id.action_GHomeFragment2_to_restorePinFragment)
         }
         return binding.root
     }

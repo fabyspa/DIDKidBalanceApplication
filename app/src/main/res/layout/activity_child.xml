@@ -5,6 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/primary_color"
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -35,11 +36,8 @@
                 android:id="@+id/userId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
                 android:text="Lasciare userId"
-                android:textColor="#3E3A3A"
-                android:textSize="24sp" />
+                style="@style/TitleStyle" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,11 +104,13 @@
                 android:id="@+id/progressBar2"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp" />
+                android:layout_marginBottom="5dp"
+                android:progress="50"
+                android:progressDrawable="@drawable/progress_bar_drawable" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,13 +147,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.34" />
+            app:layout_constraintGuide_percent="0.35" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
+
             android:layout_height="0dp"
+            android:background="@drawable/roundstyle"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

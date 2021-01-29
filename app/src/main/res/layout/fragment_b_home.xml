@@ -35,20 +35,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/universeSx"
-            tools:layout_editor_absoluteX="-146dp" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/universeDx"
-            tools:layout_editor_absoluteX="197dp"
-            tools:layout_editor_absoluteY="0dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

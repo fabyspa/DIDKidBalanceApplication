@@ -43,6 +43,16 @@
                     android:inputType="textPersonName" />
 
                 <EditText
+                    android:id="@+id/et_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:hint="Child's profile name"
+                    android:inputType="textPersonName" />
+
+                <EditText
                     android:id="@+id/et_altezza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,6 +60,15 @@
                     android:ems="10"
                     android:hint="altezza"
                     android:inputType="numberDecimal" />
+
+                <EditText
+                    android:id="@+id/et_altezza2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:hint="dd/mm/yyyy"
+                    android:inputType="date" />
 
                 <RadioGroup
                     android:id="@+id/radio_button_group"
@@ -79,6 +98,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="100dp"
                     android:text="SAVE" />
+
             </LinearLayout>
         </ScrollView>
 

@@ -12,17 +12,9 @@
         <action
             android:id="@+id/action_BHomeFragment2_to_gameFragment"
             app:destination="@id/gameFragment" />
-        <action
-            android:id="@+id/action_BHomeFragment2_to_BDayFragment"
-            app:destination="@id/BDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GameFragment"
         android:label="GameFragment" />
-    <fragment
-        android:id="@+id/BDayFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.BDayAction.BDayFragment"
-        android:label="fragment_b_day"
-        tools:layout="@layout/fragment_b_day" />
 </navigation>

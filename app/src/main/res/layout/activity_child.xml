@@ -8,6 +8,20 @@
         android:background="@color/primary_color"
         tools:context=".MainActivity">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:background="@drawable/roundstyle"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolBar"
+            app:navGraph="@navigation/navigation_child" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="0dp"
@@ -148,22 +162,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.35" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-
-            android:layout_height="0dp"
-            android:background="@drawable/roundstyle"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolBar"
-            app:layout_constraintVertical_bias="1.0"
-            app:navGraph="@navigation/navigation_child" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

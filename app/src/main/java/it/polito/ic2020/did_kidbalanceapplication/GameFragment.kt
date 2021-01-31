@@ -88,8 +88,8 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
 
-class GameFragment: Fragment(R.layout.fragment_game) {
-//    internal class IOAsyncTask : AsyncTask<String, Void?, String>() {
+class GameFragment : Fragment(R.layout.fragment_game) {
+    //    internal class IOAsyncTask : AsyncTask<String, Void?, String>() {
 //
 //        override fun onPostExecute(response: String) {
 //            Log.d("networking", response)
@@ -109,7 +109,7 @@ class GameFragment: Fragment(R.layout.fragment_game) {
         val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val builder = NetworkRequest.Builder()
         val fileName = "weight_data.txt"
-        var salvo= 0F
+        var salvo = 0F
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
 
@@ -129,8 +129,8 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                                 //salvo = str.toFloat()
                                 //inserire salvo in database
                                 this@GameFragment.context?.openFileOutput(
-                                    "weight_data.txt",
-                                    Context.MODE_APPEND
+                                        "weight_data.txt",
+                                        Context.MODE_APPEND
                                 ).use { stream ->
                                     DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
                                         dataOS.writeFloat(str.toFloat())
@@ -140,17 +140,15 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                                 }
                             }
                         }
-                        fun insertGameWeightToDatabase(){
+                        fun insertGameWeightToDatabase() {
                             val filename = "weight_data.txt"
                             var file = File(context?.filesDir?.absolutePath, filename)
                             var fileExists = file.exists()
                             if(fileExists){
                             context?.openFileInput("weight_data.txt").use { it ->
-                                DataInputStream(it). use { dis ->
-                                    while (dis.available()>0){
-                                        salvo = dis.readFloat()
-                                        //per la data, sarebbe bene inserirla al momento della scrittura nel file
-                                        //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
+                                DataInputStream(it).use { dis ->
+                                    while (dis.available() > 0) {
+                                        salvo = dis.readFloat() //per la data, sarebbe bene inserirla al momento della scrittura nel file                                      //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
                                         println(salvo)
                                         println("bel file letto")
                                     }
@@ -159,11 +157,11 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                             val weight = salvo
                             print("salvo: ")
                             println(salvo)
-                            val date= System.currentTimeMillis()
-                            val id= activity!!.intent!!.extras?.get("id").toString().toInt()
-                            println("id  from extra  "+id)
+                            val date = System.currentTimeMillis()
+                            val id = activity!!.intent!!.extras?.get("id").toString().toInt()
+                            println("id  from extra  " + id)
 
-                            val gameWeight= GameWeight(id,date,weight)
+                            val gameWeight = GameWeight(id, date, weight)
                             childWeightViewModel.addGameWeight(gameWeight)
                         }
                         }
@@ -209,7 +207,6 @@ class GameFragment: Fragment(R.layout.fragment_game) {
         }
 
 
-
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
 
@@ -224,7 +221,6 @@ class GameFragment: Fragment(R.layout.fragment_game) {
                         }.apply {
                             setRequestProperty("Content-Type", "text/html")
                             requestMethod = "POST"
-
                             doOutput = true
                             val outputWriter = OutputStreamWriter(outputStream.buffered())
                             outputWriter.write(body)
@@ -266,38 +262,38 @@ class GameFragment: Fragment(R.layout.fragment_game) {
 //                "Error: " + e.message
 //            }
 
-            send.setOnClickListener {
-                /*
-                    val urlString = "http://192.168.4.1/" // URL to call
-                    val data = "prova invio" //data to post
-                    var out: OutputStream? = null
-                    try {
-                        val url = URL(urlString)
-                        val urlConnection: HttpURLConnection =
-                            url.openConnection() as HttpURLConnection
-                        out = BufferedOutputStream(urlConnection.getOutputStream())
-                        println("urlConnected")
-                        val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
-                        writer.write(data)
-                        writer.flush()
-                        writer.close()
-                        out.close()
-                        urlConnection.connect()
-                    } catch (e: Exception) {
-                        println(e.message)
-                    }
-            */
-                //val httpclient: HttpClient = DefaultHttpClient()
-                //val httppost = HttpPost("LINK TO SERVER")
-                post("http://192.168.4.1/c", "Check \n")
+        send.setOnClickListener {
+            /*
+                val urlString = "http://192.168.4.1/" // URL to call
+                val data = "prova invio" //data to post
+                var out: OutputStream? = null
+                try {
+                    val url = URL(urlString)
+                    val urlConnection: HttpURLConnection =
+                        url.openConnection() as HttpURLConnection
+                    out = BufferedOutputStream(urlConnection.getOutputStream())
+                    println("urlConnected")
+                    val writer = BufferedWriter(OutputStreamWriter(out, "UTF-8"))
+                    writer.write(data)
+                    writer.flush()
+                    writer.close()
+                    out.close()
+                    urlConnection.connect()
+                } catch (e: Exception) {
+                    println(e.message)
+                }
+        */
+            //val httpclient: HttpClient = DefaultHttpClient()
+            //val httppost = HttpPost("LINK TO SERVER")
+            post("http://192.168.4.1/c", "Check \n")
 
-            }
         }
+    }
 //    companion object {
 //        val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
 //    }
 
-    }
+}
 
 
 

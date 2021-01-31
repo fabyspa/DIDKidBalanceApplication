@@ -41,15 +41,13 @@ class BHomeFragment : Fragment() {
             false
          )
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
-        viewModel.actionDayDone.observe(viewLifecycleOwner, {
-                hasBeenClicked-> if(hasBeenClicked) binding.dayActionButton.isEnabled= false
-        })
+
         binding.button.setOnClickListener{
          view: View ->
          view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)
         }
 
-        binding.dayActionButton.setOnClickListener{onDisableButton(this.view)}
+
 
         //binding.goHome.setOnClickListener{
             //view: View -> view.findNavController().navigate (R.id.action_BHomeFragment_to_loginFragment)
@@ -57,12 +55,6 @@ class BHomeFragment : Fragment() {
         return binding.root
     }
 
-    fun onDisableButton(view: View?){
-        Toast.makeText(activity, "actionDayDone", Toast.LENGTH_SHORT).show()
-        view?.findNavController()?.navigate(R.id.action_BHomeFragment2_to_BDayFragment)
-        viewModel.onActionDayDone()
-
-
-    }
+   
 
 }

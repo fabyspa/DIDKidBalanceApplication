@@ -1,19 +1,13 @@
 package it.polito.ic2020.did_kidbalanceapplication.database
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import kotlinx.android.synthetic.main.card_view.view.*
-import kotlinx.android.synthetic.main.fragment_add_child.view.*
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
     private var userList= emptyList<ChildWeight>()

@@ -47,7 +47,8 @@ class GHomeFragment : Fragment() {
                 val GGraphFragment = Fragment()
                 GGraphFragment.setArguments(b)
 
-                view.findNavController().navigate(R.id.action_GHomeFragment2_to_GGraphFragment2)
+                view.findNavController().navigate(R.id.action_GHomeFragment2_to_child_list_parentFragment)
+                //view.findNavController().navigate(R.id.action_GHomeFragment2_to_GGraphFragment2)
             } else if(!check) binding.pin.error="inserire 4 numeri"
             else binding.pin.error="pin non corretto"
 

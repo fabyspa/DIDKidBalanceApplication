@@ -31,8 +31,8 @@ class RestorePinFragment : Fragment(R.layout.fragment_restore_pin){
             answerFile = File(context?.filesDir?.absolutePath+"answer.txt").readText()
             if(answer.text.toString() == answerFile){
                 val filename = "logIN.txt"
-                var file = File(context?.filesDir?.absolutePath, filename)
-                var fileExists = file.exists()
+                val file = File(context?.filesDir?.absolutePath, filename)
+                val fileExists = file.exists()
                 println(fileExists)
                 file.delete()
                 File(context?.filesDir?.absolutePath+"answer.txt").delete()

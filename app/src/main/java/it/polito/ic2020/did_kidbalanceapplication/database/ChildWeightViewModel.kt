@@ -30,4 +30,10 @@ class ChildWeightViewModel(application: Application): AndroidViewModel(applicati
         }
     }
 
+    fun getWeightById(int: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getWeight(int)
+        }
+    }
+
 }

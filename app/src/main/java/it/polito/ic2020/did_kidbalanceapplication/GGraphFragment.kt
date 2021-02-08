@@ -10,16 +10,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildDatabaseDao
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import java.io.DataInputStream
 import java.io.File
 import java.util.*
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         println("bella1")
+        lateinit var childWeightViewModel: ChildWeightViewModel
 
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
@@ -35,6 +39,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
               )
 
          */
+        val p = childWeightViewModel.getWeightById(1) ?: 1
+        println(p)
+
+
         val l = mutableListOf<DataPoint>()
         l.add(DP(Calendar.DAY_OF_MONTH - 1, 18))
         l.add(DP(Calendar.DAY_OF_MONTH - 2, 20))

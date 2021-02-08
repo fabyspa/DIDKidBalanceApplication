@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import kotlinx.android.synthetic.main.fragment_graph_g.*
@@ -156,5 +157,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             //errori vari
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
+    }
+    private fun goHome(){
+        findNavController().navigate(R.id.homeFragment)
     }
 }

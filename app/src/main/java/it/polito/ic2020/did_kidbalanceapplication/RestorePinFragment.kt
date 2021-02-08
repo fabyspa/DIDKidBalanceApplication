@@ -23,17 +23,19 @@ class RestorePinFragment : Fragment(R.layout.fragment_restore_pin){
                 DataInputStream(it). use { dis ->
                     while (dis.available()>0){
                         dis.readInt()
-                        answerFile = dis.readLine()
-                        println(answerFile)
+                        //answerFile = dis.readLine()
+                        //println(answerFile)
                     }
                 }
             }
-            if(answer.text.toString() != answerFile){
+            answerFile = File(context?.filesDir?.absolutePath+"answer.txt").readText()
+            if(answer.text.toString() == answerFile){
                 val filename = "logIN.txt"
                 var file = File(context?.filesDir?.absolutePath, filename)
                 var fileExists = file.exists()
                 println(fileExists)
                 file.delete()
+                File(context?.filesDir?.absolutePath+"answer.txt").delete()
                 println(file.exists())
                 findNavController().navigate(R.id.action_restorePinFragment_to_logGFragment)
             } else {

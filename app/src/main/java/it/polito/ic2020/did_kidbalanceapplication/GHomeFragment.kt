@@ -10,7 +10,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
 import okio.Utf8
+import java.io.BufferedReader
 import java.io.DataInputStream
+import java.io.File
 
 class GHomeFragment : Fragment() {
     var savedPin = 1234;
@@ -24,12 +26,14 @@ class GHomeFragment : Fragment() {
             DataInputStream(it). use { dis ->
                 while (dis.available()>0){
                     savedPin = dis.readInt()
-                    answer = dis.readLine()
-                    println(answer)
+                    //answer = dis.readLine()
+                    //println(answer)
                 }
                 println(savedPin)
             }
         }
+        answer = File(context?.filesDir?.absolutePath+"answer.txt").readText()
+        println(answer)
         val binding = DataBindingUtil.inflate<FragmentGHomeBinding>(inflater, R.layout.fragment_g_home, container, false)
         binding.login.setOnClickListener{ view: View ->
             val check = binding.pin.text.toString().trim().length in 4..4

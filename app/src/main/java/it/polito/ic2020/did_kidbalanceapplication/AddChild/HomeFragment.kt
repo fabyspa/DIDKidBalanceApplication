@@ -35,8 +35,8 @@ class homeFragment : Fragment() {
 
         view.genitore.setOnClickListener {
             val filename = "logIN.txt"
-            var file = File(context?.filesDir?.absolutePath, filename)
-            var fileExists = file.exists()
+            val file = File(context?.filesDir?.absolutePath, filename)
+            val fileExists = file.exists()
             if(fileExists){
                 findNavController().navigate(R.id.action_homeFragment_to_GHomeFragment2)
             } else {

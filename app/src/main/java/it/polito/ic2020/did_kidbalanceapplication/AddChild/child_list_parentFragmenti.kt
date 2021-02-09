@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
+import it.polito.ic2020.did_kidbalanceapplication.database.HomeAdapter
 import it.polito.ic2020.did_kidbalanceapplication.database.childViewParentAdapter
 import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 

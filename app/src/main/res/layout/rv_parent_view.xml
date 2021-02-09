@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/foto"
             android:layout_width="102dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="left"
             android:foregroundGravity="left"
             tools:srcCompat="@tools:sample/avatars" />

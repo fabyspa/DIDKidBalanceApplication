@@ -1,9 +1,8 @@
 package it.polito.ic2020.did_kidbalanceapplication.database
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 
-class ChildWeightRepository (private val childDatabaseDao: ChildDatabaseDao) {
+class ChildWeightRepository(private val childDatabaseDao: ChildDatabaseDao) {
 
     val readAllData: LiveData<List<ChildWeight>> = childDatabaseDao.readAllData()
 
@@ -15,7 +14,10 @@ class ChildWeightRepository (private val childDatabaseDao: ChildDatabaseDao) {
         childDatabaseDao.insertGameWeight(gameWeight)
     }
 
-    suspend fun getWeight(int: Int){
-        childDatabaseDao.getWeightById(int)
+/*    fun getWeightById(id: Int){
+        childDatabaseDao.getWeightById(id)
     }
+
+ */
+    val getWeightById : LiveData<List<Float>> = childDatabaseDao.getWeightById(1)
 }

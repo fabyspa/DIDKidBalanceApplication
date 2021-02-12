@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.database
 
+import android.os.Message
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -21,6 +22,6 @@ interface ChildDatabaseDao {
     suspend fun insertGameWeight(gameWeight: GameWeight)
 
     @Query("SELECT weight FROM game_weight_table WHERE id LIKE :id")
-    fun getWeightById(id: Int): List<Float>
+    fun getWeightById(id: Int): LiveData<List<Float>>
 
 }

@@ -22,12 +22,16 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println("bella1")
+        println("bella1 --> X")
         lateinit var childWeightViewModel: ChildWeightViewModel
 
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
+        val idPressed = b?.get("id_pressed").toString().toInt()
+        val namePressed = b?.get("name_pressed")
 
+        val x = childWeightViewModel.getWeightById
+        println(x)
         fun DP(a: Int, b: Int): DataPoint{
             return DataPoint(a.toDouble(), b.toDouble())
         }
@@ -39,8 +43,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
               )
 
          */
-        val p = childWeightViewModel.getWeightById(1) ?: 1
-        println(p)
 
 
         val l = mutableListOf<DataPoint>()

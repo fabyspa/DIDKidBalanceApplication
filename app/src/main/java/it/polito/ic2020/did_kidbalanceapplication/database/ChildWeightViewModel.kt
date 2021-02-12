@@ -30,10 +30,13 @@ class ChildWeightViewModel(application: Application): AndroidViewModel(applicati
         }
     }
 
-    fun getWeightById(int: Int){
+/*    fun getWeightById(id: Int){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getWeight(int)
+            repository.getWeightById(id)
         }
     }
+
+ */
+    val getWeightById : LiveData<List<Float>> = repository.getWeightById
 
 }

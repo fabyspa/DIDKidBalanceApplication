@@ -10,12 +10,14 @@ import kotlinx.coroutines.launch
 class ChildWeightViewModel(application: Application): AndroidViewModel(application) {
 
     val readAllData : LiveData<List<ChildWeight>>
+    val getWeightById : LiveData<List<Float>>
     private val repository: ChildWeightRepository
 
     init{
         val childWeightDao = ChildWeightDatabase.getInstance(application).childDataBaseDao()
         repository = ChildWeightRepository(childWeightDao)
         readAllData = repository.readAllData
+        getWeightById = repository.getWeightById
     }
 
     fun addChildWeight(child: ChildWeight){
@@ -37,6 +39,6 @@ class ChildWeightViewModel(application: Application): AndroidViewModel(applicati
     }
 
  */
-    val getWeightById : LiveData<List<Float>> = repository.getWeightById
+   // val getWeightById : LiveData<List<Float>> = repository.getWeightById
 
 }

@@ -19,5 +19,6 @@ class ChildWeightRepository(private val childDatabaseDao: ChildDatabaseDao) {
     }
 
  */
-    val getWeightById : LiveData<List<Float>> = childDatabaseDao.getWeightById(1)
+
+    val getWeightById : LiveData<List<Float>> = childDatabaseDao.getWeightById()
 }

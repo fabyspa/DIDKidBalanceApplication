@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -22,16 +25,24 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println("bella1 --> X")
+        println("bella --> X")
         lateinit var childWeightViewModel: ChildWeightViewModel
+        childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
+
 
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
-        val idPressed = b?.get("id_pressed").toString().toInt()
+        val idPressed : MutableLiveData<Int>
+                idPressed = idPressed.value(b?.get("id_pressed"))
+        fun getIdPressed(n: Int){
+            val livedata :LiveData<Int> = n.
+            return LiveData<>
+        }
         val namePressed = b?.get("name_pressed")
+        println(idPressed)
 
         val x = childWeightViewModel.getWeightById
-        println(x)
+        println(x.value)
         fun DP(a: Int, b: Int): DataPoint{
             return DataPoint(a.toDouble(), b.toDouble())
         }
@@ -92,12 +103,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         val s = LineGraphSeries(dataPoints) // This one should be obvious right? :)
 
-        println("l")
-        println(l)
-        println("dataP")
-        println(dataPoints)
-        println("s")
-        println(s)
 
         /*val series = LineGraphSeries<DataPoint>(points)
         series.setColor(Color.CYAN)

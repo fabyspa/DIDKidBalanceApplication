@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Database
 import androidx.room.Room
@@ -21,6 +22,8 @@ import it.polito.ic2020.did_kidbalanceapplication.database.ChildDatabaseDao
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import kotlinx.android.synthetic.main.fragment_graph_g.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.DataInputStream
 import java.io.File
 import java.util.*
@@ -40,11 +43,16 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         val b = this.arguments
         val idPressed = b?.get("id_pressed").toString().toInt()
         val namePressed = b?.get("name_pressed").toString()
+        var x: List<Float>
         println(idPressed)
 
-        val db = Room.databaseBuilder(requireContext(), ChildWeightDatabase::class.java,"DB").allowMainThreadQueries().build()
-        val x = db.childDataBaseDao().getWeightById()
-        println(x)
+        val db : ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            x = db.childDataBaseDao().getWeightById(idPressed)
+            println(x)
+        }
+
         fun DP(a: Int, b: Int): DataPoint{
             return DataPoint(a.toDouble(), b.toDouble())
         }

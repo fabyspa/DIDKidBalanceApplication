@@ -18,8 +18,8 @@ interface ChildDatabaseDao {
     @Query("SELECT * FROM daily_weight_child_table ORDER BY id ASC")
     fun readAllData():LiveData<List<ChildWeight>>
 
-    @Query("SELECT * FROM game_weight_table WHERE date=1612458457855 AND id=1")
-    fun getWeightById():List<GameWeight>
+    @Query("SELECT weight FROM game_weight_table WHERE id=:id")
+    fun getWeightById(id :Int ):List<Float>
 
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertGameWeight(gameWeight: GameWeight)

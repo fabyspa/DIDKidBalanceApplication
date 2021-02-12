@@ -32,8 +32,8 @@ class GHomeFragment : Fragment() {
                 println(savedPin)
             }
         }
-        answer = File(context?.filesDir?.absolutePath+"answer.txt").readText()
-        println(answer)
+//        answer = File(context?.filesDir?.absolutePath+".txt").readText()
+     //   println(answer)
         val binding = DataBindingUtil.inflate<FragmentGHomeBinding>(inflater, R.layout.fragment_g_home, container, false)
         binding.login.setOnClickListener{ view: View ->
             val check = binding.pin.text.toString().trim().length in 4..4

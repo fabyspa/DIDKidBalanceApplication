@@ -11,14 +11,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.google.android.youtube.player.internal.x
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildDatabaseDao
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import java.io.DataInputStream
 import java.io.File
 import java.util.*
+
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
@@ -32,17 +38,13 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
-        val idPressed : MutableLiveData<Int>
-                idPressed = idPressed.value(b?.get("id_pressed"))
-        fun getIdPressed(n: Int){
-            val livedata :LiveData<Int> = n.
-            return LiveData<>
-        }
-        val namePressed = b?.get("name_pressed")
+        val idPressed = b?.get("id_pressed").toString().toInt()
+        val namePressed = b?.get("name_pressed").toString()
         println(idPressed)
 
-        val x = childWeightViewModel.getWeightById
-        println(x.value)
+        val db = Room.databaseBuilder(requireContext(), ChildWeightDatabase::class.java,"DB").allowMainThreadQueries().build()
+        val x = db.childDataBaseDao().getWeightById()
+        println(x)
         fun DP(a: Int, b: Int): DataPoint{
             return DataPoint(a.toDouble(), b.toDouble())
         }

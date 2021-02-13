@@ -2,4 +2,12 @@
     <string name="app_name">KidBalanceApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="testo_pianeta_destinazione"> To the Moon </string>
+    <string name="ic_moon">icona Luna</string>
+    <string name="ic_mars">icona Marte</string>
+    <string name="ic_jupiter">icona Giove</string>
+    <string name="ic_user">icona bambino</string>
+    <string name="ic_saturn">icona Saturno</string>
+    <string name="ic_uranus">icona Urano</string>
+    <string name="ic_neptune">icona Nettuno</string>
 </resources>

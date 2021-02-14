@@ -15,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_play"
-            android:text="Game"
+            android:text="PLAY"
+            android:textSize="24sp"
             app:iconPadding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,11 +81,11 @@
             android:text="75"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/rocket"
+            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView12"
             app:layout_constraintTop_toTopOf="@+id/planets"
-            app:layout_constraintVertical_bias="0.47000003" />
+            app:layout_constraintVertical_bias="0.77" />
 
         <!--app:icon="@drawable/ic_action_name"-->
 

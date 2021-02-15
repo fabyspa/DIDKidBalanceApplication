@@ -106,7 +106,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             //graph.viewport.scrollToEnd()
             graph.viewport.setScalableY(true)
             graph.addSeries(s)
-            graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
             if (x.size>0) textView.text = "Last Weight: "+(x[x.lastIndex].toString())
             else textView.text = "No Weights for "+namePressed
 
@@ -149,6 +148,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 )
             }
         }
+        graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
+
     }
 
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {

@@ -56,7 +56,7 @@ class GameFragment : Fragment() {
     }
 }*/
 
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Game
 
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -66,26 +66,26 @@ import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_game.*
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.*
-import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
 
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -175,10 +175,39 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         } catch (e: SecurityException) {
             Log.e(TAG, e.message!!)
         }
-        println(salvo)
+        println("salvo var:  "+salvo)
 
+        //needed variables
+        var random = (0..3).random()
+        var fourColors = arrayOf("Green", "Yellow", "Blue", "Red")
+        val allColors: ArrayList<String> = arrayListOf(fourColors[random])
+        val fragmentArray = arrayOf(GreenFragment::class.java, YellowFragment::class.java, BlueFragment::class.java, RedFragment::class.java)
+
+        //Colors Simon Says
+        for(i in 0..3){
+            random = (0..3).random()
+            allColors.add(fourColors[random])
+        }
+        //ONCLICK
+        startBtn.setOnClickListener {
+            val intentB = bundleOf("colors" to allColors, "count" to 0, "score" to 0)
+            val intent = Intent(this.context, ChildActivity::class.java)
+            intent.putStringArrayListExtra("colors", allColors)
+            intent.putExtra("count", 0)
+            intent.putExtra("score", 0)
+            val x = (0..3).random()
+            when (x) {
+                0 -> findNavController().navigate(R.id.greenFragment, intentB)
+                1 -> findNavController().navigate(R.id.yellowFragment, intentB)
+                2 -> findNavController().navigate(R.id.blueFragment, intentB)
+                3 -> findNavController().navigate(R.id.redFragment, intentB)
+            }
+        }
+
+
+/*
         send.setOnClickListener {
-            /*
+
                     val urlString = "http://192.168.4.1/" // URL to call
             val data = "prova invio" //data to post
             var out: OutputStream? = null
@@ -199,19 +228,19 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 }
 
 
-            */
             //val httpclient: HttpClient = DefaultHttpClient()
             //val httppost = HttpPost("LINK TO SERVER")
             //IOAsyncTask().execute("CIAOOOOO")
 
         }
+        */
 
 
         //fine Prelievo dati dalla bilancia
         //qui ci va il codice per il gioco mi sa
 
         //invio flag alla ESP
-
+/*
         fun post(url: String, body: String) {
             lifecycleScope.launch(Dispatchers.IO) {
                 return@launch URL("http://192.168.4.1/c")
@@ -247,6 +276,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             }
 
         }
+*/
 
 //        fun sendData(message: String): String? {
 //            return try {
@@ -261,9 +291,9 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 //            } catch (e: IOException) {
 //                "Error: " + e.message
 //            }
-
+/*
         send.setOnClickListener {
-            /*
+
                 val urlString = "http://192.168.4.1/" // URL to call
                 val data = "prova invio" //data to post
                 var out: OutputStream? = null
@@ -282,12 +312,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 } catch (e: Exception) {
                     println(e.message)
                 }
-        */
+
             //val httpclient: HttpClient = DefaultHttpClient()
             //val httppost = HttpPost("LINK TO SERVER")
             post("http://192.168.4.1/c", "Check \n")
 
         }
+
+ */
+
     }
 //    companion object {
 //        val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()

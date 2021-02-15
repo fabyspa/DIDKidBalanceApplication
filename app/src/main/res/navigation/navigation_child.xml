@@ -15,6 +15,26 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GameFragment"
-        android:label="GameFragment" />
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Game.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_greenFragment"
+            app:destination="@id/greenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/greenFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Game.GreenFragment"
+        android:label="GreenFragment" />
+    <fragment
+        android:id="@+id/yellowFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Game.YellowFragment"
+        android:label="YellowFragment" />
+    <fragment
+        android:id="@+id/blueFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Game.BlueFragment"
+        android:label="BlueFragment" />
+    <fragment
+        android:id="@+id/redFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Game.RedFragment"
+        android:label="RedFragment" />
 </navigation>

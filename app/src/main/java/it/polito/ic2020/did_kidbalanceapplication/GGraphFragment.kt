@@ -99,14 +99,13 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             s.setDrawDataPoints(true);
             s.setDataPointsRadius(10F)
 
-            graph.viewport.maxXAxisSize = (x.size+1).toDouble()
-            graph.viewport.maxYAxisSize = (maxW+1).toDouble()
+
             graph.viewport.isScalable = true
             //graph.viewport.isScrollable = true
-            //graph.viewport.scrollToEnd()
-            graph.viewport.setScalableY(true)
+            graph.viewport.scrollToEnd()
+            //graph.viewport.setScalableY(true)
             graph.addSeries(s)
-            if (x.size>0) textView.text = "Last Weight: "+(x[x.lastIndex].toString())
+            if (x.size>0) textView.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
             else textView.text = "No Weights for "+namePressed
 
             println("Scritto ultimo peso")
@@ -148,6 +147,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 )
             }
         }
+        graph.gridLabelRenderer.isVerticalLabelsVisible = true
+        //graph.series.indices
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
 
     }

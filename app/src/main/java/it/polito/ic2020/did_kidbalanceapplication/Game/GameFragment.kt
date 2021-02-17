@@ -177,31 +177,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         }
         println("salvo var:  "+salvo)
 
-        //needed variables
-        var random = (0..3).random()
-        var fourColors = arrayOf("Green", "Yellow", "Blue", "Red")
-        val allColors: ArrayList<String> = arrayListOf(fourColors[random])
-        val fragmentArray = arrayOf(GreenFragment::class.java, YellowFragment::class.java, BlueFragment::class.java, RedFragment::class.java)
 
-        //Colors Simon Says
-        for(i in 0..3){
-            random = (0..3).random()
-            allColors.add(fourColors[random])
-        }
         //ONCLICK
         startBtn.setOnClickListener {
-            val intentB = bundleOf("colors" to allColors, "count" to 0, "score" to 0)
+            //val intentB = bundleOf("colors" to allColors, "count" to 0, "score" to 0)
             val intent = Intent(this.context, ChildActivity::class.java)
-            intent.putStringArrayListExtra("colors", allColors)
-            intent.putExtra("count", 0)
-            intent.putExtra("score", 0)
-            val x = (0..3).random()
-            when (x) {
-                0 -> findNavController().navigate(R.id.greenFragment, intentB)
-                1 -> findNavController().navigate(R.id.yellowFragment, intentB)
-                2 -> findNavController().navigate(R.id.blueFragment, intentB)
-                3 -> findNavController().navigate(R.id.redFragment, intentB)
-            }
+            intent.putExtra("nb_bloc_start", 1)
+            intent.putExtra("nb_bloc_4_win", 7)
+            intent.putExtra("poids_du_mode", 1.toDouble())
+            findNavController().navigate(R.id.action_gameFragment_to_gameCircle2)
         }
 
 

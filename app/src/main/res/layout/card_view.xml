@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Mariolino"
             android:textAlignment="center"
-            style="@style/MediumStyle" />
+            style="@style/MediumStyle"
+            android:textStyle="bold"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

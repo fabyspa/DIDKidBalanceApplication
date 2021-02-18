@@ -10,97 +10,138 @@
         tools:context=".AddChild.AddChild">
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/iconaApp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <TextView
+            android:id="@+id/nomeApp"
+            style="@style/TitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NomeApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconaApp" />
+
+        <EditText
+            android:id="@+id/et_name"
+            style="@style/FormStyle"
+            android:hint="@string/child_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/et_surname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_child"
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/add_child"
+            style="@style/TitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/add_child"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/et_name"
+            app:layout_constraintTop_toBottomOf="@+id/nomeApp" />
+
+        <EditText
+            android:id="@+id/et_altezza2"
+            style="@style/FormStyle"
+            android:hint="@string/child_birthday"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/et_altezza"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name2" />
+
+        <EditText
+            android:id="@+id/et_altezza"
+            style="@style/FormStyle"
+            android:hint="@string/child_height"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_altezza2" />
+
+        <Button
+            android:id="@+id/saveName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="SAVE"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/add_child"
+            app:layout_constraintVertical_bias="0.85" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/et_name2"
+            style="@style/FormStyle"
+            android:hint="@string/child_profile_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
+
+        <RadioGroup
+            android:id="@+id/radio_button_group"
+            android:layout_width="310dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/saveName"
+            app:layout_constraintEnd_toEndOf="@+id/et_altezza"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/et_altezza"
+            app:layout_constraintTop_toBottomOf="@+id/et_altezza">
+
+            <RadioButton
+                android:id="@+id/male_rb"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:fontFamily="@font/roboto"
+                android:text="@string/child_sex_m"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="80dp"
-                    android:ems="10"
-                    android:hint="Name"
-                    android:inputType="textPersonName" />
+            <RadioButton
+                android:id="@+id/female_rb"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/child_sex_f"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </RadioGroup>
 
-                <EditText
-                    android:id="@+id/et_surname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:hint="Surname"
-                    android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/et_surname"
+            style="@style/FormStyle"
+            android:hint="@string/child_surname"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/et_name2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
-                <EditText
-                    android:id="@+id/et_name2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="0dp"
-                    android:ems="10"
-                    android:hint="Child's profile name"
-                    android:inputType="textPersonName" />
-
-                <EditText
-                    android:id="@+id/et_altezza"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:hint="altezza"
-                    android:inputType="numberDecimal" />
-
-                <EditText
-                    android:id="@+id/et_altezza2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:hint="dd/mm/yyyy"
-                    android:inputType="date" />
-
-                <RadioGroup
-                    android:id="@+id/radio_button_group"
-                    android:layout_width="206dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/male_rb"
-                        android:layout_width="76dp"
-                        android:layout_height="wrap_content"
-                        android:text="Male" />
-
-                    <RadioButton
-                        android:id="@+id/female_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Female" />
-
-                </RadioGroup>
-
-                <Button
-                    android:id="@+id/saveName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="100dp"
-                    android:text="SAVE" />
-
-            </LinearLayout>
-        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

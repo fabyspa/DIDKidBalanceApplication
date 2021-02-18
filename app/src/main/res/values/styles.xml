@@ -5,7 +5,7 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor"> @color/primary_text </item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">24dp</item>
     </style>
 
     <style name="SmallStyle"> //usato per il prossimo pianeta da raggiungere
@@ -13,7 +13,6 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:textStyle">bold</item>
 
     </style>
 
@@ -22,8 +21,15 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
 
+    </style>
+
+    <style name="FormStyle"> //usato per i dati del bambino
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor"> @color/primary_text </item>
+        <item name="android:textSize">18dp</item>
+        <item name= "android:layout_width">310dp</item>
+        <item name="android:layout_height">45dp</item>
     </style>
 
     <style name="ic_pianeti"> //usato per le impostazioni dei pianeti

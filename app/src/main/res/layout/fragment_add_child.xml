@@ -12,94 +12,14 @@
 
         <ImageView
             android:id="@+id/iconaApp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.05" />
-
-        <TextView
-            android:id="@+id/nomeApp"
-            style="@style/TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/NomeApp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconaApp" />
-
-        <EditText
-            android:id="@+id/et_name"
-            style="@style/FormStyle"
-            android:hint="@string/child_name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/et_surname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_child"
-            app:layout_constraintVertical_bias="0.15"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/add_child"
-            style="@style/TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="@string/add_child"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_name"
-            app:layout_constraintTop_toBottomOf="@+id/nomeApp" />
-
-        <EditText
-            android:id="@+id/et_altezza2"
-            style="@style/FormStyle"
-            android:hint="@string/child_birthday"
-            android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@+id/et_altezza"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_name2" />
-
-        <EditText
-            android:id="@+id/et_altezza"
-            style="@style/FormStyle"
-            android:hint="@string/child_height"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_altezza2" />
-
-        <Button
-            android:id="@+id/saveName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/roboto"
-            android:text="SAVE"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_child"
-            app:layout_constraintVertical_bias="0.85" />
-
-        <EditText
-            android:id="@+id/et_name2"
-            style="@style/FormStyle"
-            android:hint="@string/child_profile_name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
 
         <RadioGroup
             android:id="@+id/radio_button_group"
@@ -107,9 +27,8 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/saveName"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_altezza"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/et_altezza"
             app:layout_constraintTop_toBottomOf="@+id/et_altezza">
 
@@ -133,6 +52,49 @@
         </RadioGroup>
 
         <EditText
+            android:id="@+id/et_name"
+            style="@style/FormStyle"
+            android:layout_marginTop="16dp"
+            android:hint="@string/child_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/et_surname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_child"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <EditText
+            android:id="@+id/et_altezza2"
+            style="@style/FormStyle"
+            android:hint="@string/child_birthday"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/et_altezza"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name2" />
+
+        <EditText
+            android:id="@+id/et_altezza"
+            style="@style/FormStyle"
+            android:hint="@string/child_height"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_altezza2" />
+
+        <EditText
+            android:id="@+id/et_name2"
+            style="@style/FormStyle"
+            android:hint="@string/child_profile_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
+
+        <EditText
             android:id="@+id/et_surname"
             style="@style/FormStyle"
             android:hint="@string/child_surname"
@@ -141,6 +103,45 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+        <TextView
+            android:id="@+id/nomeApp"
+            style="@style/TitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NomeApp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconaApp"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/add_child"
+            style="@style/FormStyle"
+            android:layout_marginTop="32dp"
+            android:text="@string/add_child"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_name"
+            app:layout_constraintStart_toStartOf="@+id/et_name"
+            app:layout_constraintTop_toBottomOf="@+id/nomeApp"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/saveName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="SAVE"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_button_group"
+            app:layout_constraintVertical_bias="0.55" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,9 @@
     <string name="child_height">Child\'s height</string>
     <string name="child_sex_f">Female</string>
     <string name="child_sex_m">Male</string>
+
+    <!-- pin -->
+    <string name="hint_login_pin">Insert login pin</string>
+    <string name="Login_text">Login</string>
+    <string name="pin_forgotten"><u>Pin forgotten</u></string>
 </resources>

@@ -22,4 +22,9 @@
     <string name="child_height">Altezza del bambino</string>
     <string name="child_sex_f">Femmina</string>
     <string name="child_sex_m">Maschio</string>
+
+    <!-- pin -->
+    <string name="hint_login_pin">Inserisci il pin di login</string>
+    <string name="Login_text">Login</string>
+    <string name="pin_forgotten"><u>Pin dimenticato</u></string>
 </resources>

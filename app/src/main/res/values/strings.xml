@@ -3,11 +3,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="testo_pianeta_destinazione"> To the Moon </string>
-    <string name="ic_moon">icona Luna</string>
-    <string name="ic_mars">icona Marte</string>
-    <string name="ic_jupiter">icona Giove</string>
-    <string name="ic_user">icona bambino</string>
-    <string name="ic_saturn">icona Saturno</string>
-    <string name="ic_uranus">icona Urano</string>
-    <string name="ic_neptune">icona Nettuno</string>
+    <string name="ic_moon">Moon icon</string>
+    <string name="ic_mars">Mars icon</string>
+    <string name="ic_jupiter">Jupiter icon</string>
+    <string name="ic_user">Child icon</string>
+    <string name="ic_saturn">Saturn icon</string>
+    <string name="ic_uranus">Uranus icon</string>
+    <string name="ic_neptune">Neptune icon</string>
+    <string name="NomeApp">KidBalance</string>
+
+    <!-- form bambino -->
+    <string name="add_child">Add child\'s informations</string>
+    <string name="child_name">Child\'s name</string>
+    <string name="child_surname">Child\'s surname</string>
+    <string name="child_profile_name">Child\'s profile name</string>
+    <string name="child_birthday">Child\'s birthday</string>
+    <string name="child_height">Child\'s height</string>
+    <string name="child_sex_f">Female</string>
+    <string name="child_sex_m">Male</string>
+
+    <!-- pin -->
+    <string name="hint_login_pin">Insert login pin</string>
+    <string name="Login_text">Login</string>
+    <string name="pin_forgotten"><u>Pin forgotten</u></string>
 </resources>

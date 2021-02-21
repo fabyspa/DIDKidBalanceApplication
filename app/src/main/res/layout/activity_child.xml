@@ -6,7 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_color"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        >
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment"
@@ -18,8 +19,10 @@
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolBar"
+            app:layout_constraintVertical_bias="0.0"
             app:navGraph="@navigation/navigation_child" />
 
         <androidx.appcompat.widget.Toolbar
@@ -51,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lasciare userId"
+                android:layout_marginTop="10dp"
                 style="@style/TitleStyle" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -170,6 +174,8 @@
                 <TextView
                     android:id="@+id/pianeta_destinazione"
                     style="@style/SmallStyle"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@id/progressBar2"
@@ -185,14 +191,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/radiobutton_off_background" />
+                    app:srcCompat="@drawable/ic_fuel_station"/>
 
                 <ImageView
                     android:id="@+id/imageView3"

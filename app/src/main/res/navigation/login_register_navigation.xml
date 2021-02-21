@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_register_navigation"
+    app:startDestination="@id/GHomeFragment3">
+
+    <fragment
+        android:id="@+id/GRegister"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Login.GRegister"
+        android:label="GRegister"
+        tools:layout="@layout/fragment_g__register" >
+        <action
+            android:id="@+id/action_GRegister_to_answer4"
+            app:destination="@id/answer4" />
+    </fragment><![CDATA[
+    />
+    ]]>
+    <fragment
+        android:id="@+id/firstPage"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Login.FirstPage"
+        android:label="fragment_first_page"
+        tools:layout="@layout/fragment_first_page" >
+        <action
+            android:id="@+id/action_firstPage_to_GRegister"
+            app:destination="@id/GRegister" />
+    </fragment>
+    <fragment
+        android:id="@+id/answer4"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Login.Answer"
+        android:label="fragment_answer"
+        tools:layout="@layout/fragment_answer" >
+        <action
+            android:id="@+id/action_answer4_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/GHomeFragment3"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:label="GHomeFragment"
+        tools:layout="@layout/fragment_g_home" >
+        <action
+            android:id="@+id/action_GHomeFragment3_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <include app:graph="@navigation/navigation_login" />
+    />
+</navigation>

@@ -1,6 +1,9 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +38,11 @@ class GHomeFragment : Fragment() {
 //        answer = File(context?.filesDir?.absolutePath+".txt").readText()
      //   println(answer)
         val binding = DataBindingUtil.inflate<FragmentGHomeBinding>(inflater, R.layout.fragment_g_home, container, false)
+        binding.resetButton.setOnClickListener{
+            reset(this.requireContext())
+        }
+
+
         binding.login.setOnClickListener{ view: View ->
             val check = binding.pin.text.toString().trim().length in 4..4
             val pin = binding.pin.text.toString()
@@ -46,10 +54,13 @@ class GHomeFragment : Fragment() {
 
                 val GGraphFragment = Fragment()
                 GGraphFragment.setArguments(b)
-
-                view.findNavController().navigate(R.id.action_GHomeFragment2_to_child_list_parentFragment)
-                //view.findNavController().navigate(R.id.action_GHomeFragment2_to_GGraphFragment2)
-            } else if(!check) binding.pin.error="inserire 4 numeri"
+                if (findNavController().currentDestination?.id == R.id.GHomeFragment3) {
+                    view.findNavController().navigate(R.id.action_GHomeFragment3_to_navigation_login)
+                } else {
+                    view.findNavController().navigate(R.id.action_GHomeFragment2_to_child_list_parentFragment)
+                }
+            }
+                else if(!check) binding.pin.error="inserire 4 numeri"
             else binding.pin.error="pin non corretto"
 
         }
@@ -58,5 +69,16 @@ class GHomeFragment : Fragment() {
             findNavController().navigate(R.id.action_GHomeFragment2_to_restorePinFragment)
         }
         return binding.root
+    }
+    fun reset(context: Context) {
+        Log.i("GHomeFragment","Reset")
+        if (context is Activity) {
+            val file = File(context.filesDir?.absolutePath, "name.txt")
+            context.deleteDatabase("childWeight_history_database");
+
+            file.delete()
+            context.finish()
+        }
+        Runtime.getRuntime().exit(0)
     }
 }

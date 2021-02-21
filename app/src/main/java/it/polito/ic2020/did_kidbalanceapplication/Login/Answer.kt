@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.R
+import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentAnswerBinding
+import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +38,12 @@ class Answer : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val binding = DataBindingUtil.inflate<FragmentAnswerBinding>(inflater, R.layout.fragment_answer, container, false)
+        binding.loginButton.setOnClickListener{
+            findNavController().navigate(R.id.action_answer4_to_navigation_login)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_answer, container, false)
+        return binding.root
     }
 
     companion object {

@@ -17,9 +17,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.DIDKidBalanceApplication">
         <activity android:name=".ChildActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".ChildRegister">
+        <activity android:name=".ChildRegister"
+            android:windowSoftInputMode="adjustPan">
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

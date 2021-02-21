@@ -5,8 +5,8 @@
     android:id="@+id/card_container"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_margin="24dp"
-    app:cardCornerRadius="100dp"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="40dp"
     app:cardElevation="8dp">
 
     <LinearLayout

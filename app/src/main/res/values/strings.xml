@@ -26,4 +26,7 @@
     <string name="hint_login_pin">Insert login pin</string>
     <string name="Login_text">Login</string>
     <string name="pin_forgotten"><u>Pin forgotten</u></string>
+    <string name="Reset_question">What was the name of your best friend when you were a child?</string>
+    <string name="hint_friend_name">Name</string>
+    <string name="reset_pin">Reset pin</string>
 </resources>

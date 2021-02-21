@@ -27,4 +27,7 @@
     <string name="hint_login_pin">Inserisci il pin di login</string>
     <string name="Login_text">Login</string>
     <string name="pin_forgotten"><u>Pin dimenticato</u></string>
+    <string name="Reset_question">Come si chiamava il tuo miglior amico d\'infanzia?</string>
+    <string name="hint_friend_name">Nome</string>
+    <string name="reset_pin">Cambia pin</string>
 </resources>

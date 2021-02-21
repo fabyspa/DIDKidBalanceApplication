@@ -5,7 +5,7 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor"> @color/primary_text </item>
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="SmallStyle"> //usato per il prossimo pianeta da raggiungere
@@ -21,15 +21,20 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
 
     </style>
 
     <style name="FormStyle"> //usato per i dati del bambino
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor"> @color/primary_text </item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name= "android:layout_width">310dp</item>
         <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+
     </style>
 
     <style name="ic_pianeti"> //usato per le impostazioni dei pianeti
@@ -41,8 +46,15 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginTop">10dp</item>
-
-
     </style>
 
+    <style name="Buttons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height"> wrap_content</item>
+        <item name="layout_gravity">center</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="paddingEnd">20dp</item>
+        <item name="paddingStart">20dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

@@ -178,9 +178,9 @@
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/progressBar2"
+                    android:layout_alignStart="@id/progressBar2"
                     android:layout_alignTop="@id/progressBar2"
-                    android:layout_alignRight="@id/progressBar2"
+                    android:layout_alignEnd="@id/progressBar2"
                     android:layout_alignBottom="@id/progressBar2"
                     android:background="#00000000"
                     android:text="@string/testo_pianeta_destinazione" />

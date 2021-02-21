@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddChild.AddChild">
+        tools:context=".AddChild.AddChild"
+        android:windowSoftInputMode="adjustPan">
 
 
         <ImageView
@@ -131,12 +133,8 @@
 
         <Button
             android:id="@+id/saveName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/roboto"
+            style="@style/Buttons"
             android:text="SAVE"
-            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,4 +143,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

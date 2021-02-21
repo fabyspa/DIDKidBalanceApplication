@@ -25,12 +25,13 @@
 
         <RadioGroup
             android:id="@+id/radio_button_group"
-            android:layout_width="310dp"
-            android:layout_height="40dp"
+           style="@style/FormStyle"
+            android:layout_marginStart="0dp"
             android:layout_gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_altezza"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_altezza"
             app:layout_constraintTop_toBottomOf="@+id/et_altezza">
 
@@ -81,9 +82,11 @@
             style="@style/FormStyle"
             android:hint="@string/child_height"
             android:inputType="numberDecimal"
+            android:layout_marginStart="0dp"
             app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/et_altezza2"
             app:layout_constraintTop_toBottomOf="@+id/et_altezza2" />
 
         <EditText
@@ -93,6 +96,7 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_surname" />
 
@@ -121,15 +125,13 @@
 
         <TextView
             android:id="@+id/add_child"
-            style="@style/FormStyle"
-            android:layout_marginTop="32dp"
+            style="@style/FormInfo"
             android:text="@string/add_child"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_name"
             app:layout_constraintStart_toStartOf="@+id/et_name"
             app:layout_constraintTop_toBottomOf="@+id/nomeApp"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.1" />
 
         <Button
             android:id="@+id/saveName"
@@ -140,6 +142,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radio_button_group"
             app:layout_constraintVertical_bias="0.55" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

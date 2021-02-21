@@ -19,7 +19,7 @@
     <string name="child_surname">Cognome del bambino</string>
     <string name="child_profile_name">Nome del profilo del bambino</string>
     <string name="child_birthday">Data di nascita del bambino</string>
-    <string name="child_height">Altezza del bambino</string>
+    <string name="child_height">Altezza del bambino (in cm)</string>
     <string name="child_sex_f">Femmina</string>
     <string name="child_sex_m">Maschio</string>
 

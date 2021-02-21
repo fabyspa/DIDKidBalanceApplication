@@ -18,7 +18,7 @@
     <string name="child_surname">Child\'s surname</string>
     <string name="child_profile_name">Child\'s profile name</string>
     <string name="child_birthday">Child\'s birthday</string>
-    <string name="child_height">Child\'s height</string>
+    <string name="child_height">Child\'s height (in cm)</string>
     <string name="child_sex_f">Female</string>
     <string name="child_sex_m">Male</string>
 

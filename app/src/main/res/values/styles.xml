@@ -34,7 +34,16 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_marginStart">20dp</item>
         <item name="android:layout_marginEnd">20dp</item>
+    </style>
 
+    <style name="FormInfo"> //usato per le introduzioni ai campi del form
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor"> @color/primary_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name= "android:layout_width">310dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
     <style name="ic_pianeti"> //usato per le impostazioni dei pianeti

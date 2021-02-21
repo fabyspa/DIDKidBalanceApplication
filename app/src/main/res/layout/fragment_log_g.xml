@@ -1,100 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:windowSoftInputMode="adjustPan">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <ImageView
+            android:id="@+id/IconaApp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
 
-                <ImageView
-                    android:id="@+id/IconaApp"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_gravity="center"/>
 
-                <TextView
-                    android:id="@+id/NomeApp"
-                    style="@style/TitleStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/NomeApp"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/NomeApp"
+            style="@style/TitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NomeApp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IconaApp"
+            app:layout_constraintVertical_bias="0" />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    style="@style/FormStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Set pin to access parent's profile"
-                    android:layout_marginTop="40dp"
-                    android:layout_gravity="center"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin1"
+            style="@style/FormStyle"
+            android:layout_width="210dp"
+            android:hint="insert 4 number pin"
+            android:inputType="number|textPassword|numberPassword|textWebPassword"
+            android:password="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.03" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/FormStyle"
-                    android:id="@+id/pin1"
-                    android:layout_width="160dp"
-                    android:layout_gravity="center"
-                    android:hint="insert 4 number pin"
-                    android:inputType="number|textPassword|numberPassword|textWebPassword"
-                    android:password="true" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin2"
+            style="@style/FormStyle"
+            android:layout_width="210dp"
+            android:hint="insert pin again"
+            android:inputType="number|textPassword|numberPassword|textWebPassword"
+            android:password="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pin1"
+            app:layout_constraintVertical_bias="0.0" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pin2"
-                    style="@style/FormStyle"
-                    android:layout_width="160dp"
-                    android:layout_gravity="center"
-                    android:hint="insert pin again"
-                    android:inputType="number|textPassword|numberPassword|textWebPassword"
-                    android:password="true" />
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/MediumStyle"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/Reset_question"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.07" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    style="@style/FormStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Domanda di recupero pin"
-                    android:textColor="@color/primary_color"
-                    android:textSize="22sp"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"/>
+        <EditText
+            android:id="@+id/answer"
+            style="@style/FormStyle"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/hint_friend_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.01999998" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    style="@style/MediumStyle"
-                    android:layout_width="310dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/Reset_question"
-                    android:textSize="20sp"/>
+        <Button
+            android:id="@+id/setPin"
+            style="@style/Buttons"
+            android:text="Set Pin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer"
+            app:layout_constraintVertical_bias="0.294" />
 
-                <EditText
-                    android:id="@+id/answer"
-                    style="@style/FormStyle"
-                    android:layout_gravity="center"
-                    android:hint="Name"
-                    android:inputType="textPersonName" />
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/FormStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set pin to access parent's profile"
+            android:textColor="@color/primary_color"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NomeApp"
+            app:layout_constraintVertical_bias="0.050000012" />
 
-                <Button
-                    android:id="@+id/setPin"
-                    style="@style/Buttons"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"
-                    android:text="Set Pin"/>
-            </LinearLayout>
-        </ScrollView>
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/FormStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Domanda di recupero pin"
+            android:textColor="@color/primary_color"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pin2"
+            app:layout_constraintVertical_bias="0.09" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

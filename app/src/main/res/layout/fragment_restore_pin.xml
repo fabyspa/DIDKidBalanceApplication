@@ -50,7 +50,7 @@
         android:id="@+id/answer"
         style="@style/FormStyle"
         android:hint="@string/hint_friend_name"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapWords"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

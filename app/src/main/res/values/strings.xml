@@ -29,4 +29,8 @@
     <string name="Reset_question">What was the name of your best friend when you were a child?</string>
     <string name="hint_friend_name">Name</string>
     <string name="reset_pin">Reset pin</string>
+    <string name="set_pin_text">Set pin to access parent\'s profile</string>
+    <string name="security_question_intro">Security question</string>
+    <string name="set_pin_hint">Insert 4 number pin</string>
+    <string name="confirm_pin">Confirm pin</string>
 </resources>

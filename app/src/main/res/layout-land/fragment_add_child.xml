@@ -58,7 +58,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_child"
-            app:layout_constraintVertical_bias="0.12"
+            app:layout_constraintVertical_bias="0.05"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
@@ -130,13 +130,14 @@
         <TextView
             android:id="@+id/add_child"
             style="@style/FormInfo"
+            android:layout_width="wrap_content"
             android:text="@string/add_child"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nomeApp"
-            app:layout_constraintVertical_bias="0.050000012" />
+            app:layout_constraintVertical_bias="0.05" />
 
         <Button
             android:id="@+id/saveName"

@@ -166,7 +166,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             startActivity(Intent.createChooser(mI, "Chose Email Client..."))
             Toast.makeText(context, "Make sure you're disconnected to the scale", Toast.LENGTH_LONG).show()
         } catch (e: Exception){
-            //errori vari
+            //vari errori
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }

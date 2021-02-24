@@ -32,9 +32,11 @@ class MainActivity : AppCompatActivity() {
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.login_register_navigation)
         val filename = "name.txt"
-        val file = File(this.filesDir?.absolutePath, filename)
-        val fileExists = file.exists()
-        if(fileExists){
+        val file1 = File(this.filesDir?.absolutePath, filename)
+        val file2= File(this.filesDir?.absolutePath,"answer.txt")
+        val nameFileExists = file1.exists()
+        val ansFileExists=file2.length().toInt()
+        if(nameFileExists&&ansFileExists!=0){
             graph.startDestination = R.id.GHomeFragment3
         } else {
             graph.startDestination = R.id.firstPage

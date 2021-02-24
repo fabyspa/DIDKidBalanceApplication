@@ -9,7 +9,7 @@
     tools:context=".Login.Answer">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/answerLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +26,7 @@
         android:layout_width="277dp"
         android:layout_height="62dp"
         android:text="If you blablablaabllbalbalbalbblablabl answer this question blalbblablablalbblalba"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/answerLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/answerLogin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

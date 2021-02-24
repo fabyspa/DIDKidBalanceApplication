@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.Login
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentAnswerBinding
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
+import kotlinx.android.synthetic.main.fragment_log_g.*
+import java.io.File
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,9 +42,14 @@ class Answer : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentAnswerBinding>(inflater, R.layout.fragment_answer, container, false)
+
         binding.loginButton.setOnClickListener{
+            context?.openFileOutput("answer.txt", Context.MODE_APPEND)
+            File(context?.filesDir?.absolutePath+"answer.txt").writeText(binding.answerLogin.text.toString())
             findNavController().navigate(R.id.action_answer4_to_navigation_login)
         }
+
+
         // Inflate the layout for this fragment
         return binding.root
     }

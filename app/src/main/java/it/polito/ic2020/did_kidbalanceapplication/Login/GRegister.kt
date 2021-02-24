@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGRegisterBinding
+import kotlinx.android.synthetic.main.fragment_g__register.*
 import kotlinx.android.synthetic.main.fragment_log_g.*
 import java.io.*
 import kotlin.properties.Delegates
@@ -57,13 +58,36 @@ class GRegister : Fragment() {
         binding.GPassCheck.addTextChangedListener(watcher)
         binding.checkBox.setOnClickListener{
             button.isEnabled = filled && checkBox.isChecked
-
         }
 
         binding.continueButton.setOnClickListener{
-            Toast.makeText(this.requireContext(), "Cliccato", Toast.LENGTH_LONG).show()
-            writeToFile(binding.GName.text.toString(), requireContext())
-            this.findNavController().navigate(R.id.action_GRegister_to_answer4);
+            if(passCheck.text.toString()==passw.text.toString() && checkBox.isChecked) {
+                this.findNavController().navigate(R.id.action_GRegister_to_answer4);
+                writeToFile(binding.GName.text.toString(), requireContext(),"name.txt")
+                //writeToFileInt(passw.text.toString(),requireContext(),"logIN.txt")
+                context?.openFileOutput(
+                        "logIN.txt",
+                        Context.MODE_APPEND
+                ).use { stream ->
+                    DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
+                        dataOS.writeInt(G_passw.text.toString().toInt())
+                        //dataOS.writeUTF(answer.text.toString())
+                        println(binding.GPassw.text)
+                        //println(answer.text.toString())
+                        println("logIN.txt scritto")
+                        //findNavController().navigate(R.id.action_logGFragment_to_GHomeFragment2)
+                        //childFragmentManager.popBackStack()
+                    }
+                }
+
+            }
+            else if(passCheck.text.toString()!=passw.text.toString()) {
+                checkBox.isChecked=false
+                Toast.makeText(requireContext(),"Password not matching!",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(requireContext(),"You have to declare that you are the tutor",Toast.LENGTH_SHORT).show();
+            }
         }
 
 
@@ -74,14 +98,27 @@ class GRegister : Fragment() {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable) {
+
              filled= !(name.text.isEmpty() || passw.text.isEmpty() || passCheck.text.isEmpty())
+            checkBox.isChecked=false
+
         }
     }
-    private fun writeToFile(data: String, context: Context) {
+    private fun writeToFile(data: String, context: Context, nameTxt:String) {
         try {
-            val outputStreamWriter = OutputStreamWriter(context.openFileOutput("name.txt", Context.MODE_PRIVATE))
-            File(context?.filesDir?.absolutePath, "name.txt")
-            Log.i("GRegister", context.filesDir.toString())
+            val outputStreamWriter = OutputStreamWriter(context.openFileOutput(nameTxt, Context.MODE_PRIVATE))
+            File(context?.filesDir?.absolutePath, nameTxt)
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+            readFromFile(requireContext())
+        } catch (e: IOException) {
+            Log.e("GRegister", "File write failed: " + e.toString())
+        }
+    }
+    fun writeToFileInt(data: String, context: Context, nameTxt:String) {
+        try {
+            val outputStreamWriter = OutputStreamWriter(context.openFileOutput(nameTxt, Context.MODE_PRIVATE))
+            File(context?.filesDir?.absolutePath, nameTxt)
             outputStreamWriter.write(data)
             outputStreamWriter.close()
             readFromFile(requireContext())
@@ -92,7 +129,7 @@ class GRegister : Fragment() {
     private fun readFromFile(context: Context): String? {
         var ret = ""
         try {
-            val inputStream: InputStream? = context.openFileInput("name.txt")
+            val inputStream: InputStream? = context.openFileInput("logIN.txt")
             if (inputStream != null) {
                 val inputStreamReader = InputStreamReader(inputStream)
                 val bufferedReader = BufferedReader(inputStreamReader)

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         if(fileExists){
             graph.startDestination = R.id.GHomeFragment3
         } else {
-            graph.startDestination = R.id.GRegister
+            graph.startDestination = R.id.firstPage
         }
         navHostFragment.navController.graph = graph
 

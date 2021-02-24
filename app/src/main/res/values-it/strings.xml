@@ -30,4 +30,8 @@
     <string name="Reset_question">Come si chiamava il tuo miglior amico d\'infanzia?</string>
     <string name="hint_friend_name">Nome</string>
     <string name="reset_pin">Cambia pin</string>
+    <string name="set_pin_text">Imposta il pin per accedere al profilo genitore</string>
+    <string name="security_question_intro">Domanda di sicurezza</string>
+    <string name="set_pin_hint">Inserisci un pin da 4 numeri</string>
+    <string name="confirm_pin">Conferma pin</string>
 </resources>

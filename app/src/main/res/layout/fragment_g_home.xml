@@ -15,6 +15,7 @@
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.1" />
@@ -22,13 +23,16 @@
 
         <TextView
             android:id="@+id/welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome!"
-            app:layout_constraintBottom_toTopOf="@+id/pin"
+            style="@style/FormInfo"
+            android:gravity="center"
+            android:text="@string/welcome_text"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NomeApp" />
+            app:layout_constraintTop_toBottomOf="@+id/NomeApp"
+            app:layout_constraintVertical_bias="0.05" />
 
         <TextView
             android:id="@+id/NomeApp"
@@ -38,6 +42,7 @@
             android:text="@string/NomeApp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/IconaApp"
             app:layout_constraintVertical_bias="0" />
@@ -48,16 +53,16 @@
             style="@style/FormStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="128dp"
             android:ems="10"
             android:hint="@string/hint_login_pin"
             android:inputType="numberPassword"
             android:password="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-            app:layout_constraintVertical_bias="0.17" />
+            app:layout_constraintTop_toBottomOf="@+id/welcome"
+            app:layout_constraintVertical_bias="0.02" />
 
         <Button
             android:id="@+id/login"
@@ -71,6 +76,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin"
             app:layout_constraintVertical_bias="0.095" />
@@ -86,6 +92,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -96,6 +103,7 @@
             android:text="RESET"
             app:layout_constraintBottom_toTopOf="@+id/pin_forgot"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login" />
     </androidx.constraintlayout.widget.ConstraintLayout>

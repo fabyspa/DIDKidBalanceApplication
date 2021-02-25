@@ -81,7 +81,7 @@
             style="@style/FormStyle"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="@string/hint_friend_name"
+            android:hint="@string/hint_name"
             android:inputType="textPersonName|textCapWords"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +111,8 @@
 
         <TextView
             android:id="@+id/textView6"
-           style="@style/FormInfo"
-            android:text="Domanda di recupero pin"
+            style="@style/FormInfo"
+            android:text="@string/security_question"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

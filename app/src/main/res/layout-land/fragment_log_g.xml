@@ -123,7 +123,7 @@
             android:textSize="16sp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:hint="@string/hint_friend_name"
+            android:hint="@string/hint_name"
             android:inputType="textPersonName|textCapWords"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

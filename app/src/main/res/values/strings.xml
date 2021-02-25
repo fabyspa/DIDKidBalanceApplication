@@ -27,10 +27,18 @@
     <string name="Login_text">Login</string>
     <string name="pin_forgotten"><u>Pin forgotten</u></string>
     <string name="Reset_question">What was the name of your best friend when you were a child?</string>
-    <string name="hint_friend_name">Name</string>
-    <string name="reset_pin">Reset pin</string>
+    <string name="hint_name">Name</string>
+    <string name="btn_continue">Continue</string>
     <string name="set_pin_text">Set pin to access parent\'s profile</string>
     <string name="security_question_intro">Security question</string>
     <string name="set_pin_hint">Insert 4 number pin</string>
     <string name="confirm_pin">Confirm pin</string>
+    <string name="security_question">Security question</string>
+
+
+    <!-- create account -->
+    <string name="btn_create_account">Create account</string>
+    <string name="tutor_check">I declare I am the children\'s tutor</string>
+    <string name="intro_g_reg">Insert parent\'s profile name</string>
+    <string name="welcome_text">Welcome back!</string>
 </resources>

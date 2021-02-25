@@ -28,10 +28,18 @@
     <string name="Login_text">Login</string>
     <string name="pin_forgotten"><u>Pin dimenticato</u></string>
     <string name="Reset_question">Come si chiamava il tuo miglior amico d\'infanzia?</string>
-    <string name="hint_friend_name">Nome</string>
-    <string name="reset_pin">Cambia pin</string>
+    <string name="hint_name">Nome</string>
+    <string name="btn_continue">Continua</string>
     <string name="set_pin_text">Imposta il pin per accedere al profilo genitore</string>
     <string name="security_question_intro">Domanda di sicurezza</string>
     <string name="set_pin_hint">Inserisci un pin da 4 numeri</string>
     <string name="confirm_pin">Conferma pin</string>
+    <string name="security_question">Domanda di sicurezza</string>
+
+
+    <!-- create account -->
+    <string name="btn_create_account">Crea account</string>
+    <string name="tutor_check">Dichiaro di essere il tutore dei bambini</string>
+    <string name="intro_g_reg">Inserisci il nome del profilo genitore</string>
+    <string name="welcome_text">Bentornato!</string>
 </resources>

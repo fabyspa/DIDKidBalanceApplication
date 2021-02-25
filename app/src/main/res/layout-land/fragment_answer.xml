@@ -12,24 +12,23 @@
 
         <ImageView
             android:id="@+id/IconaApp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintVertical_bias="0.08" />
 
 
         <TextView
             android:id="@+id/NomeApp"
-            style="@style/TitleStyle"
+            style="@style/MediumStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/NomeApp"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -41,12 +40,14 @@
             android:id="@+id/security_question_intro"
             style="@style/FormInfo"
             android:text="@string/security_question"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/security_question"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/security_question"
             app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-            app:layout_constraintVertical_bias="0.12" />
+            app:layout_constraintVertical_bias="0.09" />
 
         <TextView
             android:id="@+id/security_question"
@@ -67,9 +68,10 @@
         <EditText
             android:id="@+id/answerLogin"
             style="@style/FormStyle"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:hint="@string/hint_name"
+            android:textSize="16sp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
             android:inputType="textPersonName|textCapWords"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

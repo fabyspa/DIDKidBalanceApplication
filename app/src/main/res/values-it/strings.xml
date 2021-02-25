@@ -39,6 +39,7 @@
 
     <!-- create account -->
     <string name="btn_create_account">Crea account</string>
+    <string name="create_account"><u>Crea account</u></string>
     <string name="tutor_check">Dichiaro di essere il tutore dei bambini</string>
     <string name="intro_g_reg">Inserisci il nome del profilo genitore</string>
     <string name="welcome_text">Bentornato!</string>

@@ -7,31 +7,32 @@
 
     <ImageView
         android:id="@+id/IconaApp"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.08" />
 
 
     <TextView
         android:id="@+id/NomeApp"
-        style="@style/TitleStyle"
+        style="@style/MediumStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/NomeApp"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IconaApp"
         app:layout_constraintVertical_bias="0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/security_question"
         style="@style/MediumStyle"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
@@ -43,17 +44,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <EditText
         android:id="@+id/answer"
         style="@style/FormStyle"
         android:hint="@string/hint_name"
+        android:textSize="16sp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:inputType="textPersonName|textCapWords"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/security_question"
         app:layout_constraintVertical_bias="0.02" />
 
     <Button

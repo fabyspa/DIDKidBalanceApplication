@@ -9,20 +9,21 @@
 
     <ImageView
         android:id="@+id/IconaApp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.2" />
 
 
     <TextView
         android:id="@+id/NomeApp"
         style="@style/TitleStyle"
+        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/NomeApp"
@@ -33,13 +34,16 @@
         app:layout_constraintTop_toBottomOf="@+id/IconaApp"
         app:layout_constraintVertical_bias="0" />
 
-    <Button
+    <TextView
         android:id="@+id/createAccount"
-        style="@style/Buttons"
-        android:text="@string/btn_create_account"
+        style="@style/FormInfo"
+        android:gravity="center"
+        android:text="@string/create_account"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

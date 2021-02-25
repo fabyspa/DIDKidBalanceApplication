@@ -57,11 +57,9 @@
                 android:layout_marginTop="10dp"
                 style="@style/TitleStyle" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-
-
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
+                android:layout_height="102dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginEnd="10dp"
@@ -69,16 +67,41 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/ic_jupiter"
-                    android:layout_height="match_parent"
+                    android:id="@+id/ic_moon"
                     style="@style/ic_pianeti"
+                    android:layout_height="match_parent"
 
-                    android:contentDescription="@string/ic_jupiter"
+                    android:contentDescription="@string/ic_moon"
 
-                    app:layout_constraintEnd_toStartOf="@+id/userPicture"
+                    app:layout_constraintEnd_toStartOf="@+id/ic_mars"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/ic_mars"
-                    app:srcCompat="@drawable/ic__jupiter" />
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic__moon" />
+
+                <ImageView
+                    android:id="@+id/ic_mars"
+                    style="@style/ic_pianeti"
+                    android:layout_height="match_parent"
+
+                    android:contentDescription="@string/ic_mars"
+
+                    app:layout_constraintEnd_toStartOf="@+id/ic_jupiter"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ic_moon"
+                    app:srcCompat="@drawable/ic__mars" />
+
+                <ImageView
+                        android:id="@+id/ic_jupiter"
+                        android:layout_height="match_parent"
+                        style="@style/ic_pianeti"
+
+                        android:contentDescription="@string/ic_jupiter"
+
+                        app:layout_constraintEnd_toStartOf="@+id/userPicture"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/ic_mars"
+                        app:srcCompat="@drawable/ic__jupiter" />
 
                 <ImageView
                     android:id="@+id/userPicture"
@@ -92,33 +115,9 @@
                     app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
                 <ImageView
-                    android:id="@+id/ic_mars"
-                    android:layout_height="match_parent"
-                    style="@style/ic_pianeti"
-
-                    android:contentDescription="@string/ic_mars"
-
-                    app:layout_constraintEnd_toStartOf="@+id/ic_jupiter"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/ic_moon"
-                    app:srcCompat="@drawable/ic__mars" />
-
-                <ImageView
-                    android:id="@+id/ic_uranus"
-                    android:layout_height="match_parent"
-                    style="@style/ic_pianeti"
-
-                    android:contentDescription="@string/ic_uranus"
-
-                    app:layout_constraintEnd_toStartOf="@+id/ic_neptune"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/ic_saturn"
-                    app:srcCompat="@drawable/ic__uranus" />
-
-                <ImageView
                     android:id="@+id/ic_saturn"
-                    android:layout_height="match_parent"
                     style="@style/ic_pianeti"
+                    android:layout_height="match_parent"
 
                     android:contentDescription="@string/ic_saturn"
 
@@ -128,36 +127,34 @@
                     app:srcCompat="@drawable/ic__saturn" />
 
                 <ImageView
-                    android:id="@+id/ic_moon"
-                    android:layout_height="match_parent"
-                    style="@style/ic_pianeti"
+                        android:id="@+id/ic_uranus"
+                        android:layout_height="match_parent"
+                        style="@style/ic_pianeti"
 
-                    android:contentDescription="@string/ic_moon"
+                        android:contentDescription="@string/ic_uranus"
 
-                    app:layout_constraintEnd_toStartOf="@+id/ic_mars"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/ic__moon" />
+                        app:layout_constraintEnd_toStartOf="@+id/ic_neptune"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/ic_saturn"
+                        app:srcCompat="@drawable/ic__uranus" />
 
                 <ImageView
-                    android:id="@+id/ic_neptune"
-                    android:layout_height="match_parent"
-                    style="@style/ic_pianeti"
+                        android:id="@+id/ic_neptune"
+                        android:layout_height="match_parent"
+                        style="@style/ic_pianeti"
 
-                    android:contentDescription="@string/ic_neptune"
+                        android:contentDescription="@string/ic_neptune"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/ic_uranus"
-                    app:srcCompat="@drawable/ic__neptune" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/ic_uranus"
+                        app:srcCompat="@drawable/ic__neptune" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <ProgressBar
                     android:id="@+id/progressBar2"

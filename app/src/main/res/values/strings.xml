@@ -34,6 +34,8 @@
     <string name="set_pin_hint">Insert 4 number pin</string>
     <string name="confirm_pin">Confirm pin</string>
     <string name="security_question">Security question</string>
+    <string name="answer_security_question_intro">Answer security question</string>
+    <string name="reset_security_question">Reset security question</string>
 
 
     <!-- create account -->

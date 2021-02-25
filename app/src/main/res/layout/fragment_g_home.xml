@@ -50,10 +50,9 @@
 
         <EditText
             android:id="@+id/pin"
-            style="@style/FormStyle"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_width="250dp"
+            style="@style/FormStyle"
             android:hint="@string/hint_login_pin"
             android:inputType="numberPassword"
             android:password="false"

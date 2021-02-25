@@ -54,7 +54,6 @@
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:text="@string/Reset_question"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

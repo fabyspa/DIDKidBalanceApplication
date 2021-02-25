@@ -35,6 +35,8 @@
     <string name="set_pin_hint">Inserisci un pin da 4 numeri</string>
     <string name="confirm_pin">Conferma pin</string>
     <string name="security_question">Domanda di sicurezza</string>
+    <string name="answer_security_question_intro">Rispondi alla domanda di sicurezza</string>
+    <string name="reset_security_question">Reimposta la domanda di sicurezza</string>
 
 
     <!-- create account -->

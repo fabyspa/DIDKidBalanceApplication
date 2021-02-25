@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         val file2= File(this.filesDir?.absolutePath,"answer.txt")
         val nameFileExists = file1.exists()
         val ansFileExists=file2.length().toInt()
+        println("file answer exists: "+ file2.exists())
+        println("file size: "+file2.length().toInt())
         if(nameFileExists&&ansFileExists!=0){
             graph.startDestination = R.id.GHomeFragment3
         } else {

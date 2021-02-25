@@ -30,5 +30,19 @@
             android:textAlignment="center"
             style="@style/MediumStyle"
             android:textStyle="bold"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:indeterminate="true"
+            android:indeterminateDuration="500"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteY="683dp" />
+
     </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

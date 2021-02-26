@@ -19,6 +19,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="300dp"
             android:foregroundGravity="center"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/startBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -49,6 +50,19 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:justificationMode="inter_word"
+            android:padding="10dp"
+            android:text="Sali sulla pedana, quando le luci sono verdi vuol dire che sei pronto, quindi premi il pulsante start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -1,8 +1,15 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
 import android.app.Activity.RESULT_OK
+import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -13,9 +20,23 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import it.polito.ic2020.did_kidbalanceapplication.Game.GameLib
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
+import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_circle_game.*
+import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.BufferedOutputStream
+import java.io.DataInputStream
+import java.io.DataOutputStream
+import java.io.File
 import java.lang.String
+import java.net.URL
+import java.nio.charset.Charset
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -29,6 +50,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var score = 0.0
     private var chrono = false
     private var lvl = 1
+    lateinit var childWeightViewModel: ChildWeightViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -171,6 +193,84 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
             }
         }
         thread.start()
+
+
+
+
+
+
+        //data_from_ESP.text = "Connettiti alla rete WiFi 'KidBalance'"
+        val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val builder = NetworkRequest.Builder()
+        val fileName = "weight_data.txt"
+        var salvo = 0F
+        childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
+
+
+        //set Transport Type to WIFI
+        builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+        //prelevo peso
+        try {
+            manager.requestNetwork(builder.build(), object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        manager.bindProcessToNetwork(network)
+                        Log.d("esp", "Network Connected")
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
+                            withContext(Dispatchers.Main) {
+                                //data_from_ESP.text = str
+                                //salvo = str.toFloat()
+                                //inserire salvo in database
+                                this@GameCircle.context?.openFileOutput(
+                                    "weight_data.txt",
+                                    Context.MODE_APPEND
+                                ).use { stream ->
+                                    DataOutputStream(BufferedOutputStream(stream)).use { dataOS ->
+                                        dataOS.writeFloat(str.toFloat())
+                                        //println(str.toFloat())
+                                        //println("Bel file scritto")
+                                    }
+                                }
+                            }
+                        }
+                        fun insertGameWeightToDatabase() {
+                            val filename = "weight_data.txt"
+                            var file = File(context?.filesDir?.absolutePath, filename)
+                            var fileExists = file.exists()
+                            if(fileExists){
+                                context?.openFileInput("weight_data.txt").use { it ->
+                                    DataInputStream(it).use { dis ->
+                                        while (dis.available() > 0) {
+                                            salvo = dis.readFloat()
+                                            println(salvo)
+                                            println("bel file letto")
+                                        }
+                                    }
+                                }
+                                val weight = salvo
+                                print("salvo: ")
+                                println(salvo)
+                                val date = System.currentTimeMillis()
+                                val id = activity!!.intent!!.extras?.get("id").toString().toInt()
+                                println("id  from extra  " + id)
+
+                                val gameWeight = GameWeight(id, date, weight)
+                                childWeightViewModel.addGameWeight(gameWeight)
+                            }
+                        }
+                        insertGameWeightToDatabase()
+                    } else {
+                        ConnectivityManager.setProcessDefaultNetwork(network)
+                    }
+                    manager.unregisterNetworkCallback(this)
+                }
+            })
+        } catch (e: SecurityException) {
+            Log.e(ContentValues.TAG, e.message!!)
+        }
+        println("salvo var:  "+salvo)
+
     }
 
     internal fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -194,4 +294,6 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         //setResult(RESULT_OK, intent)
         //finish()
     }
+
+
 }

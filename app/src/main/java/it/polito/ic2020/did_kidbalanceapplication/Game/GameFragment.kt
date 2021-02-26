@@ -103,7 +103,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     lateinit var childWeightViewModel: ChildWeightViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*
+INSERIMENTO PESO SPOSTATO NELLA SCHERMATA SUCCESSIVA
         println("bella1")
         data_from_ESP.text = "Connettiti alla rete WiFi 'KidBalance'"
         val manager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -148,7 +149,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                             context?.openFileInput("weight_data.txt").use { it ->
                                 DataInputStream(it).use { dis ->
                                     while (dis.available() > 0) {
-                                        salvo = dis.readFloat() //per la data, sarebbe bene inserirla al momento della scrittura nel file                                      //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
+                                        salvo = dis.readFloat()
                                         println(salvo)
                                         println("bel file letto")
                                     }
@@ -176,7 +177,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             Log.e(TAG, e.message!!)
         }
         println("salvo var:  "+salvo)
-
+ */
 
         //ONCLICK
         startBtn.setOnClickListener {

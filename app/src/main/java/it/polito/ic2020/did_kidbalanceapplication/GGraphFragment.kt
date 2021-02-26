@@ -105,6 +105,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             graph.viewport.scrollToEnd()
             //graph.viewport.setScalableY(true)
             graph.addSeries(s)
+
             if (x.size>0) textView.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
             else textView.text = "No Weights for "+namePressed
 

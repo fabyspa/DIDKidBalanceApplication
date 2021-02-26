@@ -87,7 +87,8 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
         if (vivant && roundCounter == nb_bloc_4_win) {
             win = true
             message(btn_start, "You WIN")
-            //end()
+            println("win: "+win)
+            end()
         } else {
             val rd = Random()
             val possibleColors = arrayColor
@@ -173,6 +174,7 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
 
     //cette methode commence le jeux
     private fun newGame() {
+        if(life<=0){end()}
         //Set le background du start à gris
         val startButton = btn_start
         startButton.setBackgroundColor(Color.GRAY)
@@ -250,8 +252,10 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
             if (!vivant && roundCounter > 0) {
                 if (chrono) pauseTimer()
                 message(btn_start, "You lose")
-                //end()
-                newGame()
+                btn_start.isClickable = false
+                println("win: "+win)
+                end()
+                //newGame()
             }
         }
 

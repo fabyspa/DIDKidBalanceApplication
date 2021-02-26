@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import it.polito.ic2020.did_kidbalanceapplication.Game.GameLib
 import kotlinx.android.synthetic.main.fragment_circle_game.*
 import java.lang.String
+import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -153,17 +154,19 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                 } while (!game.end)
                 if (game.win) {
                     //get next view  for game
+                    println("game.win =1")
                     val startGame: Intent = Intent()
                     startGame.putExtra("lvl", lvl + 1)
                     startGame.putExtra("score", game.score)
-                    startActivityForResult(startGame, lvl + 1)
+                    //startActivityForResult(startGame, lvl + 1)
+                    //Toast.makeText(context,"Avanzamento verso nuovo pianeta",Toast.LENGTH_LONG).show()
                     Log.i("scorend", String.valueOf(game.score))
                 } else {
                     val intent = Intent()
                     intent.putExtra("exit", true)
                     //setResult(RESULT_OK, intent)
                     //finish()
-                    Toast.makeText(context, "Maybe you're a looser", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context, "Maybe you're a looser", Toast.LENGTH_LONG).show()
                 }
             }
         }

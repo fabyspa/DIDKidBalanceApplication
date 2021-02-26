@@ -42,7 +42,6 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
             Handler().postDelayed({
                 //doSomethingHere()
                 holder.itemView.loading.isVisible = false
-                println("porta puttana")
             }, 1000)
         })
 

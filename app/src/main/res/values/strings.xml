@@ -44,4 +44,8 @@
     <string name="tutor_check">I declare I am the children\'s tutor</string>
     <string name="intro_g_reg">Insert parent\'s profile name</string>
     <string name="welcome_text">Welcome back!</string>
+
+    <!-- grafico -->
+    <string name="header_graph">Child\'s weight trend</string>
+
 </resources>

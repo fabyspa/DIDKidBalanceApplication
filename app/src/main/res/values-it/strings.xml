@@ -45,4 +45,7 @@
     <string name="tutor_check">Dichiaro di essere il tutore dei bambini</string>
     <string name="intro_g_reg">Inserisci il nome del profilo genitore</string>
     <string name="welcome_text">Bentornato!</string>
+
+    <!-- grafico -->
+    <string name="header_graph">Andamento peso del bambino</string>
 </resources>

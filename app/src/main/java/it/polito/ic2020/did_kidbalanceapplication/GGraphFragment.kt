@@ -98,12 +98,18 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             s.setColor(Color.CYAN)
             s.setDrawDataPoints(true);
             s.setDataPointsRadius(10F)
-
+            s.setThickness(15)
+            s.setDrawBackground(true)
+            s.setBackgroundColor(Color.argb(30, 0, 255, 255))
+            s.setDrawDataPoints(true)
+            s.setDataPointsRadius(20.0F)
 
             graph.viewport.isScalable = true
             //graph.viewport.isScrollable = true
             graph.viewport.scrollToEnd()
             //graph.viewport.setScalableY(true)
+
+
             graph.addSeries(s)
 
             if (x.size>0) textView.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
@@ -151,6 +157,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         graph.gridLabelRenderer.isVerticalLabelsVisible = true
         //graph.series.indices
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
+
+        header_b.text=namePressed
 
     }
 

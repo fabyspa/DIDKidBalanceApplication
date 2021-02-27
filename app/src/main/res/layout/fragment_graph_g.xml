@@ -22,7 +22,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/header_home_b"
+            android:id="@+id/header_b"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,12 +34,31 @@
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
+      <!--  <TextView
+            android:id="@+id/intro_grafico"
+            style="@style/FormInfo"
+            android:textColor="@color/primary_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Andamento peso"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_margin="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@color/light_primary_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0" /> -->
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:outlineSpotShadowColor="@color/black"
+            android:layout_height="360dp"
+            android:outlineSpotShadowColor="@color/primary_text"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.0" />
+        <!-- app:layout_constraintTop_toBottomOf="@+id/intro_grafico" -->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mailToBtn"
@@ -83,11 +103,11 @@
                 <TextView
                     android:id="@+id/textView"
                     style="@style/FormInfo"
-                    android:textColor="@color/primary_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="Pesate\nPesate\nPesasdfghgfdsdfghgfdsadfghjhgfdhgfffffd fgate\nPesatePesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate" />
+                    android:text="Pesate\nPesate\nPesasdfghgfdsdfghgfdsadfghjhgfdhgfffffd fgate\nPesatePesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate"
+                    android:textColor="@color/primary_text" />
             </LinearLayout>
         </ScrollView>
 

@@ -59,14 +59,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 return DataPoint(a.toDouble(), b.toDouble())
             }
 
-            /*      val points = arrayOf(DP((System.currentTimeMillis() / 1000) as Int, 18),
-                          DP(200, 21),
-                          DP(600, 19),
-                          DP(700, 24)
-                  )
-
-             */
-
 
             val l = mutableListOf<DataPoint>()
 
@@ -104,9 +96,9 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             s.setDrawDataPoints(true)
             s.setDataPointsRadius(20.0F)
 
-            graph.viewport.isScalable = true
+            //graph.viewport.isScalable = false
             //graph.viewport.isScrollable = true
-            graph.viewport.scrollToEnd()
+            //graph.viewport.scrollToEnd()
             //graph.viewport.setScalableY(true)
 
 

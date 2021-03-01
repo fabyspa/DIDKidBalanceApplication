@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.database
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import kotlinx.android.synthetic.main.rv_weights.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.time.days
 
 class ChildWeightsAdapter: RecyclerView.Adapter<ChildWeightsAdapter.MyViewHolder>(){
@@ -30,8 +33,9 @@ class ChildWeightsAdapter: RecyclerView.Adapter<ChildWeightsAdapter.MyViewHolder
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem =userList[position]
         val dateItem = dateList[position]
+        val dat = convertLongToTime(dateItem)
         holder.itemView.weight.text= currentItem.toString()
-        holder.itemView.date_weighted.text = dateItem.toString()
+        holder.itemView.date_weighted.text = dat
     }
 
     override fun getItemCount(): Int {
@@ -42,5 +46,12 @@ class ChildWeightsAdapter: RecyclerView.Adapter<ChildWeightsAdapter.MyViewHolder
         this.userList=user
         this.dateList=data
         notifyDataSetChanged()
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        return format.format(date)
     }
 }

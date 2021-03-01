@@ -22,6 +22,7 @@ import com.jjoe64.graphview.series.LineGraphSeries
 import it.polito.ic2020.did_kidbalanceapplication.database.*
 import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
+import kotlinx.android.synthetic.main.rv_weights.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.DataInputStream
@@ -62,7 +63,11 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 x.removeFirst()
                 date.removeFirst()
             }
-            adapter.setData(x.reversed(),date.reversed())
+            if(x.size>0){
+                adapter.setData(x.reversed(),date.reversed())
+            } else {
+                intro_pesate.text = "No Data for "+namePressed
+            }
 
 
             fun DP(a: Int, b: Float): DataPoint {
@@ -100,7 +105,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             s.setColor(Color.CYAN)
             s.setDrawDataPoints(true);
             s.setDataPointsRadius(10F)
-            s.setThickness(15)
+            s.setThickness(10)
             s.setDrawBackground(true)
             s.setBackgroundColor(Color.argb(30, 0, 255, 255))
             s.setDrawDataPoints(true)

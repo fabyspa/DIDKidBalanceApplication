@@ -13,14 +13,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildDatabaseDao
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
+import it.polito.ic2020.did_kidbalanceapplication.database.*
+import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,20 +39,30 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         lateinit var childWeightViewModel: ChildWeightViewModel
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
+        val adapter= ChildWeightsAdapter()
+        val recyclerView= rv_weights
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager= LinearLayoutManager(requireContext())
 
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
         val idPressed = b?.get("id_pressed").toString().toInt()
         val namePressed = b?.get("name_pressed").toString()
         var x: MutableList<Float>
+        var date: MutableList<Long>
         println(idPressed)
 
         val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
 
         lifecycleScope.launch(Dispatchers.IO) {
             x = db.childDataBaseDao().getWeightById(idPressed)
+            date = db.childDataBaseDao().getDateById(idPressed)
             println(x)
-            while (x.size > 30) x.removeFirst()
+            while (x.size > 30) {
+                x.removeFirst()
+                date.removeFirst()
+            }
+            adapter.setData(x.reversed(),date.reversed())
 
 
             fun DP(a: Int, b: Float): DataPoint {

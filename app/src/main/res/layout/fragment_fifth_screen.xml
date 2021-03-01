@@ -13,7 +13,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/engine"
+        android:src="@drawable/score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="RISCALDIAMO I MOTORI"
+        android:text="SUPERA I TUOI RECORD"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,22 +36,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Abbiamo bisogno del tuo aiuto per raggiungere il prossimo pianeta! Ma prima di partire controlliamo insieme che tutto sia al posto giusto."
+        android:text="Cerca di ottenere il punteggio più alto e insieme scopriremo tutto l'universo."
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/Avanti"
+        android:id="@+id/Gioca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
-        android:text="Avanti"
-        android:textColor="@color/accent_color"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -49,13 +49,13 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         val b = this.arguments
         val idPressed = b?.get("id_pressed").toString().toInt()
         val namePressed = b?.get("name_pressed").toString()
-        var x: MutableList<Float>
-        var date: MutableList<Long>
         println(idPressed)
 
-        val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
 
         lifecycleScope.launch(Dispatchers.IO) {
+            var x: MutableList<Float>
+            var date: MutableList<Long>
+            val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
             x = db.childDataBaseDao().getWeightById(idPressed)
             date = db.childDataBaseDao().getDateById(idPressed)
             println(x)

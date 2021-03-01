@@ -51,7 +51,7 @@ class ChildWeightsAdapter: RecyclerView.Adapter<ChildWeightsAdapter.MyViewHolder
     @SuppressLint("SimpleDateFormat")
     fun convertLongToTime(time: Long): String {
         val date = Date(time)
-        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val format = SimpleDateFormat("dd.MM.yyyy HH:mm")
         return format.format(date)
     }
 }

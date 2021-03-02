@@ -6,17 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="8dp"
-    app:cardElevation="1dp">
+    app:cardElevation="8dp"
+    app:cardCornerRadius="4dp"
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="4dp">
 
         <TextView
             android:id="@+id/weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/primary_text"
             android:gravity="top"
             android:text="28,8"
             android:textSize="30sp" />
@@ -26,6 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/primary_text"
             android:gravity="top|end"
             android:text="Kg"
             android:textSize="30sp"
@@ -36,6 +43,8 @@
             android:layout_width="170dp"
             android:layout_height="88dp"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/primary_text"
             android:gravity="bottom"
             android:text="TextView"
             android:textSize="18sp" />

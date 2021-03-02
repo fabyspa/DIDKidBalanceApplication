@@ -65,8 +65,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             }
             if(x.size>0){
                 adapter.setData(x.reversed(),date.reversed())
-            } else {
-                intro_pesate.text = "No Data for "+namePressed
+            } else { //prima qui era intro_pesate.text ma è corretto metterlo a textView
+                textView.text = "No Data for "+namePressed
             }
 
 

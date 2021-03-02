@@ -24,30 +24,6 @@
             app:layout_constraintVertical_bias="0.08" />
 
         <EditText
-            android:id="@+id/et_surname"
-            style="@style/FormStyle"
-            android:hint="@string/child_surname"
-            android:inputType="textPersonName|textCapWords"
-            app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_name"
-            app:layout_constraintTop_toTopOf="@+id/et_name"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <EditText
-            android:id="@+id/et_altezza2"
-            style="@style/FormStyle"
-            android:hint="@string/child_birthday"
-            android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_name2"
-            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
-
-        <EditText
             android:id="@+id/et_name"
             style="@style/FormStyle"
             android:hint="@string/child_name"
@@ -59,19 +35,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_child"
             app:layout_constraintVertical_bias="0.05"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.4" />
 
         <EditText
-            android:id="@+id/et_altezza"
+            android:id="@+id/et_surname"
             style="@style/FormStyle"
-            android:hint="@string/child_height"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/radio_button_group"
+            android:hint="@string/child_surname"
+            android:inputType="textPersonName|textCapWords"
+            app:layout_constraintBottom_toTopOf="@+id/et_altezza2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_name2" />
+            app:layout_constraintStart_toEndOf="@+id/et_name"
+            app:layout_constraintTop_toTopOf="@+id/et_name"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.4"/>
 
         <EditText
             android:id="@+id/et_name2"
@@ -83,7 +62,33 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+            app:layout_constraintTop_toBottomOf="@+id/et_name"
+            app:layout_constraintWidth_percent="0.4" />
+
+        <EditText
+            android:id="@+id/et_altezza2"
+            style="@style/FormStyle"
+            android:hint="@string/child_birthday"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_name2"
+            app:layout_constraintTop_toBottomOf="@+id/et_surname"
+            app:layout_constraintWidth_percent="0.4"/>
+
+        <EditText
+            android:id="@+id/et_altezza"
+            style="@style/FormStyle"
+            android:hint="@string/child_height"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/radio_button_group"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name2"
+            app:layout_constraintWidth_percent="0.4"/>
 
         <RadioGroup
             android:id="@+id/radio_button_group"
@@ -94,11 +99,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/et_altezza"
-            app:layout_constraintTop_toBottomOf="@+id/et_altezza2">
+            app:layout_constraintTop_toBottomOf="@+id/et_altezza2"
+            app:layout_constraintWidth_percent="0.4">
 
             <RadioButton
                 android:id="@+id/male_rb"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:text="@string/child_sex_m"
@@ -107,12 +113,12 @@
 
             <RadioButton
                 android:id="@+id/female_rb"
-                android:layout_width="135dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:text="@string/child_sex_f"
-                android:textColor="@color/primary_text"
                 android:textAlignment="textStart"
+                android:textColor="@color/primary_text"
                 android:textSize="18sp" />
         </RadioGroup>
 
@@ -133,6 +139,7 @@
             style="@style/FormInfo"
             android:layout_width="wrap_content"
             android:text="@string/add_child"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

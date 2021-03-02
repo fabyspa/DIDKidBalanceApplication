@@ -38,7 +38,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pin1"
             style="@style/FormStyle"
-            android:layout_width="250dp"
             android:hint="@string/set_pin_hint"
             android:inputType="number|textPassword|numberPassword|textWebPassword"
             android:password="true"
@@ -46,12 +45,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin_intro"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.6"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pin2"
             style="@style/FormStyle"
-            android:layout_width="250dp"
             android:hint="@string/confirm_pin"
             android:inputType="number|textPassword|numberPassword|textWebPassword"
             android:password="true"
@@ -59,22 +58,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin1"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.6"/>
 
         <TextView
             android:id="@+id/security_question"
             style="@style/MediumStyle"
-            android:layout_width="310dp"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:textAlignment="center"
             android:text="@string/Reset_question"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reset_security_question_intro"
-            app:layout_constraintVertical_bias="0.01" />
+            app:layout_constraintVertical_bias="0.01"
+            app:layout_constraintWidth_percent="0.7"/>
 
         <EditText
             android:id="@+id/answer"
@@ -87,7 +88,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/security_question"
-            app:layout_constraintVertical_bias="0.02" />
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintWidth_percent="0.7"/>
 
         <Button
             android:id="@+id/setPin"
@@ -103,21 +105,26 @@
             android:id="@+id/pin_intro"
             style="@style/FormInfo"
             android:text="@string/set_pin_text"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-            app:layout_constraintVertical_bias="0.050000012" />
+            app:layout_constraintVertical_bias="0.050000012"
+            app:layout_constraintWidth_percent="0.8"
+            />
 
         <TextView
             android:id="@+id/reset_security_question_intro"
             style="@style/FormInfo"
             android:text="@string/reset_security_question"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin2"
-            app:layout_constraintVertical_bias="0.09" />
+            app:layout_constraintVertical_bias="0.09"
+            app:layout_constraintWidth_percent="0.8"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

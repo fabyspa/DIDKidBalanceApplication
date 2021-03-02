@@ -20,8 +20,8 @@
                     android:right="2dp">
 
                     <shape>
-                        <gradient android:startColor="@color/dark_primary_color"
-                            android:endColor="@color/accent_color"
+                        <gradient android:startColor="@color/accent_color"
+                            android:endColor="@color/dark_accent_color"
                             android:angle="-45"/>
 
 

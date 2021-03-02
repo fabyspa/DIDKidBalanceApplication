@@ -39,46 +39,47 @@
         <TextView
             android:id="@+id/intro_reg"
             style="@style/FormInfo"
-            android:text="@string/intro_g_reg"
             android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/intro_g_reg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintVertical_bias="0.05"/>
 
         <EditText
             android:id="@+id/G_name"
             style="@style/FormStyle"
-            android:layout_width="210dp"
             android:layout_height="40dp"
             android:hint="@string/hint_name"
             android:inputType="textPersonName|textCapWords"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intro_reg"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.4" />
 
         <TextView
             android:id="@+id/pin_intro"
             style="@style/FormInfo"
             android:layout_width="wrap_content"
+            android:textAlignment="center"
             android:text="@string/set_pin_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/G_name"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintVertical_bias="0.05"/>
 
         <EditText
             android:id="@+id/G_passCheck"
             style="@style/FormStyle"
-            android:layout_width="210dp"
             android:layout_height="40dp"
             android:hint="@string/confirm_pin"
             android:inputType="number|textPassword|numberPassword|textWebPassword"
@@ -89,7 +90,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/G_passw"
             app:layout_constraintTop_toTopOf="@+id/G_passw"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.3"/>
 
         <Button
             android:id="@+id/continue_button"
@@ -120,7 +122,6 @@
         <EditText
             android:id="@+id/G_passw"
             style="@style/FormStyle"
-            android:layout_width="210dp"
             android:layout_height="40dp"
             android:hint="@string/set_pin_hint"
             android:inputType="number|textPassword|numberPassword|textWebPassword"
@@ -132,7 +133,8 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin_intro"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.3"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

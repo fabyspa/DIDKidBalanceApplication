@@ -35,20 +35,21 @@
         android:id="@+id/security_question_intro2"
         style="@style/FormInfo"
         android:text="@string/answer_security_question_intro"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NomeApp"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintWidth_percent="0.7"/>
 
     <TextView
         android:id="@+id/security_question"
         style="@style/MediumStyle"
-        android:layout_width="310dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:textAlignment="center"
         android:text="@string/Reset_question"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,21 +57,23 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/security_question_intro2"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintWidth_percent="0.7"/>
 
     <EditText
         android:id="@+id/answer"
         style="@style/FormStyle"
         android:hint="@string/hint_name"
         android:textSize="16sp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:inputType="textPersonName|textCapWords"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/security_question"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintWidth_percent="0.7"/>
 
     <Button
         android:id="@+id/Reset_Pin"

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.android.synthetic.main.rv_weights.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.DataInputStream
 import java.io.File
 import java.util.*
@@ -63,10 +65,14 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 x.removeFirst()
                 date.removeFirst()
             }
-            if(x.size>0){
-                //adapter.setData(x.reversed(),date.reversed())
-            } else {
-                intro_pesate.text = "No Data for "+namePressed
+            withContext(Dispatchers.Main) {
+                //fai qui le operazioni sulla GUI
+                if(x.size>0){
+                    //adapter.setData(x.reversed(),date.reversed())
+                    adapt(x,date, adapter)
+                } else {
+                    intro_pesate.text = "No Data for "+namePressed
+                }
             }
 
 
@@ -124,32 +130,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
             println("Scritto ultimo peso")
 
-/*
-            //check FIle
-            val tmp: MutableList<Float> = mutableListOf()
-            val filename = "weight_data.txt"
-            var file = File(context?.filesDir?.absolutePath, filename)
-            var fileExists = file.exists()
-            if (fileExists) {
-                context?.openFileInput("weight_data.txt").use { it ->
-                    DataInputStream(it).use { dis ->
-                        while (dis.available() > 0) {
-                            tmp.add(dis.readFloat())
-                            //per la data, sarebbe bene inserirla al momento della scrittura nel file
-                            //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
-                            println("bel file letto1")
-                        }
-                    }
-                }
-            }
-            while (tmp.size > 2) {
-                tmp.removeFirst()
-            }
-            textView.text = tmp.toString()
-
-
-
- */
             //SendEmail
 
             mailToBtn.setOnClickListener {
@@ -166,9 +146,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
 
         header_b.text=namePressed
-
     }
-
+    private fun adapt(x: MutableList<Float>, date: MutableList<Long>, adapter: ChildWeightsAdapter){
+        adapter.setData(x.reversed(),date.reversed())
+    }
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {
 
         val mI = Intent(Intent.ACTION_SEND)

@@ -64,7 +64,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 date.removeFirst()
             }
             if(x.size>0){
-                adapter.setData(x.reversed(),date.reversed())
+                //adapter.setData(x.reversed(),date.reversed())
             } else {
                 intro_pesate.text = "No Data for "+namePressed
             }

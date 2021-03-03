@@ -36,6 +36,8 @@
     <string name="security_question">Security question</string>
     <string name="answer_security_question_intro">Answer security question</string>
     <string name="reset_security_question">Reset security question</string>
+    <string name="wrong_pin">Wrong pin</string>
+    <string name="wrong_count_pin">Insert 4 numbers</string>
 
 
     <!-- create account -->
@@ -49,8 +51,14 @@
     <string name="header_graph">Child\'s weight trend</string>
     <string name="header_home_g">Children</string>
     <string name="intro_pesate">Latest weights</string>
+    <string name="no_pesate">There is no data for </string>
+
 
     <!-- gioco -->
     <string name="instruction_game">Hop on the board and when the lights are green click START to play!</string>
+    <string name="alert_intro">Connection required</string>
+    <string name="alert_text">Are you sure you\'re connected to WiFi \"KidBalance\"?</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
 
 </resources>

@@ -53,6 +53,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         val namePressed = b?.get("name_pressed").toString()
         println(idPressed)
 
+        val no_pesate = resources.getString(R.string.no_pesate)
+
 
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
@@ -71,7 +73,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     //adapter.setData(x.reversed(),date.reversed())
                     adapt(x,date, adapter)
                 } else {
-                    intro_pesate.text = "No Data for "+namePressed
+                    intro_pesate.text = no_pesate + " " +namePressed
                 }
             }
 

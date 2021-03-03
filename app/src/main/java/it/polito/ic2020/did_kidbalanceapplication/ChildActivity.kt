@@ -28,15 +28,21 @@ private lateinit var binding:ActivityChildBinding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_child)
         val extra: Bundle?= intent.extras
 
-        //Check Wifi Connection
+        val alert_intro = resources.getString(R.string.alert_intro)
+        val alert_text = resources.getString(R.string.alert_text)
+        val yes_text = resources.getString(R.string.yes_text)
+        val no_text = resources.getString(R.string.no_text)
+
+
+                //Check Wifi Connection
         val alert = AlertDialog.Builder(this)
-        alert.setTitle("Connection Required")
-        alert.setMessage("Sure you're connected to WiFi 'KidBalance'?")
+        alert.setTitle(alert_intro)
+        alert.setMessage(alert_text)
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-        alert.setPositiveButton("yes"){
+        alert.setPositiveButton(yes_text){
             dialog, witch -> witch
         }
-        alert.setNegativeButton("no"){
+        alert.setNegativeButton(no_text){
             dialog, which -> onBackPressed()
         }
         alert.show()

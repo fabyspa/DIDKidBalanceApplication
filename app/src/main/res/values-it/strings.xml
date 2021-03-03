@@ -37,6 +37,8 @@
     <string name="security_question">Domanda di sicurezza</string>
     <string name="answer_security_question_intro">Rispondi alla domanda di sicurezza</string>
     <string name="reset_security_question">Reimposta la domanda di sicurezza</string>
+    <string name="wrong_pin">Pin errato</string>
+    <string name="wrong_count_pin">Inserire 4 numeri</string>
 
 
     <!-- create account -->
@@ -50,7 +52,14 @@
     <string name="header_graph">Andamento peso del bambino</string>
     <string name="header_home_g">Bambini</string>
     <string name="intro_pesate">Ultime pesate</string>
+    <string name="no_pesate">Non ci sono pesate per </string>
 
     <!-- gioco -->
     <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>
+    <string name="alert_intro">Connessione necessaria</string>
+    <string name="alert_text">Sei sicuro di essere connesso al WiFi \"KidBalance\"?</string>
+    <string name="yes_text">Si</string>
+    <string name="no_text">No</string>
+
+
 </resources>

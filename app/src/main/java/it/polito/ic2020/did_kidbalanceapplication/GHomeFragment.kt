@@ -47,6 +47,9 @@ class GHomeFragment : Fragment() {
                 }
             }
         }
+
+        val wrong_pin = resources.getString(R.string.wrong_pin)
+        val wrong_count_pin = resources.getString(R.string.wrong_count_pin)
 //        answer = File(context?.filesDir?.absolutePath+".txt").readText()
         //   println(answer)
         val binding = DataBindingUtil.inflate<FragmentGHomeBinding>(inflater, R.layout.fragment_g_home, container, false)
@@ -76,8 +79,8 @@ class GHomeFragment : Fragment() {
                 }
 
                 //view.findNavController().navigate(R.id.action_GHomeFragment2_to_GGraphFragment2)
-            } else if (!check) binding.pin.error = "inserire 4 numeri"
-            else binding.pin.error = "pin non corretto"
+            } else if (!check) binding.pin.error = wrong_count_pin
+            else binding.pin.error = wrong_pin
 
         }
         binding.pinForgot.setOnClickListener {

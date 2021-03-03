@@ -47,5 +47,10 @@
 
     <!-- grafico -->
     <string name="header_graph">Child\'s weight trend</string>
+    <string name="header_home_g">Children</string>
+    <string name="intro_pesate">Latest weights</string>
+
+    <!-- gioco -->
+    <string name="instruction_game">Hop on the board and when the lights are green click START to play!</string>
 
 </resources>

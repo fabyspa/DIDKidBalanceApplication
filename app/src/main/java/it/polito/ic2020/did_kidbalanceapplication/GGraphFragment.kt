@@ -5,23 +5,29 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightsAdapter
+import it.polito.ic2020.did_kidbalanceapplication.database.*
+import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
+import kotlinx.android.synthetic.main.rv_weights.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.DataInputStream
+import java.io.File
+import java.util.*
 
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
@@ -34,19 +40,21 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         lateinit var childWeightViewModel: ChildWeightViewModel
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
+        val adapter= ChildWeightsAdapter()
+        val recyclerView= rv_weights
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager= LinearLayoutManager(requireContext())
+
         //val g = mutableListOf<DataPointInterface>()
         val b = this.arguments
         val idPressed = b?.get("id_pressed").toString().toInt()
         val namePressed = b?.get("name_pressed").toString()
         println(idPressed)
-        val adapter= ChildWeightsAdapter()
-        val recyclerView= rv_weights
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager= LinearLayoutManager(requireContext())
-        var x: MutableList<Float>
-        var date: MutableList<Long>
-        var counter = 0
+
+
         lifecycleScope.launch(Dispatchers.IO) {
+            var x: MutableList<Float>
+            var date: MutableList<Long>
             val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
             x = db.childDataBaseDao().getWeightById(idPressed)
             date = db.childDataBaseDao().getDateById(idPressed)
@@ -55,9 +63,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 x.removeFirst()
                 date.removeFirst()
             }
-            counter = 1
             if(x.size>0){
-                //adapter.setData(x.reversed(), date.reversed())
+                adapter.setData(x.reversed(),date.reversed())
             } else {
                 intro_pesate.text = "No Data for "+namePressed
             }
@@ -154,7 +161,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 )
             }
         }
-        println("counter: " + counter)
         graph.gridLabelRenderer.isVerticalLabelsVisible = true
         //graph.series.indices
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))

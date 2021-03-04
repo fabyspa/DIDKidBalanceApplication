@@ -70,6 +70,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -188,6 +189,16 @@ INSERIMENTO PESO SPOSTATO NELLA SCHERMATA SUCCESSIVA
             intent.putExtra("poids_du_mode", 1.toDouble())
             findNavController().navigate(R.id.action_gameFragment_to_gameCircle2)
         }
+        // This callback will only be called when MyFragment is at least Started.
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true /* enabled by default */) {
+                    override fun handleOnBackPressed() {
+                        // Handle the back button event
+                        findNavController().navigate(R.id.BHomeFragment2)
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
 
 /*

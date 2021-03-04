@@ -233,33 +233,35 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     }
                                 }
                             }
-                        }
-                        fun insertGameWeightToDatabase() {
-                            val filename = "weight_data.txt"
-                            var file = File(context?.filesDir?.absolutePath, filename)
-                            var fileExists = file.exists()
-                            if(fileExists){
-                                context?.openFileInput("weight_data.txt").use { it ->
-                                    DataInputStream(it).use { dis ->
-                                        while (dis.available() > 0) {
-                                            salvo = dis.readFloat()
-                                            println(salvo)
-                                            println("bel file letto")
+                            fun insertGameWeightToDatabase() {
+                                val filename = "weight_data.txt"
+                                var file = File(context?.filesDir?.absolutePath, filename)
+                                var fileExists = file.exists()
+                                if(fileExists){
+                                    context?.openFileInput("weight_data.txt").use { it ->
+                                        DataInputStream(it).use { dis ->
+                                            while (dis.available() > 0) {
+                                                salvo = dis.readFloat()
+                                                println(salvo)
+                                                println("bel file letto")
+                                            }
                                         }
                                     }
-                                }
-                                val weight = salvo
-                                print("salvo: ")
-                                println(salvo)
-                                val date = System.currentTimeMillis()
-                                val id = activity!!.intent!!.extras?.get("id").toString().toInt()
-                                println("id  from extra  " + id)
+                                    val weight = str.toString().toFloat()//salvo
+                                    print("salvo: ")
+                                    println(salvo)
+                                    println("weight: "+weight)
+                                    val date = System.currentTimeMillis()
+                                    val id = activity!!.intent!!.extras?.get("id").toString().toInt()
+                                    println("id  from extra  " + id)
 
-                                val gameWeight = GameWeight(id, date, weight)
-                                childWeightViewModel.addGameWeight(gameWeight)
+                                    val gameWeight = GameWeight(id, date, weight)
+                                    childWeightViewModel.addGameWeight(gameWeight)
+                                }
                             }
+                            insertGameWeightToDatabase()
                         }
-                        insertGameWeightToDatabase()
+                        //insertGameWeightToDatabase()
                     } else {
                         ConnectivityManager.setProcessDefaultNetwork(network)
                     }

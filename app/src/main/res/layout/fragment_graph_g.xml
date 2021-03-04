@@ -54,19 +54,22 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.0" /> -->
 
+        <!-- app:layout_constraintTop_toBottomOf="@+id/intro_grafico" -->
+
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
+            android:elevation="8dp"
             android:outlineSpotShadowColor="@color/primary_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.5"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHeight_percent="0.35"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.0" />
-        <!-- app:layout_constraintTop_toBottomOf="@+id/intro_grafico" -->
+            app:layout_constraintTop_toBottomOf="@+id/cardViewBMI"
+            app:layout_constraintVertical_bias="0.04"
+            app:layout_constraintWidth_percent="0.95" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mailToBtn"
@@ -99,22 +102,6 @@
             app:layout_constraintTop_toBottomOf="@+id/graph"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/BMI2"
-            style="@style/FormInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="BMI"
-            android:textSize="22sp"
-            android:textColor="@color/primary_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.83"
-            app:layout_constraintStart_toEndOf="@+id/intro_pesate"
-            app:layout_constraintTop_toBottomOf="@+id/graph"
-            app:layout_constraintVertical_bias="0.0" />
-
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
@@ -141,9 +128,6 @@
             style="@style/FormInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="@string/intro_pesate"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -152,17 +136,60 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/graph"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.03" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_weights"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.37"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/intro_pesate" />
+            app:layout_constraintTop_toBottomOf="@+id/intro_pesate"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintWidth_percent="1" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewBMI"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintWidth_percent="0.95">
+
+            <TextView
+                android:id="@+id/intro_BMI"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/BMI_intro"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/BMI2"
+                style="@style/FormInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="bottom"
+                android:text="valore BMI"
+                android:textColor="@color/primary_text"
+                android:textSize="28sp" />
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

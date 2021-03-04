@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -65,10 +66,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     //adapter.setData(x.reversed(),date.reversed())
                     adapt(x,date, adapter)
                     val bmi = (x.last()/(height*height)).toFloat()
-                    BMI2.text = "BMI: "+bmi.toString()
+                    BMI2.text = bmi.toString()
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
-                    BMI2.text= " "
+                    cardViewBMI.visibility= View.GONE
                 }
             }
 

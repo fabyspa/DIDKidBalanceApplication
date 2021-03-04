@@ -52,7 +52,10 @@
     <string name="header_graph">Andamento peso del bambino</string>
     <string name="header_home_g">Bambini</string>
     <string name="intro_pesate">Ultime pesate</string>
-    <string name="no_pesate">Non ci sono pesate per </string>
+    <string name="no_pesate">Non ci sono informazioni su </string>
+    <string name="BMI_intro">Ultimo valore di BMI</string>
+    <string name="weight_intro">Peso (kg)</string>
+    <string name="data_intro">Data</string>
 
     <!-- gioco -->
     <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>

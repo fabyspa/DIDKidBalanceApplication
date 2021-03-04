@@ -51,7 +51,10 @@
     <string name="header_graph">Child\'s weight trend</string>
     <string name="header_home_g">Children</string>
     <string name="intro_pesate">Latest weights</string>
-    <string name="no_pesate">There is no data for </string>
+    <string name="no_pesate">There is no data about </string>
+    <string name="BMI_intro">Latest BMI value</string>
+    <string name="weight_intro">Weight (kg)</string>
+    <string name="data_intro">Date</string>
 
 
     <!-- gioco -->

@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
-      <!--  <TextView
+        <!--  <TextView
             android:id="@+id/intro_grafico"
             style="@style/FormInfo"
             android:textColor="@color/primary_text"
@@ -59,9 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:outlineSpotShadowColor="@color/primary_text"
-            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -83,6 +83,38 @@
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@android:drawable/ic_menu_upload_you_tube" />
 
+        <TextView
+            android:id="@+id/BMI"
+            style="@style/FormInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="272dp"
+            android:text="BMI"
+            android:textColor="@color/primary_text"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/intro_pesate"
+            app:layout_constraintTop_toBottomOf="@+id/graph"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/BMI2"
+            style="@style/FormInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="272dp"
+            android:text="asd"
+            android:textColor="@color/primary_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintStart_toEndOf="@+id/intro_pesate"
+            app:layout_constraintTop_toBottomOf="@+id/graph"
+            app:layout_constraintVertical_bias="0.0" />
+
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
@@ -101,14 +133,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
-                    style="@style/FormInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:text="Pesate\nPesate\nPesasdfghgfdsdfghgfdsadfghjhgfdhgfffffd fgate\nPesatePesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate\nPesate"
-                    android:textColor="@color/primary_text" />
             </LinearLayout>
         </ScrollView>
 

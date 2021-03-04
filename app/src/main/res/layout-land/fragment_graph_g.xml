@@ -103,7 +103,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/BMI"
                     style="@style/FormInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

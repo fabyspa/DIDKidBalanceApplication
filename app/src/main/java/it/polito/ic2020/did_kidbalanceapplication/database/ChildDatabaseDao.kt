@@ -24,6 +24,9 @@ interface ChildDatabaseDao {
     @Query("SELECT date FROM game_weight_table WHERE id=:id")
     fun getDateById(id :Int ):MutableList<Long>
 
+    @Query("SELECT altezza FROM daily_weight_child_table WHERE id=:id")
+    fun getHeightById(id: Int):MutableList<Double>
+
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertGameWeight(gameWeight: GameWeight)
 

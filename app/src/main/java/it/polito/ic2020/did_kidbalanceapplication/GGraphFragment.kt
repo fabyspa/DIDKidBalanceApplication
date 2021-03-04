@@ -6,30 +6,19 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import it.polito.ic2020.did_kidbalanceapplication.database.*
-import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
-import kotlinx.android.synthetic.main.rv_weights.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.DataInputStream
-import java.io.File
-import java.util.*
 
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
@@ -59,9 +48,12 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
             var date: MutableList<Long>
+            var height: Double
             val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
             x = db.childDataBaseDao().getWeightById(idPressed)
             date = db.childDataBaseDao().getDateById(idPressed)
+            height = db.childDataBaseDao().getHeightById(idPressed).last()
+            height /= 100
             println(x)
             while (x.size > 30) {
                 x.removeFirst()
@@ -72,6 +64,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 if(x.size>0){
                     //adapter.setData(x.reversed(),date.reversed())
                     adapt(x,date, adapter)
+                    val bmi = (x.last()/(height*height)).toFloat()
+                    BMI2.text = "BMI: "+bmi.toString()
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
                 }
@@ -108,27 +102,30 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 dataPoints.set(i, l[i])
             }
 
-            val s = LineGraphSeries(dataPoints) // This one should be obvious right? :)
+            withContext(Dispatchers.Main){
+                val s = LineGraphSeries(dataPoints) // This one should be obvious right? :)
 
-            s.setColor(Color.CYAN)
-            s.setDrawDataPoints(true);
-            s.setDataPointsRadius(10F)
-            s.setThickness(10)
-            s.setDrawBackground(true)
-            s.setBackgroundColor(Color.argb(30, 0, 255, 255))
-            s.setDrawDataPoints(true)
-            s.setDataPointsRadius(20.0F)
+                s.setColor(Color.CYAN)
+                s.setDrawDataPoints(true);
+                s.setDataPointsRadius(10F)
+                s.setThickness(10)
+                s.setDrawBackground(true)
+                s.setBackgroundColor(Color.argb(30, 0, 255, 255))
+                s.setDrawDataPoints(true)
+                s.setDataPointsRadius(20.0F)
 
-            //graph.viewport.isScalable = false
-            //graph.viewport.isScrollable = true
-            //graph.viewport.scrollToEnd()
-            //graph.viewport.setScalableY(true)
+                //graph.viewport.isScalable = true
+                //graph.viewport.isScrollable = true
+                //graph.viewport.isXAxisBoundsManual = true
+                //graph.viewport.scrollToStart()
+                //graph.viewport.setScalableY(true)
 
 
-            graph.addSeries(s)
+                graph.addSeries(s)
 
-            if (x.size>0) textView.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
-            else textView.text = "No Weights for "+namePressed
+                if (x.size>0) BMI.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
+                else BMI.text = "No Weights for "+namePressed
+            }
 
             println("Scritto ultimo peso")
 

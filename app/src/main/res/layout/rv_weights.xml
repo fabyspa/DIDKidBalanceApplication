@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_container"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="75dp"
     android:layout_margin="8dp"
     app:cardElevation="8dp"
     app:cardCornerRadius="4dp"
@@ -18,13 +18,14 @@
         <TextView
             android:id="@+id/weight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto"
-            android:textColor="@color/primary_text"
-            android:gravity="top"
+            android:gravity="bottom"
             android:text="28,8"
-            android:textSize="30sp" />
+            android:textColor="@color/primary_text"
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/kg"
@@ -32,22 +33,45 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="30dp"
             android:fontFamily="@font/roboto"
-            android:textColor="@color/primary_text"
             android:gravity="top|end"
             android:text="Kg"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textColor="@color/primary_text"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/date_weighted"
-            android:layout_width="170dp"
-            android:layout_height="88dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/roboto"
+            android:gravity="bottom|end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="dataaaaa"
             android:textColor="@color/primary_text"
-            android:gravity="bottom"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/intro_peso"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Peso (kg)"
+            android:fontFamily="@font/roboto"
+            android:textSize="22sp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/intro_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Data"
+            android:gravity="center_vertical|end"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

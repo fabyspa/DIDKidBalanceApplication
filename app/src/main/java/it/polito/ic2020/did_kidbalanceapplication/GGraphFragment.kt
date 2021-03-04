@@ -68,6 +68,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     BMI2.text = "BMI: "+bmi.toString()
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
+                    BMI2.text= " "
                 }
             }
 

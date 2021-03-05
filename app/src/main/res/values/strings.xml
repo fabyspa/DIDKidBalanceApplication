@@ -55,6 +55,7 @@
     <string name="BMI_intro">Latest BMI value</string>
     <string name="weight_intro">Weight (kg)</string>
     <string name="data_intro">Date</string>
+    <string name="wifi_connection">Make sure you\'re disconnected to the scale</string>
 
 
     <!-- gioco -->

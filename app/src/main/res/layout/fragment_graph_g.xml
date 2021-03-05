@@ -7,33 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/header_b"
-            style="@style/TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:text="Nome Bambino"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" />
-
         <!--  <TextView
             android:id="@+id/intro_grafico"
             style="@style/FormInfo"
@@ -58,8 +31,8 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="391dp"
+            android:layout_height="256dp"
             android:elevation="8dp"
             android:outlineSpotShadowColor="@color/primary_text"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +41,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewBMI"
-            app:layout_constraintVertical_bias="0.04"
+            app:layout_constraintVertical_bias="0.038"
             app:layout_constraintWidth_percent="0.95" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -91,16 +64,14 @@
             style="@style/FormInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="272dp"
             android:text="BMI"
             android:textColor="@color/primary_text"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/intro_pesate"
-            app:layout_constraintTop_toBottomOf="@+id/graph"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -128,6 +99,7 @@
             style="@style/FormInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@string/intro_pesate"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -136,7 +108,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/graph"
-            app:layout_constraintVertical_bias="0.03" />
+            app:layout_constraintVertical_bias="0.036" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_weights"
@@ -144,8 +116,8 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.37"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intro_pesate"
             app:layout_constraintVertical_bias="0.2"
@@ -160,10 +132,10 @@
             app:cardElevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintHeight_percent="0.1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_b"
             app:layout_constraintVertical_bias="0.02"
             app:layout_constraintWidth_percent="0.95">
 
@@ -175,7 +147,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/BMI_intro"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/BMI2"
@@ -188,8 +160,63 @@
                 android:gravity="bottom"
                 android:text="valore BMI"
                 android:textColor="@color/primary_text"
-                android:textSize="28sp" />
+                android:textSize="24sp" />
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_b"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintHorizontal_bias=".9"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.024"
+            app:layout_constraintWidth_percent="0.7">
+
+            <TextView
+                android:id="@+id/nome_b"
+                style="@style/FormInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto"
+                android:text="Nome Bambino"
+                android:textColor="@color/primary_text"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Altezza"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="bottom"
+                android:text="Altezza"
+                android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView_b"
+            app:layout_constraintEnd_toStartOf="@+id/cardView_b"
+            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardView_b"
+            app:layout_constraintWidth_percent="0.2"
+            app:srcCompat="@drawable/ic__jupiter" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

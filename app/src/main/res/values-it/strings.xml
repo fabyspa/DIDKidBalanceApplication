@@ -56,6 +56,8 @@
     <string name="BMI_intro">Ultimo valore di BMI</string>
     <string name="weight_intro">Peso (kg)</string>
     <string name="data_intro">Data</string>
+    <string name="wifi_connection">Assicurati di essere disconnesso dalla bilancia</string>
+
 
     <!-- gioco -->
     <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>

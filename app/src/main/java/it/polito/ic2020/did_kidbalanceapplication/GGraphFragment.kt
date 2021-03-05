@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -146,12 +145,14 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         //graph.series.indices
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
 
-        header_b.text=namePressed
+        nome_b.text=namePressed
     }
     private fun adapt(x: MutableList<Float>, date: MutableList<Long>, adapter: ChildWeightsAdapter){
         adapter.setData(x.reversed(),date.reversed())
     }
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {
+
+        val wifi_connection= resources.getString(R.string.wifi_connection)
 
         val mI = Intent(Intent.ACTION_SEND)
         mI.data = Uri.parse("mailto:")
@@ -162,7 +163,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         try {
             startActivity(Intent.createChooser(mI, "Chose Email Client..."))
-            Toast.makeText(context, "Make sure you're disconnected to the scale", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, wifi_connection, Toast.LENGTH_LONG).show()
         } catch (e: Exception){
             //vari errori
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()

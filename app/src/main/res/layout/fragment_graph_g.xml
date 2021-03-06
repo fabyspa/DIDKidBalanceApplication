@@ -31,8 +31,8 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
-            android:layout_width="391dp"
-            android:layout_height="256dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:elevation="8dp"
             android:outlineSpotShadowColor="@color/primary_text"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewBMI"
-            app:layout_constraintVertical_bias="0.038"
+            app:layout_constraintVertical_bias="0.03"
             app:layout_constraintWidth_percent="0.95" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -105,10 +105,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.007"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/graph"
-            app:layout_constraintVertical_bias="0.036" />
+            app:layout_constraintTop_toBottomOf="@+id/intro_graph"
+            app:layout_constraintVertical_bias="0.03" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_weights"
@@ -120,7 +120,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intro_pesate"
-            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintVertical_bias="0.9"
             app:layout_constraintWidth_percent="1" />
 
         <androidx.cardview.widget.CardView
@@ -174,7 +174,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.11"
             app:layout_constraintHorizontal_bias=".9"
-            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintStart_toEndOf="@+id/id_b"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.024"
@@ -203,10 +203,23 @@
                 android:gravity="bottom"
                 android:text="Altezza"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edit_altezza"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:clickable="true"
+                android:fontFamily="@font/roboto"
+                android:gravity="bottom|end"
+                android:text="@string/edit_height"
+                android:textSize="12sp" />
         </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/id_b"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView_b"
@@ -217,6 +230,22 @@
             app:layout_constraintTop_toTopOf="@+id/cardView_b"
             app:layout_constraintWidth_percent="0.2"
             app:srcCompat="@drawable/ic__jupiter" />
+
+        <TextView
+            android:id="@+id/intro_graph"
+            style="@style/MediumStyle"
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="12sp"
+            android:text="@string/intro_graph"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graph"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintWidth_percent="0.95" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

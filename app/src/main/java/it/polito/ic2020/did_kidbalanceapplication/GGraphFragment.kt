@@ -44,6 +44,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         val no_pesate = resources.getString(R.string.no_pesate)
 
+        val altezza= resources.getString(R.string.height)
 
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
@@ -129,6 +130,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             }
 
             println("Scritto ultimo peso")
+            Altezza.text = altezza + " " + height.toString() + "m"
 
             //SendEmail
 

@@ -2,6 +2,8 @@
     <string name="app_name">KidBalanceApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- home bambino -->
     <string name="testo_pianeta_destinazione"> To the Moon </string>
     <string name="ic_moon">Moon icon</string>
     <string name="ic_mars">Mars icon</string>
@@ -11,6 +13,8 @@
     <string name="ic_uranus">Uranus icon</string>
     <string name="ic_neptune">Neptune icon</string>
     <string name="NomeApp">KidBalance</string>
+
+    <string name="parent_acc"><u>Login into parent\'s profile</u></string>
 
     <!-- form bambino -->
     <string name="add_child">Add child\'s informations</string>
@@ -56,6 +60,9 @@
     <string name="weight_intro">Weight (kg)</string>
     <string name="data_intro">Date</string>
     <string name="wifi_connection">Make sure you\'re disconnected to the scale</string>
+    <string name="height">Height:</string>
+    <string name="edit_height"><u>Edit height</u></string>
+    <string name="intro_graph">The graph shows the weight data recorded over time</string>
 
 
     <!-- gioco -->

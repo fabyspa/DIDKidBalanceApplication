@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import com.jjoe64.graphview.series.OnDataPointTapListener
 import it.polito.ic2020.did_kidbalanceapplication.database.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.coroutines.Dispatchers
@@ -64,7 +65,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 //fai qui le operazioni sulla GUI
                 if(x.size>0){
                     //adapter.setData(x.reversed(),date.reversed())
-                    adapt(x,date, adapter)
+                    adapt(x, date, adapter)
                     val bmi = (x.last()/(height*height)).toFloat()
                     BMI2.text = bmi.toString()
                 } else {
@@ -127,6 +128,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
                 if (x.size>0) BMI.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
                 else BMI.text = "No Weights for "+namePressed
+
+                //s.setOnDataPointTapListener(OnDataPointTapListener { series, dataPoint -> Toast.makeText(activity, "Series1: On Data Point clicked: $dataPoint", Toast.LENGTH_SHORT).show() })
             }
 
             println("Scritto ultimo peso")
@@ -150,7 +153,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         nome_b.text=namePressed
     }
     private fun adapt(x: MutableList<Float>, date: MutableList<Long>, adapter: ChildWeightsAdapter){
-        adapter.setData(x.reversed(),date.reversed())
+        adapter.setData(x.reversed(), date.reversed())
     }
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {
 

@@ -51,11 +51,11 @@
         <EditText
             android:id="@+id/pin"
             android:layout_height="wrap_content"
-            android:layout_width="250dp"
             style="@style/FormStyle"
             android:hint="@string/hint_login_pin"
             android:inputType="numberPassword"
             android:password="false"
+            app:layout_constraintWidth_percent="0.6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,19 +82,19 @@
         <TextView
             android:id="@+id/pin_forgot"
             style="@style/MediumStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="@string/pin_forgotten"
+            android:textSize="18sp"
             android:textColor="@color/primary_color"
             android:textStyle="bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login" />
+            app:layout_constraintTop_toBottomOf="@+id/login"
+            app:layout_constraintWidth_percent="0.85"/>
 
         <Button
             android:id="@+id/reset_button"

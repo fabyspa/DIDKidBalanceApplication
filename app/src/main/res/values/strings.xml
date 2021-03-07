@@ -53,7 +53,9 @@
 
     <!-- grafico -->
     <string name="header_graph">Child\'s weight trend</string>
-    <string name="header_home_g">Children</string>
+    <string name="header_home_g">Select a child to see the data about their weight \n or</string>
+    <string name="nuovo_b">Create a new child profile</string>
+    <string name="welcome_header">Welcome back, parent!</string>
     <string name="intro_pesate">Latest weights</string>
     <string name="no_pesate">There is no data about </string>
     <string name="BMI_intro">Latest BMI value</string>

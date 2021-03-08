@@ -62,6 +62,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             height = db.childDataBaseDao().getHeightById(idPressed).last()
             height /= 100
             println(x)
+            val picture = db.childDataBaseDao().getPicture(namePressed)
             while (x.size > 30) {
                 x.removeFirst()
                 date.removeFirst()
@@ -77,6 +78,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     intro_pesate.text = no_pesate + " " +namePressed
                     cardViewBMI.visibility= View.GONE
                 }
+                id_b.setImageResource(picture)
             }
 
 

@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -47,6 +48,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         val altezza= resources.getString(R.string.height)
 
+        edit_altezza.setOnClickListener {
+            val idP = bundleOf("id" to idPressed)
+            findNavController().navigate(R.id.action_GGraphFragment2_to_editHeightFragment, idP)
+        }
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
             var date: MutableList<Long>
@@ -60,9 +65,6 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             while (x.size > 30) {
                 x.removeFirst()
                 date.removeFirst()
-            }
-            edit_altezza.setOnClickListener {
-                Toast.makeText(context, "Serve NewFragment", Toast.LENGTH_LONG).show()
             }
             withContext(Dispatchers.Main) {
                 //fai qui le operazioni sulla GUI

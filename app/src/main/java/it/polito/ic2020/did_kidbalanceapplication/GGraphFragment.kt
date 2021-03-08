@@ -117,11 +117,8 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 s.setDrawDataPoints(true)
                 s.setDataPointsRadius(20.0F)
 
-                //graph.viewport.isScalable = true
-                //graph.viewport.isScrollable = true
-                //graph.viewport.isXAxisBoundsManual = true
-                //graph.viewport.scrollToStart()
-                //graph.viewport.setScalableY(true)
+                graph.viewport.isXAxisBoundsManual = true
+                graph.viewport.setMaxX(30.toDouble())
 
 
                 graph.addSeries(s)

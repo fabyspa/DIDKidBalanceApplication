@@ -1,34 +1,25 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.os.Debug
-import android.os.PersistableBundle
-import android.util.AttributeSet
-import android.util.Log
-import android.util.Log.i
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import it.polito.ic2020.did_kidbalanceapplication.BHome.BHomeFragment
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeight
+import androidx.navigation.fragment.NavHostFragment
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
-import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.databinding.ActivityChildBinding
 import kotlinx.android.synthetic.main.activity_child.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class ChildActivity : AppCompatActivity(){
 
 private lateinit var binding:ActivityChildBinding
+ var id:Int = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        val bhome: BHomeFragment = BHomeFragment().newInstance()
@@ -49,17 +40,23 @@ private lateinit var binding:ActivityChildBinding
         alert.setTitle(alert_intro)
         alert.setMessage(alert_text)
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-        alert.setPositiveButton(yes_text){
-            dialog, witch -> witch
+        alert.setPositiveButton(yes_text){ dialog, witch -> witch
         }
-        alert.setNegativeButton(no_text){
-            dialog, which -> onBackPressed()
+        alert.setNegativeButton(no_text){ dialog, which -> onBackPressed()
         }
         alert.show()
 
         //nome del profilo
         if(extra!=null) {
             val childName = extra.get("name").toString()
+            id =extra.get("id").toString().toInt()
+            val bundle = Bundle()
+            val id= id
+            ChangePictureFragment.newInstance(id)
+//            bundle.putInt("id", id)
+//            val fragInfo : Fragment = ChangePictureFragment.newInstance()!!
+//            fragInfo.arguments = bundle
+//            println("FragInfo"+ fragInfo.arguments)
             binding.userId.text = childName
             //immagine del profilo
             lifecycleScope.launch(Dispatchers.IO){
@@ -70,16 +67,27 @@ private lateinit var binding:ActivityChildBinding
                 println("immagine: $img")
             }
 
-
-
         }
         else{
             binding.userId.text= "notFound"
         }
 
+        binding.userPicture.setOnClickListener {
+            val host: NavHostFragment? =
+                    supportFragmentManager
+                            .findFragmentById(R.id.main_activity_container)
+            as NavHostFragment?
+            val navController =host?.navController
+            navController?.navigate(R.id.action_BHomeFragment2_to_changePictureFragment)
+
+        }
+
 
 
     }
+
+
+
 
 
 

@@ -14,5 +14,5 @@ data class ChildWeight (
         val surname: String,
         var altezza: Double,
         val gender: String,
-        val picture: Int
+        var picture: Int
 )

@@ -34,16 +34,6 @@ class ChildWeightViewModel(application: Application): AndroidViewModel(applicati
             repository.addGameWeight(gameWeight)
         }
     }
-    fun getImgProfile(child: String): Int {
-       var img:Int =0
-         viewModelScope.launch (Dispatchers.IO){
-             withContext(Dispatchers.Main) {
-                 img= repository.getImgProfile(child)
-                 println("viewModel: $img")
-             }
 
-        }
-        return img
-    }
 
 }

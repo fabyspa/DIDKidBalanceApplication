@@ -52,7 +52,7 @@ class BHomeFragment : Fragment() {
          view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)
         }
 
-        // This callback will only be called when MyFragment is at least Started.
+
         // This callback will only be called when MyFragment is at least Started.
         val callback: OnBackPressedCallback =
                 object : OnBackPressedCallback(true /* enabled by default */) {

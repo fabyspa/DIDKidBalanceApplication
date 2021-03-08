@@ -42,7 +42,7 @@ class AddChild : Fragment() {
 
     lateinit var binding: FragmentAddChildBinding
     private lateinit var childWeightViewModel:ChildWeightViewModel
-    val xmlSerializer: XmlSerializer = Xml.newSerializer()
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -189,11 +189,10 @@ class AddChild : Fragment() {
         if(inputCheck(firstName,surname,height,genderCode)){
             if(genderCode==R.id.female_rb) {
                 gender= 'F'.toString()
-            picture=R.drawable.woman
+                picture=R.drawable.woman
             }
             else{
                 gender= 'M'.toString()
-
                 picture=R.drawable.kid
             }
             val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender,picture)
@@ -216,32 +215,7 @@ class AddChild : Fragment() {
     }
 
 
-    private fun createXMLFile(name: String, height: Int, gender: Boolean) {
-            val xmlFile = "$name"+"Data"
-            Log.i("AddChild", xmlFile)
-            val fileos: FileOutputStream = requireContext().openFileOutput(xmlFile, Context.MODE_PRIVATE)
-            val writer = StringWriter()
-            xmlSerializer.setOutput(writer)
-            xmlSerializer.startDocument("UTF-8", true)
-            xmlSerializer.startTag(null, name + "_Data")
-            xmlSerializer.startTag(null, "childName")
-            xmlSerializer.text(name)
-            xmlSerializer.endTag(null, "childName")
-            xmlSerializer.startTag(null, "height")
-            xmlSerializer.text(height.toString())
-            xmlSerializer.endTag(null, "height")
-            xmlSerializer.startTag(null, "gender")
-            xmlSerializer.text(gender.toString())
-            xmlSerializer.endTag(null, "gender")
-            xmlSerializer.endTag(null, name + "_Data")
-            xmlSerializer.endDocument()
-            xmlSerializer.flush()
-            val dataWrite: String = writer.toString()
-            Log.i("AddChild", dataWrite)
-            fileos.write(dataWrite.toByteArray())
-            fileos.close()
 
-        }
 
 
 }

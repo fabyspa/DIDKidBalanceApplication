@@ -30,8 +30,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class ChangePictureFragment : Fragment() {
     private lateinit var binding: FragmentChangePictureBinding
-    private var param1: Any? = -1
-    private var param2: String? = null
     companion object {
         @JvmStatic
 
@@ -40,16 +38,13 @@ class ChangePictureFragment : Fragment() {
             val args = Bundle()
             args.putInt("id", id)
             fragment.arguments = args
-            println("CPF wefqwefgqrgqergqergqergqerg " + args)
             return fragment
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("onCreateeeee")
         arguments?.let {
-            param1 = it.get("///////////////////////////////" + id)
-            println(param1)
+
         }
     }
 
@@ -61,13 +56,17 @@ class ChangePictureFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentChangePictureBinding>(inflater, R.layout.fragment_change_picture, container, false)
         binding.changeProf.setOnClickListener {
             println("Click")
-            Toast.makeText(this.activity, "Click!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.activity, "Image updated!", Toast.LENGTH_SHORT).show()
             lifecycleScope.launch(Dispatchers.IO) {
                 val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext())
-                if (param1 != -1) {
-                    println("ChangePictureFragment$param1")
-                    val child = db.childDataBaseDao().getAllChildData(param1.toString().toInt())
+                //if (param1 != -1) {
+                if(arguments?.getInt("id")!=null){
+                    val id=arguments?.getInt("id")
+                    println("argument: "+id)
+                    //println("ChangePictureFragment$param1")
+                    val child = db.childDataBaseDao().getAllChildData(requireArguments().getInt("id").toInt())
                     child.picture = binding.changeProf.id
+                    println(binding.changeProf.id)
                 } else {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show()
@@ -79,10 +78,6 @@ class ChangePictureFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        println("ChangePictureAttached")
-    }
 
 
 

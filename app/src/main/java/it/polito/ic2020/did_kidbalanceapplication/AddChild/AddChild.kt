@@ -116,6 +116,7 @@ class AddChild : Fragment() {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             manager.bindProcessToNetwork(network)
                             Log.d("esp", "network connected")
+                            /*
                             lifecycleScope.launch(Dispatchers.IO) {
                                 val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
                                 // Log.i("Home",str)
@@ -123,6 +124,8 @@ class AddChild : Fragment() {
                                     //textView2.text = str;
                                 }
                             }
+
+                             */
 
                         } else {
                             ConnectivityManager.setProcessDefaultNetwork(network)

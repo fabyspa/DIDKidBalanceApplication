@@ -61,6 +61,9 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 x.removeFirst()
                 date.removeFirst()
             }
+            edit_altezza.setOnClickListener {
+                Toast.makeText(context, "Serve NewFragment", Toast.LENGTH_LONG).show()
+            }
             withContext(Dispatchers.Main) {
                 //fai qui le operazioni sulla GUI
                 if(x.size>0){

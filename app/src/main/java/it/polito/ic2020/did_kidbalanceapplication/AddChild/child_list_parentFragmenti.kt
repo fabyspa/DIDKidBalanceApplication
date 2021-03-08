@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.childViewParentAdapter
+import kotlinx.android.synthetic.main.fragment_child_list_parent.*
 import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 
 
@@ -25,6 +26,9 @@ class child_list_parentFragment : Fragment()   {
         // Inflate the layout for this fragment
        val view= inflater.inflate(R.layout.fragment_child_list_parent, container, false)
 
+        view.nuovo_b.setOnClickListener {
+            findNavController().navigate(R.id.action_child_list_parentFragment_to_addChild2)
+        }
         //Recyclerview
         val adapter= childViewParentAdapter()
         val recyclerView= view.rv_parent

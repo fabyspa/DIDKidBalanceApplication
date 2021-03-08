@@ -72,5 +72,8 @@
         <action
             android:id="@+id/action_child_list_parentFragment_to_GGraphFragment2"
             app:destination="@id/GGraphFragment2" />
+        <action
+            android:id="@+id/action_child_list_parentFragment_to_addChild2"
+            app:destination="@id/addChild2" />
     </fragment>
 </navigation>

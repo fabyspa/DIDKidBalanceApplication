@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import com.jjoe64.graphview.series.OnDataPointTapListener
 import it.polito.ic2020.did_kidbalanceapplication.database.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +48,10 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         val altezza= resources.getString(R.string.height)
 
+        edit_altezza.setOnClickListener {
+            val idP = bundleOf("id" to idPressed)
+            findNavController().navigate(R.id.action_GGraphFragment2_to_editHeightFragment, idP)
+        }
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
             var date: MutableList<Long>
@@ -64,7 +70,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 //fai qui le operazioni sulla GUI
                 if(x.size>0){
                     //adapter.setData(x.reversed(),date.reversed())
-                    adapt(x,date, adapter)
+                    adapt(x, date, adapter)
                     val bmi = (x.last()/(height*height)).toFloat()
                     BMI2.text = bmi.toString()
                 } else {
@@ -116,17 +122,16 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 s.setDrawDataPoints(true)
                 s.setDataPointsRadius(20.0F)
 
-                //graph.viewport.isScalable = true
-                //graph.viewport.isScrollable = true
-                //graph.viewport.isXAxisBoundsManual = true
-                //graph.viewport.scrollToStart()
-                //graph.viewport.setScalableY(true)
+                graph.viewport.isXAxisBoundsManual = true
+                graph.viewport.setMaxX(30.toDouble())
 
 
                 graph.addSeries(s)
 
                 if (x.size>0) BMI.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
                 else BMI.text = "No Weights for "+namePressed
+
+                //s.setOnDataPointTapListener(OnDataPointTapListener { series, dataPoint -> Toast.makeText(activity, "Series1: On Data Point clicked: $dataPoint", Toast.LENGTH_SHORT).show() })
             }
 
             println("Scritto ultimo peso")
@@ -150,7 +155,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         nome_b.text=namePressed
     }
     private fun adapt(x: MutableList<Float>, date: MutableList<Long>, adapter: ChildWeightsAdapter){
-        adapter.setData(x.reversed(),date.reversed())
+        adapter.setData(x.reversed(), date.reversed())
     }
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {
 

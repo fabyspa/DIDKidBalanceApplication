@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,19 +13,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.childViewParentAdapter
+import kotlinx.android.synthetic.main.fragment_child_list_parent.*
 import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
+import java.io.File
 
 
 class child_list_parentFragment : Fragment()   {
    lateinit var childWeightViewModel: ChildWeightViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-       val view= inflater.inflate(R.layout.fragment_child_list_parent, container, false)
+        val GName = File(context?.filesDir?.absolutePath+"/name.txt").readText()
+        println(GName)
+        val view= inflater.inflate(R.layout.fragment_child_list_parent, container, false)
+        view.welcome_header.text = """${getString(R.string.welcome_header)} $GName!"""
 
+        view.nuovo_b.setOnClickListener {
+            findNavController().navigate(R.id.action_child_list_parentFragment_to_addChild2)
+        }
         //Recyclerview
         val adapter= childViewParentAdapter()
         val recyclerView= view.rv_parent

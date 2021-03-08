@@ -30,6 +30,9 @@ interface ChildDatabaseDao {
     @Query("SELECT altezza FROM daily_weight_child_table WHERE id=:id")
     fun getHeightById(id: Int):MutableList<Double>
 
+    @Query("SELECT * FROM daily_weight_child_table WHERE id=:id")
+    fun getAllChildData(id: Int):ChildWeight
+
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertGameWeight(gameWeight: GameWeight)
 

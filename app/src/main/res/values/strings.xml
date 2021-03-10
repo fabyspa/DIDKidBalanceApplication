@@ -53,7 +53,7 @@
 
     <!-- grafico -->
     <string name="header_graph">Child\'s weight trend</string>
-    <string name="header_home_g">Select a child to see the data about their weight \n or</string>
+    <string name="header_home_g">Select a child to see the data about their weight</string>
     <string name="nuovo_b"><u>create a new child profile</u></string>
     <string name="welcome_header">Welcome back, </string>
     <string name="intro_pesate">Latest weights</string>
@@ -65,6 +65,9 @@
     <string name="height">Height:</string>
     <string name="edit_height"><u>Edit height</u></string>
     <string name="intro_graph">The graph shows the weight data recorded over time</string>
+    <string name="new_height_intro">Insert child\'s new height</string>
+    <string name="new_height_hint">New height (in cm)</string>
+    <string name="confirm_text">Confirm</string>
 
 
     <!-- gioco -->

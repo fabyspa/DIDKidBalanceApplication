@@ -54,7 +54,7 @@
 
     <!-- grafico -->
     <string name="header_graph">Andamento peso del bambino</string>
-    <string name="header_home_g">Seleziona un bambino per vederne i dati sul peso \n oppure</string>
+    <string name="header_home_g">Seleziona un bambino per vederne i dati sul peso</string>
     <string name="nuovo_b"><u>crea un nuovo profilo bambino</u></string>
     <string name="welcome_header">Bentornato, </string>
     <string name="intro_pesate">Ultime pesate</string>
@@ -66,6 +66,10 @@
     <string name="height">Altezza:</string>
     <string name="edit_height"><u>Modifica altezza</u></string>
     <string name="intro_graph">Nel grafico sono riportati i dati sul peso registrati nel tempo</string>
+    <string name="new_height_intro">Inserisci la nuova altezza del bambino</string>
+    <string name="new_height_hint">Nuova altezza (in cm)</string>
+    <string name="confirm_text">Conferma</string>
+
 
 
     <!-- gioco -->

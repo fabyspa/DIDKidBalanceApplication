@@ -2,6 +2,7 @@ package it.polito.ic2020.did_kidbalanceapplication
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import kotlinx.android.synthetic.main.fragment_edit_height.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EditHeightFragment : Fragment(R.layout.fragment_edit_height){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -19,6 +21,13 @@ class EditHeightFragment : Fragment(R.layout.fragment_edit_height){
         val b = this.arguments
         val idPressed = b?.get("id").toString().toInt()
         println(idPressed)
+        lifecycleScope.launch(Dispatchers.IO){
+            val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+            val bambinone = db.childDataBaseDao().getAllChildData(idPressed)
+            withContext(Dispatchers.Main) {
+                editHeight.text.append((bambinone.altezza/10).toString())
+            }
+        }
 
         setHeight.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO){
@@ -35,7 +44,7 @@ class EditHeightFragment : Fragment(R.layout.fragment_edit_height){
                 db.childDataBaseDao().update(bambinone)
 
                 bambinone = db.childDataBaseDao().getAllChildData(idPressed)
-                println("----!new bimbo!----")
+                println("----!new bimbo ALTO!----")
                 println(bambinone)
                 hideKeyboard()
                 findNavController().navigateUp()

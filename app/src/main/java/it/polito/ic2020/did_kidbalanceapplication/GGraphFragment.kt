@@ -137,7 +137,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
             }
 
             println("Scritto ultimo peso")
-            Altezza.text = altezza + " " + height.toString() + "m"
+            Altezza.text = altezza + " " + (height*100).toInt().toString() + "cm"
 
             //SendEmail
 

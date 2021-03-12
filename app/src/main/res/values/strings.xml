@@ -13,6 +13,8 @@
     <string name="ic_uranus">Uranus icon</string>
     <string name="ic_neptune">Neptune icon</string>
     <string name="NomeApp">KidBalance</string>
+    <string name="new_img_b_intro">Select a new image for your profile!</string>
+
 
     <string name="parent_acc"><u>Login into parent\'s profile</u></string>
 
@@ -65,7 +67,7 @@
     <string name="height">Height:</string>
     <string name="edit_height"><u>Edit height</u></string>
     <string name="intro_graph">The graph shows the weight data recorded over time</string>
-    <string name="new_height_intro">Insert child\'s new height</string>
+    <string name="new_height_intro">Insert child\'s new height (in cm)</string>
     <string name="new_height_hint">New height (in cm)</string>
     <string name="confirm_text">Confirm</string>
 

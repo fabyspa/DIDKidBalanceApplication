@@ -14,6 +14,8 @@
     <string name="ic_uranus">icona Urano</string>
     <string name="ic_neptune">icona Nettuno</string>
     <string name="NomeApp">KidBalance</string>
+    <string name="new_img_b_intro">Seleziona una nuova immagine per il tuo profilo!</string>
+
 
     <string name="parent_acc"><u>Accedi al profilo genitore</u></string>
 
@@ -66,7 +68,7 @@
     <string name="height">Altezza:</string>
     <string name="edit_height"><u>Modifica altezza</u></string>
     <string name="intro_graph">Nel grafico sono riportati i dati sul peso registrati nel tempo</string>
-    <string name="new_height_intro">Inserisci la nuova altezza del bambino</string>
+    <string name="new_height_intro">Inserisci la nuova altezza del bambino (in cm)</string>
     <string name="new_height_hint">Nuova altezza (in cm)</string>
     <string name="confirm_text">Conferma</string>
 

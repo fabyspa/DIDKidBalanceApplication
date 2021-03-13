@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="0dp"
     app:cardCornerRadius="50dp"
@@ -19,11 +19,14 @@
 
         <ImageView
             android:id="@+id/foto"
-            android:layout_width="102dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:foregroundGravity="left"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/ic_f" />
 
         <TextView
             android:id="@+id/nome"
@@ -33,7 +36,7 @@
             android:layout_gravity="center"
             android:foregroundGravity="center"
             android:gravity="center"
-            android:text="name" />
+            android:text="Nome bambino" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

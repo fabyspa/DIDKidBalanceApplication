@@ -144,6 +144,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
+                android:layout_marginRight="12dp"
                 android:backgroundTint="#00FFFFFF"
                 android:backgroundTintMode="add"></androidx.appcompat.widget.AppCompatButton>
 

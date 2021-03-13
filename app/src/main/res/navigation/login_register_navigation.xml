@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_register_navigation"
-    app:startDestination="@id/GHomeFragment3">
+    app:startDestination="@id/logOrNot">
 
     <fragment
         android:id="@+id/GRegister"
@@ -44,5 +44,9 @@
             app:destination="@id/navigation_login" />
     </fragment>
     <include app:graph="@navigation/navigation_login" />
+    <fragment
+        android:id="@+id/logOrNot"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Login.LogOrNot"
+        android:label="LogOrNot" />
     />
 </navigation>

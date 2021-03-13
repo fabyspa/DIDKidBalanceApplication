@@ -74,6 +74,13 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                     adapt(x, date, adapter)
                     val bmi = (x.last()/(height*height)).toFloat()
                     BMI2.text = bmi.toString()
+                    when(bmi){
+                        in 0F..17F -> colorBmi.setBackgroundColor(Color.RED)
+                        in 17F..18.5F -> colorBmi.setBackgroundColor(Color.YELLOW)
+                        in 18.5F..24.9F -> colorBmi.setBackgroundColor(Color.GREEN)
+                        in 25F..29.9F -> colorBmi.setBackgroundColor(Color.YELLOW)
+                        else -> colorBmi.setBackgroundColor(Color.RED)
+                    }
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
                     cardViewBMI.visibility= View.GONE

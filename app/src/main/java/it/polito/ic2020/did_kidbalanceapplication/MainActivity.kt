@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -28,9 +29,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+/*
         val navHostFragment = (supportFragmentManager.findFragmentById(R.id.main_activity_container) as NavHostFragment)
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.login_register_navigation)
+
         val filename = "name.txt"
         val file1 = File(this.filesDir?.absolutePath, filename)
         val file2= File(this.filesDir?.absolutePath,"answer.txt")
@@ -39,12 +42,13 @@ class MainActivity : AppCompatActivity() {
         println("file answer exists: "+ file2.exists())
         println("file size: "+file2.length().toInt())
         if(nameFileExists&&ansFileExists){
-            graph.startDestination = R.id.GHomeFragment3
+            //graph.startDestination = R.id.GHomeFragment3
         } else {
-            graph.startDestination = R.id.firstPage
+            //graph.startDestination = R.id.firstPage
         }
-        navHostFragment.navController.graph = graph
+        //navHostFragment.navController.graph = graph
 
+ */
     }
 
     /*

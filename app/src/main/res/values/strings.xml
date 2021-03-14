@@ -45,6 +45,9 @@
     <string name="reset_security_question">Reset security question</string>
     <string name="wrong_pin">Wrong pin</string>
     <string name="wrong_count_pin">Insert 4 numbers</string>
+    <string name="wrong_name">The answer is not right</string>
+    <string name="pin_check">Check pin, seems to be wrong</string>
+    <string name="unsw_question">You forgot to answer the question</string>
 
 
     <!-- create account -->
@@ -71,6 +74,13 @@
     <string name="new_height_intro">Insert child\'s new height (in cm)</string>
     <string name="new_height_hint">New height (in cm)</string>
     <string name="confirm_text">Confirm</string>
+    <string name="mail_sbj">Latest data about </string>
+
+    <string name="bmi_red_over">The BMI value is high and it denotes a state of overweight</string>
+    <string name="bmi_red_under">The BMI value is low and it denotes a state of underweight</string>
+    <string name="bmi_yellow_over">The BMI value is slightly high and it denotes a light overweight</string>
+    <string name="bmi_yellow_under">The BMI value is slightly low and it denotes a light underweight</string>
+    <string name="bmi_green">The BMI value is optimal and it denotes the ideal weight</string>
 
 
     <!-- gioco -->

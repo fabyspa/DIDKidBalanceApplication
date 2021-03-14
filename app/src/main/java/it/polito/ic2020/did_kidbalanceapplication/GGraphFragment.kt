@@ -81,6 +81,15 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                         in 25F..29.9F -> colorBmi.setBackgroundColor(Color.YELLOW)
                         else -> colorBmi.setBackgroundColor(Color.RED)
                     }
+                    colorBmi.setOnClickListener{
+                        when(bmi){
+                            in 0F..17F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_red_under) ,Toast.LENGTH_LONG ).show()
+                            in 17F..18.5F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_yellow_under) ,Toast.LENGTH_LONG ).show()
+                            in 18.5F..24.9F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_green) ,Toast.LENGTH_LONG ).show()
+                            in 25F..29.9F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_yellow_over) ,Toast.LENGTH_LONG ).show()
+                            else -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_red_over), Toast.LENGTH_LONG ).show()
+                        }
+                    }
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
                     cardViewBMI.visibility= View.GONE
@@ -150,7 +159,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
             mailToBtn.setOnClickListener {
                 sendMail(
-                        "Weight of " + namePressed,
+                        resources.getString(R.string.mail_sbj) + " " + namePressed,
                         x.toString(),
                         "",
                         ""

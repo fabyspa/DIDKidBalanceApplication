@@ -47,6 +47,9 @@
     <string name="reset_security_question">Reimposta la domanda di sicurezza</string>
     <string name="wrong_pin">Pin errato</string>
     <string name="wrong_count_pin">Inserire 4 numeri</string>
+    <string name="wrong_name">La risposta non è corretta</string>
+    <string name="pin_check">Controlla il pin, sembra essere errato</string>
+    <string name="unsw_question">Hai dimenticato di rispondere alla domanda</string>
 
 
     <!-- create account -->
@@ -73,8 +76,13 @@
     <string name="new_height_intro">Inserisci la nuova altezza del bambino (in cm)</string>
     <string name="new_height_hint">Nuova altezza (in cm)</string>
     <string name="confirm_text">Conferma</string>
+    <string name="mail_sbj">Ultime informazioni su </string>
 
-
+    <string name="bmi_red_over">Il valore di BMI è alto e indica uno stato di sovrappeso</string>
+    <string name="bmi_red_under">Il valore di BMI è alto e indica uno stato di sottopeso</string>
+    <string name="bmi_yellow_over">Il valore di BMI è lievemente alto e indica uno stato di leggero sovrappeso</string>
+    <string name="bmi_yellow_under">Il valore di BMI è lievemente basso e indica uno stato di leggero sottopeso</string>
+    <string name="bmi_green">Il valore BMI è ottimale e indica un peso ideale</string>
 
     <!-- gioco -->
     <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>

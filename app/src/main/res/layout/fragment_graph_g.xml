@@ -141,12 +141,18 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/colorBmi"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:layout_marginRight="12dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:elevation="24dp"
+                android:layout_gravity="right|bottom"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/roundstyle"
                 android:backgroundTint="#00FFFFFF"
-                android:backgroundTintMode="add"></androidx.appcompat.widget.AppCompatButton>
+                android:backgroundTintMode="add"
+                android:clickable="true"
+                />
 
             <TextView
                 android:id="@+id/intro_BMI"

@@ -39,7 +39,7 @@ class RestorePinFragment : Fragment(R.layout.fragment_restore_pin){
                 println(file.exists())
                 findNavController().navigate(R.id.action_restorePinFragment_to_logGFragment)
             } else {
-                answer.error="wrong answer, try again"
+                answer.error= resources.getString(R.string.wrong_name)
             }
         }
     }

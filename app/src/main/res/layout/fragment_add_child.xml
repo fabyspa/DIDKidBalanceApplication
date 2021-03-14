@@ -73,7 +73,7 @@
             android:id="@+id/et_altezza2"
             style="@style/FormStyle"
             android:hint="@string/child_birthday"
-            android:inputType="date"
+            android:inputType="date|datetime"
             app:layout_constraintBottom_toTopOf="@+id/et_altezza"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

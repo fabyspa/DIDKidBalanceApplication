@@ -27,6 +27,7 @@
     <string name="child_height">Child\'s height (in cm)</string>
     <string name="child_sex_f">Female</string>
     <string name="child_sex_m">Male</string>
+    <string name="added_child">Successfully added!</string>
 
     <!-- pin -->
     <string name="hint_login_pin">Insert login pin</string>

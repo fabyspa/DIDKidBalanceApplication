@@ -201,7 +201,7 @@ class AddChild : Fragment() {
             childWeightViewModel.addChildWeight(user)
             //Navigate back
             findNavController().navigate((R.id.action_addChild2_to_homeFragment))
-            Toast.makeText(requireContext(), "Successfully added!",Toast.LENGTH_LONG ).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.added_child),Toast.LENGTH_LONG ).show()
         }else
         {
             Toast.makeText(requireContext(), "Please fill out all fields",Toast.LENGTH_LONG ).show()

@@ -28,6 +28,8 @@
     <string name="child_height">Altezza del bambino (in cm)</string>
     <string name="child_sex_f">Femmina</string>
     <string name="child_sex_m">Maschio</string>
+    <string name="added_child">Aggiunto correttamente!</string>
+
 
     <!-- pin -->
     <string name="hint_login_pin">Inserisci il pin di login</string>

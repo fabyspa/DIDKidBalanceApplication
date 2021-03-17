@@ -195,7 +195,8 @@ INSERIMENTO PESO SPOSTATO NELLA SCHERMATA SUCCESSIVA
                 object : OnBackPressedCallback(true /* enabled by default */) {
                     override fun handleOnBackPressed() {
                         // Handle the back button event
-                        findNavController().navigate(R.id.BHomeFragment2)
+                        //findNavController().navigate(R.id.BHomeFragment2)
+                        activity?.finish()
                     }
                 }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

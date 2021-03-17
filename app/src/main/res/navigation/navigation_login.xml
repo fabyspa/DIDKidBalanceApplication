@@ -33,7 +33,7 @@
     <include app:graph="@navigation/navigation_child" />
     <fragment
         android:id="@+id/GHomeFragment2"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.GHomeFragment"
         android:label="GHomeFragment" >
         <action
             android:id="@+id/action_GHomeFragment2_to_GGraphFragment2"
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/GGraphFragment2"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GGraphFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.GGraphFragment"
         android:label="GGraphFragment" >
         <action
             android:id="@+id/action_GGraphFragment2_to_editHeightFragment"
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/logGFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.logGFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.logGFragment"
         android:label="logGFragment" >
         <action
             android:id="@+id/action_logGFragment_to_GHomeFragment2"
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/restorePinFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.RestorePinFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.RestorePinFragment"
         android:label="RestorePinFragment" >
         <action
             android:id="@+id/action_restorePinFragment_to_logGFragment"
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/child_list_parentFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.child_list_parentFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.child_list_parentFragment"
         android:label="child_list_parentFragment" >
         <action
             android:id="@+id/action_child_list_parentFragment_to_GGraphFragment2"
@@ -82,6 +82,6 @@
     </fragment>
     <fragment
         android:id="@+id/editHeightFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.EditHeightFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.EditHeightFragment"
         android:label="EditHeightFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package it.polito.ic2020.did_kidbalanceapplication.AddChild
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.childViewParentAdapter
-import kotlinx.android.synthetic.main.fragment_child_list_parent.*
 import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import java.io.File
 

@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/GHomeFragment3"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.GHomeFragment"
         android:label="GHomeFragment"
         tools:layout="@layout/fragment_g_home" >
         <action

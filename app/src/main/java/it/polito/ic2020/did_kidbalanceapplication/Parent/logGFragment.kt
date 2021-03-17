@@ -1,21 +1,16 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLogGBinding
-import kotlinx.android.synthetic.main.activity_main_old.*
 import kotlinx.android.synthetic.main.fragment_log_g.*
 import java.io.BufferedOutputStream
 import java.io.DataOutputStream

@@ -1,4 +1,4 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.jjoe64.graphview.series.OnDataPointTapListener
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
 import kotlinx.coroutines.Dispatchers

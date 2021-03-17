@@ -1,4 +1,4 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.app.Activity
 import android.content.Context
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
 import java.io.DataInputStream
 import java.io.File
@@ -81,10 +82,10 @@ class GHomeFragment : Fragment() {
         }
         binding.pinForgot.setOnClickListener {
             println("pin dimenticato")
-            if(findNavController().currentDestination?.id==R.id.GHomeFragment3)
+            if(findNavController().currentDestination?.id== R.id.GHomeFragment3)
             {
                 findNavController().navigate(R.id.action_GHomeFragment3_to_navigation_login).also {
-                    graph.startDestination=R.id.restorePinFragment
+                    graph.startDestination= R.id.restorePinFragment
                     navHostFragment.navController.graph = graph
                 }
 

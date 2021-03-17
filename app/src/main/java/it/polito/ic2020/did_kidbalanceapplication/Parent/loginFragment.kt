@@ -1,4 +1,4 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class loginFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class loginFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
             inflater,
-            R.layout.fragment_login,
+                R.layout.fragment_login,
             container,
             false
         )

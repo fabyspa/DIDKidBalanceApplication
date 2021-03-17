@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.net.ConnectivityManager
@@ -16,6 +17,7 @@ import android.util.Xml
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
@@ -24,6 +26,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.MainActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeight
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
@@ -36,6 +39,7 @@ import org.xmlpull.v1.XmlSerializer
 import java.io.*
 import java.net.URL
 import java.nio.charset.Charset
+import java.util.*
 
 
 class AddChild : Fragment() {
@@ -62,8 +66,18 @@ class AddChild : Fragment() {
         )
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
-
-
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
+        binding.etAltezza2.setOnClickListener{
+            val dpd = context?.let { it1 ->
+                DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view: DatePicker, year: Int, month, dayOfMonth ->
+                    et_altezza2.setText(""+dayOfMonth+"/"+month+"/"+year+"")
+                }, year, month, dayOfMonth)
+            }
+            dpd?.show()
+        }
 
         binding.saveName.setOnClickListener {
             Log.i("AddChild", "schiacciato")

@@ -14,10 +14,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentGHomeBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_g_home.*
-import okio.Utf8
-import java.io.BufferedReader
 import java.io.DataInputStream
 import java.io.File
 

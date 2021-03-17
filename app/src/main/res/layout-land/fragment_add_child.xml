@@ -65,17 +65,21 @@
             app:layout_constraintTop_toBottomOf="@+id/et_name"
             app:layout_constraintWidth_percent="0.4" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_altezza2"
             style="@style/FormStyle"
             android:hint="@string/child_birthday"
             android:inputType="date"
+            android:paddingLeft="6dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/et_name2"
             app:layout_constraintTop_toBottomOf="@+id/et_surname"
-            app:layout_constraintWidth_percent="0.4"/>
+            app:layout_constraintWidth_percent="0.4" />
 
         <EditText
             android:id="@+id/et_altezza"

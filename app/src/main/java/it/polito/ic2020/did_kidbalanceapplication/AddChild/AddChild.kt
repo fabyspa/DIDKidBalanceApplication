@@ -73,7 +73,7 @@ class AddChild : Fragment() {
         binding.etAltezza2.setOnClickListener{
             val dpd = context?.let { it1 ->
                 DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view: DatePicker, year: Int, month, dayOfMonth ->
-                    et_altezza2.setText(""+dayOfMonth+"/"+month+"/"+year+"")
+                    et_compleanno.setText(""+ dayOfMonth +"/"+month+"/"+year+"")
                 }, year, month, dayOfMonth)
             }
             dpd?.show()

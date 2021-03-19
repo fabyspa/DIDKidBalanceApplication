@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.net.ConnectivityManager
@@ -16,6 +17,7 @@ import android.util.Xml
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
@@ -24,6 +26,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.MainActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeight
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
@@ -36,13 +39,14 @@ import org.xmlpull.v1.XmlSerializer
 import java.io.*
 import java.net.URL
 import java.nio.charset.Charset
+import java.util.*
 
 
 class AddChild : Fragment() {
 
     lateinit var binding: FragmentAddChildBinding
     private lateinit var childWeightViewModel:ChildWeightViewModel
-    val xmlSerializer: XmlSerializer = Xml.newSerializer()
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -62,8 +66,18 @@ class AddChild : Fragment() {
         )
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
 
-
-
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
+        binding.etAltezza2.setOnClickListener{
+            val dpd = context?.let { it1 ->
+                DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view: DatePicker, year: Int, month, dayOfMonth ->
+                    et_compleanno.setText(""+ dayOfMonth +"/"+month+"/"+year+"")
+                }, year, month, dayOfMonth)
+            }
+            dpd?.show()
+        }
 
         binding.saveName.setOnClickListener {
             Log.i("AddChild", "schiacciato")
@@ -116,6 +130,7 @@ class AddChild : Fragment() {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             manager.bindProcessToNetwork(network)
                             Log.d("esp", "network connected")
+                            /*
                             lifecycleScope.launch(Dispatchers.IO) {
                                 val str = URL("http://192.168.4.1/").readText(Charset.forName("UTF-8"))
                                 // Log.i("Home",str)
@@ -123,6 +138,8 @@ class AddChild : Fragment() {
                                     //textView2.text = str;
                                 }
                             }
+
+                             */
 
                         } else {
                             ConnectivityManager.setProcessDefaultNetwork(network)
@@ -186,12 +203,11 @@ class AddChild : Fragment() {
         if(inputCheck(firstName,surname,height,genderCode)){
             if(genderCode==R.id.female_rb) {
                 gender= 'F'.toString()
-            picture=R.drawable.woman
+                picture=R.drawable.ic_f
             }
             else{
                 gender= 'M'.toString()
-
-                picture=R.drawable.kid
+                picture=R.drawable.ic_m
             }
             val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender,picture)
 
@@ -199,7 +215,7 @@ class AddChild : Fragment() {
             childWeightViewModel.addChildWeight(user)
             //Navigate back
             findNavController().navigate((R.id.action_addChild2_to_homeFragment))
-            Toast.makeText(requireContext(), "Successfully added!",Toast.LENGTH_LONG ).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.added_child),Toast.LENGTH_LONG ).show()
         }else
         {
             Toast.makeText(requireContext(), "Please fill out all fields",Toast.LENGTH_LONG ).show()
@@ -213,32 +229,7 @@ class AddChild : Fragment() {
     }
 
 
-    private fun createXMLFile(name: String, height: Int, gender: Boolean) {
-            val xmlFile = "$name"+"Data"
-            Log.i("AddChild", xmlFile)
-            val fileos: FileOutputStream = requireContext().openFileOutput(xmlFile, Context.MODE_PRIVATE)
-            val writer = StringWriter()
-            xmlSerializer.setOutput(writer)
-            xmlSerializer.startDocument("UTF-8", true)
-            xmlSerializer.startTag(null, name + "_Data")
-            xmlSerializer.startTag(null, "childName")
-            xmlSerializer.text(name)
-            xmlSerializer.endTag(null, "childName")
-            xmlSerializer.startTag(null, "height")
-            xmlSerializer.text(height.toString())
-            xmlSerializer.endTag(null, "height")
-            xmlSerializer.startTag(null, "gender")
-            xmlSerializer.text(gender.toString())
-            xmlSerializer.endTag(null, "gender")
-            xmlSerializer.endTag(null, name + "_Data")
-            xmlSerializer.endDocument()
-            xmlSerializer.flush()
-            val dataWrite: String = writer.toString()
-            Log.i("AddChild", dataWrite)
-            fileos.write(dataWrite.toByteArray())
-            fileos.close()
 
-        }
 
 
 }

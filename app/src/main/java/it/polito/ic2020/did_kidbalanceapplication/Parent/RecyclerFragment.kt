@@ -1,13 +1,13 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.polito.ic2020.did_kidbalanceapplication.R
 
 class RecyclerFragment: Fragment() {
     fun  newInstance(): Fragment {

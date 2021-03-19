@@ -3,6 +3,8 @@
     <string name="app_name">KidBalanceApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- home bambino -->
     <string name="testo_pianeta_destinazione"> Verso la Luna </string>
     <string name="ic_moon">icona Luna</string>
     <string name="ic_mars">icona Marte</string>
@@ -12,6 +14,10 @@
     <string name="ic_uranus">icona Urano</string>
     <string name="ic_neptune">icona Nettuno</string>
     <string name="NomeApp">KidBalance</string>
+    <string name="new_img_b_intro">Seleziona una nuova immagine per il tuo profilo!</string>
+
+
+    <string name="parent_acc"><u>Accedi al profilo genitore</u></string>
 
     <!-- form bambino -->
     <string name="add_child">Aggiungi le informazioni del bambino</string>
@@ -22,6 +28,8 @@
     <string name="child_height">Altezza del bambino (in cm)</string>
     <string name="child_sex_f">Femmina</string>
     <string name="child_sex_m">Maschio</string>
+    <string name="added_child">Aggiunto correttamente!</string>
+
 
     <!-- pin -->
     <string name="hint_login_pin">Inserisci il pin di login</string>
@@ -37,6 +45,11 @@
     <string name="security_question">Domanda di sicurezza</string>
     <string name="answer_security_question_intro">Rispondi alla domanda di sicurezza</string>
     <string name="reset_security_question">Reimposta la domanda di sicurezza</string>
+    <string name="wrong_pin">Pin errato</string>
+    <string name="wrong_count_pin">Inserire 4 numeri</string>
+    <string name="wrong_name">La risposta non è corretta</string>
+    <string name="pin_check">Controlla il pin, sembra essere errato</string>
+    <string name="unsw_question">Hai dimenticato di rispondere alla domanda</string>
 
 
     <!-- create account -->
@@ -48,4 +61,35 @@
 
     <!-- grafico -->
     <string name="header_graph">Andamento peso del bambino</string>
+    <string name="header_home_g">Seleziona un bambino per vederne i dati sul peso</string>
+    <string name="nuovo_b"><u>crea un nuovo profilo bambino</u></string>
+    <string name="welcome_header">Bentornato, </string>
+    <string name="intro_pesate">Ultime pesate</string>
+    <string name="no_pesate">Non ci sono informazioni su </string>
+    <string name="BMI_intro">Ultimo valore di BMI</string>
+    <string name="weight_intro">Peso (kg)</string>
+    <string name="data_intro">Data</string>
+    <string name="wifi_connection">Assicurati di essere disconnesso dalla bilancia</string>
+    <string name="height">Altezza:</string>
+    <string name="edit_height"><u>Modifica altezza</u></string>
+    <string name="intro_graph">Nel grafico sono riportati i dati sul peso registrati nel tempo</string>
+    <string name="new_height_intro">Inserisci la nuova altezza del bambino (in cm)</string>
+    <string name="new_height_hint">Nuova altezza (in cm)</string>
+    <string name="confirm_text">Conferma</string>
+    <string name="mail_sbj">Ultime informazioni su </string>
+
+    <string name="bmi_red_over">Il valore di BMI è alto e indica uno stato di sovrappeso</string>
+    <string name="bmi_red_under">Il valore di BMI è alto e indica uno stato di sottopeso</string>
+    <string name="bmi_yellow_over">Il valore di BMI è lievemente alto e indica uno stato di leggero sovrappeso</string>
+    <string name="bmi_yellow_under">Il valore di BMI è lievemente basso e indica uno stato di leggero sottopeso</string>
+    <string name="bmi_green">Il valore BMI è ottimale e indica un peso ideale</string>
+
+    <!-- gioco -->
+    <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>
+    <string name="alert_intro">Connessione necessaria</string>
+    <string name="alert_text">Sei sicuro di essere connesso al WiFi \"KidBalance\"?</string>
+    <string name="yes_text">Si</string>
+    <string name="no_text">No</string>
+
+
 </resources>

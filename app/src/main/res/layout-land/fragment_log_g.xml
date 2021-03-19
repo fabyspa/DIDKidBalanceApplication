@@ -37,10 +37,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pin1"
             style="@style/FormStyle"
-            android:layout_width="210dp"
             android:layout_height="40dp"
             android:hint="@string/set_pin_hint"
-            android:inputType="number|textPassword|numberPassword|textWebPassword"
+            android:inputType="numberPassword"
             android:password="true"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,22 +48,23 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pin_intro"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.3"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pin2"
             style="@style/FormStyle"
-            android:layout_width="210dp"
             android:layout_height="40dp"
             android:hint="@string/confirm_pin"
-            android:inputType="number|textPassword|numberPassword|textWebPassword"
+            android:inputType="numberPassword"
             android:password="true"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/pin1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/pin1"
-            app:layout_constraintTop_toTopOf="@+id/pin1" />
+            app:layout_constraintTop_toTopOf="@+id/pin1"
+            app:layout_constraintWidth_percent="0.3"/>
 
         <Button
             android:id="@+id/setPin"
@@ -80,6 +80,7 @@
             android:id="@+id/pin_intro"
             style="@style/FormInfo"
             android:layout_width="wrap_content"
+            android:textAlignment="center"
             android:text="@string/set_pin_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/reset_security_question"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.499"
@@ -106,7 +108,7 @@
             style="@style/MediumStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textAlignment="center"
             android:gravity="center"
             android:text="@string/Reset_question"
             android:textSize="18sp"
@@ -130,7 +132,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/security_question"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.4"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

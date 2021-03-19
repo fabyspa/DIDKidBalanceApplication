@@ -19,9 +19,11 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.Game.GameLib
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
@@ -194,6 +196,15 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         }
         thread.start()
 
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true /* enabled by default */) {
+                    override fun handleOnBackPressed() {
+                        // Handle the back button event
+                        //findNavController().navigate(R.id.BHomeFragment2)
+                        activity?.finish()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
 
 
@@ -233,33 +244,35 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     }
                                 }
                             }
-                        }
-                        fun insertGameWeightToDatabase() {
-                            val filename = "weight_data.txt"
-                            var file = File(context?.filesDir?.absolutePath, filename)
-                            var fileExists = file.exists()
-                            if(fileExists){
-                                context?.openFileInput("weight_data.txt").use { it ->
-                                    DataInputStream(it).use { dis ->
-                                        while (dis.available() > 0) {
-                                            salvo = dis.readFloat()
-                                            println(salvo)
-                                            println("bel file letto")
+                            fun insertGameWeightToDatabase() {
+                                val filename = "weight_data.txt"
+                                var file = File(context?.filesDir?.absolutePath, filename)
+                                var fileExists = file.exists()
+                                if(fileExists){
+                                    context?.openFileInput("weight_data.txt").use { it ->
+                                        DataInputStream(it).use { dis ->
+                                            while (dis.available() > 0) {
+                                                salvo = dis.readFloat()
+                                                println(salvo)
+                                                println("bel file letto")
+                                            }
                                         }
                                     }
-                                }
-                                val weight = salvo
-                                print("salvo: ")
-                                println(salvo)
-                                val date = System.currentTimeMillis()
-                                val id = activity!!.intent!!.extras?.get("id").toString().toInt()
-                                println("id  from extra  " + id)
+                                    val weight = str.toString().toFloat()//salvo
+                                    print("salvo: ")
+                                    println(salvo)
+                                    println("weight: "+weight)
+                                    val date = System.currentTimeMillis()
+                                    val id = activity!!.intent!!.extras?.get("id").toString().toInt()
+                                    println("id  from extra  " + id)
 
-                                val gameWeight = GameWeight(id, date, weight)
-                                childWeightViewModel.addGameWeight(gameWeight)
+                                    val gameWeight = GameWeight(id, date, weight)
+                                    childWeightViewModel.addGameWeight(gameWeight)
+                                }
                             }
+                            insertGameWeightToDatabase()
                         }
-                        insertGameWeightToDatabase()
+                        //insertGameWeightToDatabase()
                     } else {
                         ConnectivityManager.setProcessDefaultNetwork(network)
                     }

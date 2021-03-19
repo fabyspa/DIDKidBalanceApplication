@@ -1,20 +1,16 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentLogGBinding
-import kotlinx.android.synthetic.main.activity_main_old.*
 import kotlinx.android.synthetic.main.fragment_log_g.*
 import java.io.BufferedOutputStream
 import java.io.DataOutputStream
@@ -37,7 +33,7 @@ class logGFragment: Fragment(){
 
             binding.setPin.setOnClickListener {
                     val check = pin1.text.toString().trim().length in 4..4
-                if(!check) pin1.error="Insert 4 numbers"
+                if(!check) pin1.error= resources.getString(R.string.wrong_count_pin)
                 else if (binding.pin1.text.toString() == binding.pin2.text.toString() && answer.text.toString() != ""){
                     context?.openFileOutput("answer.txt", Context.MODE_APPEND)
                     File(context?.filesDir?.absolutePath+"answer.txt").writeText(answer.text.toString())
@@ -57,9 +53,9 @@ class logGFragment: Fragment(){
                     }
                 } else if (pin2.text.toString().trim().length !in 4..4){
                     //Toast.makeText(context,"Check Pin, seems to be wrong",Toast.LENGTH_LONG).show()
-                    pin2.error="Check Pin, seems to be wrong"
+                    pin2.error= resources.getString(R.string.pin_check)
                 } else {
-                    answer.error="You forgot to answer the question"
+                    answer.error=resources.getString(R.string.unsw_question)
                 }
             }
         return binding.root

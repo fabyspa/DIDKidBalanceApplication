@@ -115,17 +115,7 @@ class GRegister : Fragment() {
             Log.e("GRegister", "File write failed: " + e.toString())
         }
     }
-    fun writeToFileInt(data: String, context: Context, nameTxt:String) {
-        try {
-            val outputStreamWriter = OutputStreamWriter(context.openFileOutput(nameTxt, Context.MODE_PRIVATE))
-            File(context?.filesDir?.absolutePath, nameTxt)
-            outputStreamWriter.write(data)
-            outputStreamWriter.close()
-            readFromFile(requireContext())
-        } catch (e: IOException) {
-            Log.e("GRegister", "File write failed: " + e.toString())
-        }
-    }
+
     private fun readFromFile(context: Context): String? {
         var ret = ""
         try {

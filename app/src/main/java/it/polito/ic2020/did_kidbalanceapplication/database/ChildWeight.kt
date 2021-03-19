@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName= "daily_weight_child_table")
 data class ChildWeight (
-    @PrimaryKey(autoGenerate = true )
+        @PrimaryKey(autoGenerate = true )
     var id:Int,
-    var nome: String,
-    val surname: String,
-    val altezza: Double,
-    val gender: String,
-    val picture: Int
+        var nome: String,
+        val surname: String,
+        var altezza: Double,
+        val gender: String,
+        var picture: Int
 )

@@ -37,7 +37,6 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
             `in`.putExtra("name", currentItem.nome)
             `in`.putExtra("id", currentItem.id)
             println(`in`.extras.toString())
-            println("ciao")
             holder.itemView.context.startActivity(`in`)
             Handler().postDelayed({
                 //doSomethingHere()

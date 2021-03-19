@@ -24,12 +24,14 @@
         <activity android:name=".ChildRegister"
             android:windowSoftInputMode="adjustPan"
             android:isScrollContainer="true"
+            android:screenOrientation="user"
             >
         </activity>
 
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:isScrollContainer="true"
+            android:screenOrientation="user"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

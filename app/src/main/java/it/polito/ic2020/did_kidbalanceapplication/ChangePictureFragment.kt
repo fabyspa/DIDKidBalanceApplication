@@ -1,12 +1,24 @@
-package it.polito.ic2020.did_kidbalanceapplication
+ package it.polito.ic2020.did_kidbalanceapplication
 
+import android.R.attr.description
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
+import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentChangePictureBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.properties.Delegates
 
-// TODO: Rename parameter arguments, choose names that match
+
+ // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -17,43 +29,56 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ChangePictureFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentChangePictureBinding
+    companion object {
+        @JvmStatic
 
+         open fun newInstance(id: Int): Fragment {
+            val fragment = ChangePictureFragment()
+            val args = Bundle()
+            args.putInt("id", id)
+            fragment.arguments = args
+            return fragment
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_picture, container, false)
-    }
+        // val myValue = arguments?.get("id")
+        binding = DataBindingUtil.inflate<FragmentChangePictureBinding>(inflater, R.layout.fragment_change_picture, container, false)
+        binding.changeProf.setOnClickListener {
+            println("Click")
+            Toast.makeText(this.activity, "Image updated!", Toast.LENGTH_SHORT).show()
+            lifecycleScope.launch(Dispatchers.IO) {
+                val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext())
+                //if (param1 != -1) {
+                if(arguments?.getInt("id")!=null){
+                    val id=arguments?.getInt("id")
+                    println("argument: "+id)
+                    //println("ChangePictureFragment$param1")
+                    val child = db.childDataBaseDao().getAllChildData(requireArguments().getInt("id").toInt())
+                    child.picture = binding.changeProf.id
+                    println(binding.changeProf.id)
+                } else {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show()
+                    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChangePictureFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChangePictureFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
+        }
+        return binding.root
     }
+
+
+
+
 }

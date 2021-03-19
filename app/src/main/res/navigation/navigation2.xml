@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.loginFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.loginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/GHomeFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GHomeFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.GHomeFragment"
         android:label="GHomeFragment" >
         <action
             android:id="@+id/action_GHomeFragment_to_GGraphFragment"
@@ -24,6 +24,6 @@
     </fragment>
     <fragment
         android:id="@+id/GGraphFragment"
-        android:name="it.polito.ic2020.did_kidbalanceapplication.GGraphFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.GGraphFragment"
         android:label="GGraphFragment" />
 </navigation>

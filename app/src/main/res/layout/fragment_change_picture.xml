@@ -1,17 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ChangePictureFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Change Picture" />
+        android:background="@drawable/background"
+        tools:context=".ChangePictureFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/FormInfo"
+            android:textSize="22sp"
+            android:background="@drawable/roundstyle"
+            android:padding="8dp"
+            android:text="@string/new_img_b_intro"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Guideline"
+            app:layout_constraintVertical_bias="0.061"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundstyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/changeProf"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                app:srcCompat="@drawable/ic_b_half_moon" />
+
+            <ImageView
+                android:id="@+id/op2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="1"
+                app:layout_row="0"
+                app:srcCompat="@drawable/ic_b_meteorite" />
+
+            <ImageView
+                android:id="@+id/op3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:srcCompat="@drawable/ic_b_monkey" />
+
+            <ImageView
+                android:id="@+id/op4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="0"
+                app:layout_row="1"
+                app:srcCompat="@drawable/ic_b_satellite" />
+
+            <ImageView
+                android:id="@+id/op5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="1"
+                app:layout_row="1"
+                app:srcCompat="@drawable/ic_b_ufo" />
+
+            <ImageView
+                android:id="@+id/op6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="2"
+                app:layout_row="1"
+                app:srcCompat="@drawable/ic_b_rocket" />
+
+            <ImageView
+                android:id="@+id/op7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="0"
+                app:layout_row="2"
+                app:srcCompat="@drawable/ic_b_telescope" />
+
+            <ImageView
+                android:id="@+id/op8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="1"
+                app:layout_row="2"
+                app:srcCompat="@drawable/ic_b_planet_earth" />
+
+            <ImageView
+                android:id="@+id/op9"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+
+                app:layout_column="2"
+                app:layout_row="2"
+                app:srcCompat="@drawable/ic_b_ufo_1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.28" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

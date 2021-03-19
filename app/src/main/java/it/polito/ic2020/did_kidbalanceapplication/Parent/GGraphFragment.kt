@@ -1,4 +1,4 @@
-package it.polito.ic2020.did_kidbalanceapplication
+package it.polito.ic2020.did_kidbalanceapplication.Parent
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,27 +7,20 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.*
-import kotlinx.android.synthetic.main.fragment_child_list_parent.view.*
 import kotlinx.android.synthetic.main.fragment_graph_g.*
-import kotlinx.android.synthetic.main.rv_weights.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.DataInputStream
-import java.io.File
-import java.util.*
+import kotlinx.coroutines.withContext
 
 
 class GGraphFragment: Fragment(R.layout.fragment_graph_g){
@@ -51,22 +44,57 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         val namePressed = b?.get("name_pressed").toString()
         println(idPressed)
 
+        val no_pesate = resources.getString(R.string.no_pesate)
 
+        val altezza= resources.getString(R.string.height)
+
+        edit_altezza.setOnClickListener {
+            val idP = bundleOf("id" to idPressed)
+            findNavController().navigate(R.id.action_GGraphFragment2_to_editHeightFragment, idP)
+        }
         lifecycleScope.launch(Dispatchers.IO) {
             var x: MutableList<Float>
             var date: MutableList<Long>
+            var height: Double
             val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
             x = db.childDataBaseDao().getWeightById(idPressed)
             date = db.childDataBaseDao().getDateById(idPressed)
+            height = db.childDataBaseDao().getHeightById(idPressed).last()
+            height /= 100
             println(x)
+            val picture = db.childDataBaseDao().getPicture(namePressed)
             while (x.size > 30) {
                 x.removeFirst()
                 date.removeFirst()
             }
-            if(x.size>0){
-                adapter.setData(x.reversed(),date.reversed())
-            } else {
-                intro_pesate.text = "No Data for "+namePressed
+            withContext(Dispatchers.Main) {
+                //fai qui le operazioni sulla GUI
+                if(x.size>0){
+                    //adapter.setData(x.reversed(),date.reversed())
+                    adapt(x, date, adapter)
+                    val bmi = (x.last()/(height*height)).toFloat()
+                    BMI2.text = bmi.toString()
+                    when(bmi){
+                        in 0F..17F -> colorBmi.setBackgroundColor(Color.RED)
+                        in 17F..18.5F -> colorBmi.setBackgroundColor(Color.YELLOW)
+                        in 18.5F..24.9F -> colorBmi.setBackgroundColor(Color.GREEN)
+                        in 25F..29.9F -> colorBmi.setBackgroundColor(Color.YELLOW)
+                        else -> colorBmi.setBackgroundColor(Color.RED)
+                    }
+                    colorBmi.setOnClickListener{
+                        when(bmi){
+                            in 0F..17F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_red_under) ,Toast.LENGTH_LONG ).show()
+                            in 17F..18.5F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_yellow_under) ,Toast.LENGTH_LONG ).show()
+                            in 18.5F..24.9F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_green) ,Toast.LENGTH_LONG ).show()
+                            in 25F..29.9F -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_yellow_over) ,Toast.LENGTH_LONG ).show()
+                            else -> Toast.makeText(requireContext(), resources.getString(R.string.bmi_red_over), Toast.LENGTH_LONG ).show()
+                        }
+                    }
+                } else {
+                    intro_pesate.text = no_pesate + " " +namePressed
+                    cardViewBMI.visibility= View.GONE
+                }
+                id_b.setImageResource(picture)
             }
 
 
@@ -100,61 +128,38 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 dataPoints.set(i, l[i])
             }
 
-            val s = LineGraphSeries(dataPoints) // This one should be obvious right? :)
+            withContext(Dispatchers.Main){
+                val s = LineGraphSeries(dataPoints) // This one should be obvious right? :)
 
-            s.setColor(Color.CYAN)
-            s.setDrawDataPoints(true);
-            s.setDataPointsRadius(10F)
-            s.setThickness(10)
-            s.setDrawBackground(true)
-            s.setBackgroundColor(Color.argb(30, 0, 255, 255))
-            s.setDrawDataPoints(true)
-            s.setDataPointsRadius(20.0F)
+                s.setColor(Color.CYAN)
+                s.setDrawDataPoints(true);
+                s.setDataPointsRadius(10F)
+                s.setThickness(10)
+                s.setDrawBackground(true)
+                s.setBackgroundColor(Color.argb(30, 0, 255, 255))
+                s.setDrawDataPoints(true)
+                s.setDataPointsRadius(20.0F)
 
-            //graph.viewport.isScalable = false
-            //graph.viewport.isScrollable = true
-            //graph.viewport.scrollToEnd()
-            //graph.viewport.setScalableY(true)
+                graph.viewport.isXAxisBoundsManual = true
+                graph.viewport.setMaxX(30.toDouble())
 
 
-            graph.addSeries(s)
+                graph.addSeries(s)
 
-            if (x.size>0) textView.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
-            else textView.text = "No Weights for "+namePressed
+                if (x.size>0) BMI.text = "Last Weight of "+namePressed+": "+(x[x.lastIndex].toString())
+                else BMI.text = "No Weights for "+namePressed
+
+                //s.setOnDataPointTapListener(OnDataPointTapListener { series, dataPoint -> Toast.makeText(activity, "Series1: On Data Point clicked: $dataPoint", Toast.LENGTH_SHORT).show() })
+            }
 
             println("Scritto ultimo peso")
+            Altezza.text = altezza + " " + (height*100).toInt().toString() + "cm"
 
-/*
-            //check FIle
-            val tmp: MutableList<Float> = mutableListOf()
-            val filename = "weight_data.txt"
-            var file = File(context?.filesDir?.absolutePath, filename)
-            var fileExists = file.exists()
-            if (fileExists) {
-                context?.openFileInput("weight_data.txt").use { it ->
-                    DataInputStream(it).use { dis ->
-                        while (dis.available() > 0) {
-                            tmp.add(dis.readFloat())
-                            //per la data, sarebbe bene inserirla al momento della scrittura nel file
-                            //in lettura si leggerà data - peso e si mette diretto nella lista DataPoints
-                            println("bel file letto1")
-                        }
-                    }
-                }
-            }
-            while (tmp.size > 2) {
-                tmp.removeFirst()
-            }
-            textView.text = tmp.toString()
-
-
-
- */
             //SendEmail
 
             mailToBtn.setOnClickListener {
                 sendMail(
-                        "Weight of " + namePressed,
+                        resources.getString(R.string.mail_sbj) + " " + namePressed,
                         x.toString(),
                         "",
                         ""
@@ -165,11 +170,14 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
         //graph.series.indices
         graph.setBackgroundColor(Color.argb(100, 255, 236, 179))
 
-        header_b.text=namePressed
-
+        nome_b.text=namePressed
     }
-
+    private fun adapt(x: MutableList<Float>, date: MutableList<Long>, adapter: ChildWeightsAdapter){
+        adapter.setData(x.reversed(), date.reversed())
+    }
     private fun sendMail(subject: String, message: String, sender: String, recipients: String) {
+
+        val wifi_connection= resources.getString(R.string.wifi_connection)
 
         val mI = Intent(Intent.ACTION_SEND)
         mI.data = Uri.parse("mailto:")
@@ -180,7 +188,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
 
         try {
             startActivity(Intent.createChooser(mI, "Chose Email Client..."))
-            Toast.makeText(context, "Make sure you're disconnected to the scale", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, wifi_connection, Toast.LENGTH_LONG).show()
         } catch (e: Exception){
             //vari errori
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()

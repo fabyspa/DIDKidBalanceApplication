@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_BHomeFragment2_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_BHomeFragment2_to_changePictureFragment"
+            app:destination="@id/changePictureFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -25,4 +28,8 @@
         android:id="@+id/gameCircle2"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GameCircle"
         android:label="GameCircle" />
+    <fragment
+        android:id="@+id/changePictureFragment"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.ChangePictureFragment"
+        android:label="ChangePictureFragment" />
 </navigation>

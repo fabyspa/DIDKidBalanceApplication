@@ -70,7 +70,7 @@ class AddChild : Fragment() {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
-        binding.etAltezza2.setOnClickListener{
+        binding.calendar.setOnClickListener{
             val dpd = context?.let { it1 ->
                 DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view: DatePicker, year: Int, month, dayOfMonth ->
                     et_compleanno.setText(""+ dayOfMonth +"/"+month+"/"+year+"")

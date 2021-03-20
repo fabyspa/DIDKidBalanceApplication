@@ -20,14 +20,14 @@ class fifthScreen : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_fifth_screen, container, false)
 
         view.Gioca.setOnClickListener {
-            findNavController().navigate(R.id)
+            //findNavController().navigate(R.id)
         }
 
         return view
     }
 
     private fun onBoardingFinished(){
-        setsharedPref =
+        //setsharedPref =
     }
 
 }

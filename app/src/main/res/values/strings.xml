@@ -28,6 +28,7 @@
     <string name="child_sex_f">Female</string>
     <string name="child_sex_m">Male</string>
     <string name="added_child">Successfully added!</string>
+    <string name="add_child_btn">Add child</string>
 
     <!-- pin -->
     <string name="hint_login_pin">Insert login pin</string>

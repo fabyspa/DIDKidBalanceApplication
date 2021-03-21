@@ -10,7 +10,7 @@ import it.polito.ic2020.did_kidbalanceapplication.R
 import kotlinx.android.synthetic.main.fragment_fifth_screen.view.*
 
 class fifthScreen : Fragment() {
-
+/*
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,5 +29,7 @@ class fifthScreen : Fragment() {
     private fun onBoardingFinished(){
         //setsharedPref =
     }
+
+ */
 
 }

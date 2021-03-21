@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -214,8 +215,23 @@ class AddChild : Fragment() {
             //Add Data to Database
             childWeightViewModel.addChildWeight(user)
             //Navigate back
-            findNavController().navigate((R.id.action_addChild2_to_homeFragment))
-            Toast.makeText(requireContext(), resources.getString(R.string.added_child),Toast.LENGTH_LONG ).show()
+                    // findNavController().navigate((R.id.action_addChild2_to_homeFragment))
+            //new child?
+            val alert_intro = ""
+            val alert_text = "Vuoi aggiungere un altro bambino?"
+            val yes_text = resources.getString(R.string.yes_text)
+            val no_text = resources.getString(R.string.no_text)
+
+            //Toast.makeText(requireContext(), "Vuoi aggiungere un altro bambino?",Toast.LENGTH_LONG ).show()
+            val alert = AlertDialog.Builder(requireContext())
+            alert.setTitle(alert_intro)
+            alert.setMessage(alert_text)
+            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+            alert.setPositiveButton(yes_text){ dialog, witch -> findNavController().navigate(R.id.action_addChild2_to_reloadAddChild)
+            }
+            alert.setNegativeButton(no_text){ dialog, which -> findNavController().navigate(R.id.action_addChild2_to_homeFragment)
+            }
+            alert.show()
         }else
         {
             Toast.makeText(requireContext(), "Please fill out all fields",Toast.LENGTH_LONG ).show()

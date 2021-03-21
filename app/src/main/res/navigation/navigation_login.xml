@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_addChild2_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_addChild2_to_reloadAddChild"
+            app:destination="@id/reloadAddChild" />
     </fragment>
     <include app:graph="@navigation/navigation_child" />
     <fragment
@@ -84,4 +87,12 @@
         android:id="@+id/editHeightFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.Parent.EditHeightFragment"
         android:label="EditHeightFragment" />
+    <fragment
+        android:id="@+id/reloadAddChild"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.AddChild.ReloadAddChild"
+        android:label="ReloadAddChild" >
+        <action
+            android:id="@+id/action_reloadAddChild_to_addChild2"
+            app:destination="@id/addChild2" />
+    </fragment>
 </navigation>

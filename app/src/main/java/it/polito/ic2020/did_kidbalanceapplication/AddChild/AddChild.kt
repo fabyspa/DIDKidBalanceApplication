@@ -21,6 +21,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -66,6 +67,8 @@ class AddChild : Fragment() {
                 false
         )
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
+        binding.saveName.isEnabled=false
+        var counter = 0
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -78,6 +81,49 @@ class AddChild : Fragment() {
                 }, year, month, dayOfMonth)
             }
             dpd?.show()
+            counter++
+            if (counter==5){
+                binding.saveName.isEnabled=true
+            }
+        }
+        binding.etName.doAfterTextChanged {
+            counter++
+            println("et name "+counter)
+            if(counter==5){
+                binding.saveName.isEnabled=true
+            }
+        }
+
+        binding.etAltezza.doAfterTextChanged {
+            counter++
+            println("et altezza "+counter)
+            if(counter==5){
+                binding.saveName.isEnabled=true
+            }
+        }
+
+        binding.etSurname.doAfterTextChanged {
+            counter++
+            println("et altezza2 "+counter)
+            if(counter==5){
+                binding.saveName.isEnabled=true
+            }
+        }
+
+        if(binding.maleRb.isChecked){
+            counter++
+            println("malechecked "+counter)
+            if(counter==5){
+                binding.saveName.isEnabled=true
+            }
+        }
+
+        if(binding.femaleRb.isChecked){
+            counter++
+            println("femalechecked "+counter)
+            if(counter==5){
+                binding.saveName.isEnabled=true
+            }
         }
 
         binding.saveName.setOnClickListener {

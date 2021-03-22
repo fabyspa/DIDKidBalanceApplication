@@ -47,6 +47,7 @@
     <fragment
         android:id="@+id/logOrNot"
         android:name="it.polito.ic2020.did_kidbalanceapplication.Login.LogOrNot"
-        android:label="LogOrNot" />
+        android:label="LogOrNot" /><![CDATA[
     />
+]]>
 </navigation>

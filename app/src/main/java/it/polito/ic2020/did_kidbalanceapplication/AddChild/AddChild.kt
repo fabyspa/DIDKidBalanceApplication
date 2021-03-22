@@ -68,60 +68,62 @@ class AddChild : Fragment() {
         )
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
         binding.saveName.isEnabled=false
-        var counter = 0
+        var calendar = false
+        var etname = false
+        var etaltezza = false
+        var etsurname = false
+        var etgender = false
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
+        var monthC = month+1
         binding.calendar.setOnClickListener{
-            val dpd = context?.let { it1 ->
-                DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view: DatePicker, year: Int, month, dayOfMonth ->
-                    et_compleanno.setText(""+ dayOfMonth +"/"+month+"/"+year+"")
-                }, year, month, dayOfMonth)
+            val dpd = this.context.let { it1 ->
+                it1?.let { it2 ->
+                    DatePickerDialog(it2, { view: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+                        monthC = month+1
+                        et_compleanno.text = ""+ dayOfMonth +"/"+monthC+"/"+year+""
+                        println("mese: "+monthC)
+                    }, year, month, dayOfMonth)
+                }
             }
             dpd?.show()
-            counter++
-            if (counter==5){
+            calendar = true
+            println("calendar "+calendar)
+            if (calendar && etname && etaltezza && etsurname && etgender){
                 binding.saveName.isEnabled=true
             }
         }
         binding.etName.doAfterTextChanged {
-            counter++
-            println("et name "+counter)
-            if(counter==5){
+            etname = true
+            println("et name "+etname)
+            if(calendar && etname && etaltezza && etsurname && etgender){
                 binding.saveName.isEnabled=true
             }
         }
 
         binding.etAltezza.doAfterTextChanged {
-            counter++
-            println("et altezza "+counter)
-            if(counter==5){
+            etaltezza = true
+            println(etaltezza)
+            if(calendar && etname && etaltezza && etsurname && etgender){
                 binding.saveName.isEnabled=true
             }
         }
 
         binding.etSurname.doAfterTextChanged {
-            counter++
-            println("et altezza2 "+counter)
-            if(counter==5){
+            etsurname = true
+            println("et altezza2 "+etsurname)
+            if(calendar && etname && etaltezza && etsurname && etgender){
                 binding.saveName.isEnabled=true
             }
         }
 
-        if(binding.maleRb.isChecked){
-            counter++
-            println("malechecked "+counter)
-            if(counter==5){
-                binding.saveName.isEnabled=true
-            }
-        }
-
-        if(binding.femaleRb.isChecked){
-            counter++
-            println("femalechecked "+counter)
-            if(counter==5){
+        binding.radioButtonGroup.setOnCheckedChangeListener { group, checkedId ->
+            etgender = true
+            println("malechecked "+etgender)
+            if(calendar && etname && etaltezza && etsurname && etgender){
                 binding.saveName.isEnabled=true
             }
         }
@@ -275,7 +277,7 @@ class AddChild : Fragment() {
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
             alert.setPositiveButton(yes_text){ dialog, witch -> findNavController().navigate(R.id.action_addChild2_to_reloadAddChild)
             }
-            alert.setNegativeButton(no_text){ dialog, which -> findNavController().navigate(R.id.action_addChild2_to_homeFragment)
+            alert.setNegativeButton(no_text){ dialog, which -> findNavController().navigate(R.id.homeFragment)
             }
             alert.show()
         }else

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -24,6 +25,7 @@ class homeFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        println("SONO IN HOME")
         val navHostFragment = (this.activity?.supportFragmentManager?.findFragmentById(R.id.main_activity_container) as NavHostFragment)
         val inflaterGraph = navHostFragment.navController.navInflater
         val graph = inflaterGraph.inflate(R.navigation.navigation_login)
@@ -40,7 +42,6 @@ class homeFragment : Fragment() {
             val file = File(context?.filesDir?.absolutePath, filename)
             val fileExists = file.exists()
             if(fileExists){
-
                 findNavController().navigate(R.id.action_homeFragment_to_GHomeFragment2)
             } else {
                 findNavController().navigate(R.id.action_homeFragment_to_logGFragment)
@@ -58,6 +59,16 @@ class homeFragment : Fragment() {
         childWeightViewModel.readAllData.observe(viewLifecycleOwner, { user ->
             adapter.setData(user)
         })
+
+        val filename2 = "Nofigli.txt"
+        val file2 = File(context?.filesDir?.absolutePath+filename2)
+        val fileExists2 = file2.exists()
+        if(!fileExists2){
+            val fileName = "Nofigli.txt"
+            //val file = File(fileName)
+            File(context?.filesDir?.absolutePath+"Nofigli.txt").writeText("creato")
+            findNavController().navigate(R.id.child_list_parentFragment)
+        }
 
 
     return view

@@ -93,6 +93,7 @@ class GGraphFragment: Fragment(R.layout.fragment_graph_g){
                 } else {
                     intro_pesate.text = no_pesate + " " +namePressed
                     cardViewBMI.visibility= View.GONE
+                    mailToBtn.visibility = View.GONE
                 }
                 id_b.setImageResource(picture)
             }

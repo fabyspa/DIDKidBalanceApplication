@@ -61,12 +61,12 @@ class homeFragment : Fragment() {
         })
 
         val filename2 = "Nofigli.txt"
-        val file2 = File(context?.filesDir?.absolutePath+filename2)
+        val file2 = File(context?.filesDir?.absolutePath, filename2)
         val fileExists2 = file2.exists()
         if(!fileExists2){
             val fileName = "Nofigli.txt"
             //val file = File(fileName)
-            File(context?.filesDir?.absolutePath+"Nofigli.txt").writeText("creato")
+            File(context?.filesDir?.absolutePath,"Nofigli.txt").writeText("creato")
             findNavController().navigate(R.id.child_list_parentFragment)
         }
 

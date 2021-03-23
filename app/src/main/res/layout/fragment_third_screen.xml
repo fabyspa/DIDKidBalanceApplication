@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
+    android:layout_gravity="bottom"
     tools:context=".walkTrough.screens.FirstScreen">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,18 +13,19 @@
         android:id="@+id/imageView8"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="TODO"
         android:src="@drawable/thirdscreen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="RIPETI LA SEQUENZA"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -40,6 +42,7 @@
         android:text="Ripeti la sequenza luminosa che hai visto schiacciando sui tasti colorati nello stesso ordine."
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -48,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="28dp"
         android:text="Avanti"
         android:textColor="@color/accent_color"
         android:textSize="30sp"

@@ -18,7 +18,7 @@ class fourthScreen : Fragment() {
      val view =  inflater.inflate(R.layout.fragment_fourth_screen, container, false)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
         view.Avanti.setOnClickListener {
-            viewPager?.currentItem = 3
+            viewPager?.currentItem = 4
 
         }
 

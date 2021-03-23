@@ -54,8 +54,20 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var lvl = 1
     lateinit var childWeightViewModel: ChildWeightViewModel
 
+    fun onBoardingFinished(): Boolean{
+        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+        val sharedPreferences = requireActivity().getSharedPreferences("onBoarding"+id, Context.MODE_PRIVATE)
+        println("from game circle_ "+sharedPreferences.getBoolean("Finished", false))
+        return sharedPreferences.getBoolean("Finished", false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+        println(id)
+        if(!onBoardingFinished()){
+            //Toast.makeText(this.context, "Wlakthrough",Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_gameCircle2_to_viewPagerFragment2)
+        }
         val extras: Bundle? = this.arguments
         if (extras != null) {
             nb_bloc_start = extras.getInt("nb_bloc_start", 1)

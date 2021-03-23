@@ -27,9 +27,22 @@
     <fragment
         android:id="@+id/gameCircle2"
         android:name="it.polito.ic2020.did_kidbalanceapplication.GameCircle"
-        android:label="GameCircle" />
+        android:label="GameCircle" >
+        <action
+            android:id="@+id/action_gameCircle2_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/changePictureFragment"
         android:name="it.polito.ic2020.did_kidbalanceapplication.ChangePictureFragment"
         android:label="ChangePictureFragment" />
+    <fragment
+        android:id="@+id/viewPagerFragment2"
+        android:name="it.polito.ic2020.did_kidbalanceapplication.walkTrough.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment2_to_gameCircle2"
+            app:destination="@id/gameCircle2" />
+    </fragment>
 </navigation>

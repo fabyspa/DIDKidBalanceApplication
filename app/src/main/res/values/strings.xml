@@ -93,4 +93,12 @@
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
 
+
+    <!-- intro -->
+    <string name="next_btn">Next</string>
+    <string name="first_intro">Let\'s turn on the engines!</string>
+    <string name="first_main">We need your help to reach the next planet! But first let\'s check together that everything is ready.</string>
+    <string name="second_intro">Look and memorize</string>
+    <string name="second_main">There are four buttons in four different colors, you have to look the light sequence and try to remember it in the right order.</string>
+
 </resources>

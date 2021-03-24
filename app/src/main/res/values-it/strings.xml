@@ -94,4 +94,10 @@
     <string name="no_text">No</string>
 
 
+    <!-- intro -->
+    <string name="next_btn">Avanti</string>
+    <string name="first_intro">Riscaldiamo i motori!</string>
+    <string name="first_main">Abbiamo bisogno del tuo aiuto per raggiungere il prossimo pianeta! Ma prima di partire controlliamo insieme che tutto sia al posto giusto.</string>
+    <string name="second_intro">Guarda e memorizza</string>
+    <string name="second_main">Ci sono quattro pulsanti di quattro colori diversi, devi guardare la sequenza luminosa e provare a ricordarla nell\'ordine giusto.</string>
 </resources>

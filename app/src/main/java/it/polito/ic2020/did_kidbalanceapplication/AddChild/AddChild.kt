@@ -291,7 +291,7 @@ class AddChild : Fragment() {
             //new child?
             firstChildAdded()
             val alert_intro = ""
-            val alert_text = "Vuoi aggiungere un altro bambino?"
+            val alert_text = resources.getString(R.string.another_child)
             val yes_text = resources.getString(R.string.yes_text)
             val no_text = resources.getString(R.string.no_text)
 

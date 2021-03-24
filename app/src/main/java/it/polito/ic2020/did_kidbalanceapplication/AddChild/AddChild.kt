@@ -48,8 +48,27 @@ class AddChild : Fragment() {
 
     lateinit var binding: FragmentAddChildBinding
     private lateinit var childWeightViewModel:ChildWeightViewModel
+    private var trS = false
 
+    private fun insertCalendar(s: String){
+        trS = true
+        val sharedPref = requireActivity().getSharedPreferences("calendar",Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("c",s)
+        editor.apply()
+    }
 
+    private fun getCalendar(): String? {
+        val sharedPreferences = requireActivity().getSharedPreferences("calendar", Context.MODE_PRIVATE)
+        //println("info nella shared GET: "+sharedPreferences.getString("c","defValue"))
+        return sharedPreferences.getString("c","")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        println("VIEW_RESTORED2")
+            binding.etCompleanno.text = getCalendar().toString()
+    }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -79,12 +98,17 @@ class AddChild : Fragment() {
         val month = c.get(Calendar.MONTH)
         val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
         var monthC = month+1
+        //println("get.get: "+getCalendar().toString())
+        //val s = getCalendar().toString()
+        //binding.etCompleanno.text = getCalendar().toString()
         binding.calendar.setOnClickListener{
             val dpd = this.context.let { it1 ->
                 it1?.let { it2 ->
                     DatePickerDialog(it2, { view: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
                         monthC = month+1
                         et_compleanno.text = ""+ dayOfMonth +"/"+monthC+"/"+year+""
+                        val str = ""+ dayOfMonth +"/"+monthC+"/"+year+""
+                        insertCalendar(str)
                         println("mese: "+monthC)
                     }, year, month, dayOfMonth)
                 }

@@ -1,5 +1,6 @@
 package it.polito.ic2020.did_kidbalanceapplication.AddChild
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -63,15 +64,21 @@ class homeFragment : Fragment() {
         val filename2 = "Nofigli.txt"
         val file2 = File(context?.filesDir?.absolutePath, filename2)
         val fileExists2 = file2.exists()
-        if(!fileExists2){
-            val fileName = "Nofigli.txt"
+        if(!firsChildAdded()){
+            println("no figli")
+            //val fileName = "Nofigli.txt"
             //val file = File(fileName)
-            File(context?.filesDir?.absolutePath,"Nofigli.txt").writeText("creato")
+            //File(context?.filesDir?.absolutePath,"Nofigli.txt").writeText("creato")
             findNavController().navigate(R.id.child_list_parentFragment)
         }
 
 
     return view
+    }
+
+    private fun firsChildAdded() : Boolean{
+        val sharedPreferences = requireActivity().getSharedPreferences("firstChildAdded", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("Added", false)
     }
 
 

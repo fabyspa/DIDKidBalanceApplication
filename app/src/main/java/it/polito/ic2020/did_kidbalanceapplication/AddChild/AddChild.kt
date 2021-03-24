@@ -265,6 +265,7 @@ class AddChild : Fragment() {
             //Navigate back
                     // findNavController().navigate((R.id.action_addChild2_to_homeFragment))
             //new child?
+            firstChildAdded()
             val alert_intro = ""
             val alert_text = "Vuoi aggiungere un altro bambino?"
             val yes_text = resources.getString(R.string.yes_text)
@@ -292,8 +293,13 @@ class AddChild : Fragment() {
         return !(TextUtils.isEmpty(firstName)&&TextUtils.isEmpty(surname)&&height.isEmpty()&&gender==null)
     }
 
-
-
+    private fun firstChildAdded(){
+        val sharedPref = requireActivity().getSharedPreferences("firstChildAdded",Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("Added",true)
+        editor.apply()
+        println("inserito primo figlio")
+    }
 
 
 }

@@ -66,7 +66,7 @@ class AddChild : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        println("VIEW_RESTORED")
+        println("VIEW_RESTORED2")
             binding.etCompleanno.text = getCalendar().toString()
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

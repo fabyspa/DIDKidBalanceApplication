@@ -92,6 +92,7 @@
     <string name="alert_text">Are you sure you\'re connected to WiFi \"KidBalance\"?</string>
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
+    <string name="start_btn">Start</string>
 
 
     <!-- intro -->
@@ -100,5 +101,11 @@
     <string name="first_main">We need your help to reach the next planet! But first let\'s check together that everything is ready.</string>
     <string name="second_intro">Look and memorize</string>
     <string name="second_main">There are four buttons in four different colors, you have to look the light sequence and try to remember it in the right order.</string>
-
+    <string name="third_intro">Repeat the sequence</string>
+    <string name="third_main">Repeat the light sequence you saw pushing the colored buttons in the same order.</string>
+    <string name="fourth_intro">The game gets tough!</string>
+    <string name="fourth_main">The more sequences you get right the more they will become hard to repeat. You will have to practice if you want to become a real astronaut!</string>
+    <string name="fifth_intro">Beat your records!</string>
+    <string name="fifth_main">Try to get the highest number of points and together we will discover the universe!</string>
+    <string name="play_btn">Play!</string>
 </resources>

@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_play"
-                android:text="START"
+                android:text="@string/start_btn"
                 android:textSize="24sp"
                 app:iconPadding="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"

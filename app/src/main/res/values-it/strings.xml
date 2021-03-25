@@ -87,12 +87,12 @@
     <string name="bmi_green">Il valore BMI è ottimale e indica un peso ideale</string>
 
     <!-- gioco -->
-    <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi START per giocare!</string>
+    <string name="instruction_game">Sali sulla pedana e quando le luci diventano verdi premi INIZIA per giocare!</string>
     <string name="alert_intro">Connessione necessaria</string>
     <string name="alert_text">Sei sicuro di essere connesso al WiFi \"KidBalance\"?</string>
     <string name="yes_text">Si</string>
     <string name="no_text">No</string>
-
+    <string name="start_btn">Inizia</string>
 
     <!-- intro -->
     <string name="next_btn">Avanti</string>
@@ -100,4 +100,11 @@
     <string name="first_main">Abbiamo bisogno del tuo aiuto per raggiungere il prossimo pianeta! Ma prima di partire controlliamo insieme che tutto sia al posto giusto.</string>
     <string name="second_intro">Guarda e memorizza</string>
     <string name="second_main">Ci sono quattro pulsanti di quattro colori diversi, devi guardare la sequenza luminosa e provare a ricordarla nell\'ordine giusto.</string>
+    <string name="third_intro">Ripeti la sequenza</string>
+    <string name="third_main">Ripeti la sequenza luminosa che hai visto schiacciando sui tasti colorati nello stesso ordine.</string>
+    <string name="fourth_intro">Il gioco si fa duro!</string>
+    <string name="fourth_main">Più sequenze indovini più queste diventeranno difficili. Dovrai allenarti se vuoi diventare un vero astronauta!</string>
+    <string name="fifth_intro">Supera i tuoi record!</string>
+    <string name="fifth_main">Cerca di ottenere il punteggio più alto e insieme scopriremo tutto l\'universo.</string>
+    <string name="play_btn">Gioca!</string>
 </resources>

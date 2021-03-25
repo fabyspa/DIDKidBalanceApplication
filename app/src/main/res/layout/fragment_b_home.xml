@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/round_play"
             android:backgroundTint="@color/accent_color"
-            android:text="PLAY"
+            android:text="@string/play_btn"
             android:textSize="24sp"
             app:iconPadding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"

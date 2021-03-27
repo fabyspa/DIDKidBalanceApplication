@@ -64,6 +64,13 @@ class AddChild : Fragment() {
         return sharedPreferences.getString("c","")
     }
 
+    private fun resetCalendar() {
+        val sharedPref = requireActivity().getSharedPreferences("calendar",Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("c","")
+        editor.apply()
+    }
+
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         println("VIEW_RESTORED2")
@@ -295,6 +302,7 @@ class AddChild : Fragment() {
             val yes_text = resources.getString(R.string.yes_text)
             val no_text = resources.getString(R.string.no_text)
 
+            resetCalendar()
             //Toast.makeText(requireContext(), "Vuoi aggiungere un altro bambino?",Toast.LENGTH_LONG ).show()
             val alert = AlertDialog.Builder(requireContext())
             alert.setTitle(alert_intro)

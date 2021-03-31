@@ -2,16 +2,22 @@
 
 import android.R.attr.description
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentChangePictureBinding
+import kotlinx.android.synthetic.main.activity_child.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -48,6 +54,7 @@ class ChangePictureFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -65,8 +72,25 @@ class ChangePictureFragment : Fragment() {
                     println("argument: "+id)
                     //println("ChangePictureFragment$param1")
                     val child = db.childDataBaseDao().getAllChildData(requireArguments().getInt("id").toInt())
-                    child.picture = binding.changeProf.id
+
+
+                    child.picture = R.drawable.ic_b_half_moon
+                    db.childDataBaseDao().update(child)
                     println(binding.changeProf.id)
+                  //  println( " " + child.picture)
+//                    activity?.finish()
+//                    val `in` = Intent(activity, ChildActivity::class.java)
+//                    `in`.putExtra("id", id)
+//                    startActivity(`in`)
+                    withContext(Dispatchers.Main){
+                        activity?.userPicture?.setImageResource(R.drawable.ic_b_half_moon)
+                        findNavController().navigateUp()
+                    }
+
+                    Log.i("CPF","IMAGE"+ binding.changeProf.drawable)
+
+
+
                 } else {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show()

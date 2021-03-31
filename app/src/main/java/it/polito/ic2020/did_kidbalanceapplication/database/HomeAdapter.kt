@@ -27,6 +27,7 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        println("onbind")
         val currentItem =userList[position]
         holder.itemView.name.text= currentItem.nome
         holder.itemView.picture.setImageResource(currentItem.picture)

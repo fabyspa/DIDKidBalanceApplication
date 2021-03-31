@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.Game.GameLib
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_circle_game.*
@@ -191,15 +192,32 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                 if (game.win) {
                     //get next view  for game
                     println("game.win =1")
-                    val startGame: Intent = Intent()
-                    startGame.putExtra("lvl", lvl + 1)
-                    startGame.putExtra("score", game.score)
+                    lifecycleScope.launch(Dispatchers.IO){
+                        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+
+                        val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+                        var bambinone = db.childDataBaseDao().getAllChildData(id)
+                        println(bambinone)
+                        bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.5).toInt()
+                        db.childDataBaseDao().update(bambinone)
+
+                    }
                     //startActivityForResult(startGame, lvl + 1)
                     //Toast.makeText(context,"Avanzamento verso nuovo pianeta",Toast.LENGTH_LONG).show()
                     Log.i("scorend", String.valueOf(game.score))
                 } else {
                     val intent = Intent()
                     intent.putExtra("exit", true)
+                    lifecycleScope.launch(Dispatchers.IO){
+                        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+
+                        val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+                        var bambinone = db.childDataBaseDao().getAllChildData(id)
+                        println(bambinone)
+                        bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*0.8).toInt()
+                        db.childDataBaseDao().update(bambinone)
+
+                    }
                     //setResult(RESULT_OK, intent)
                     //finish()
                     //Toast.makeText(context, "Maybe you're a looser", Toast.LENGTH_LONG).show()

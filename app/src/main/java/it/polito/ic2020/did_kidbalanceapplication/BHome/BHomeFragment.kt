@@ -16,13 +16,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavHostController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
 import it.polito.ic2020.did_kidbalanceapplication.MainActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
+import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class BHomeFragment : Fragment() {
@@ -50,6 +54,16 @@ class BHomeFragment : Fragment() {
         binding.button.setOnClickListener{
          view: View ->
          view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)
+        }
+
+        lifecycleScope.launch(Dispatchers.IO){
+            val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+
+            val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+            var bambinone = db.childDataBaseDao().getAllChildData(id)
+            println(bambinone)
+
+            binding.textView3.text=bambinone.punteggio.toString()
         }
 
 

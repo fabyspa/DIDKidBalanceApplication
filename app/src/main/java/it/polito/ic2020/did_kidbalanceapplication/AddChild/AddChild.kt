@@ -13,12 +13,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.util.Log
-import android.util.Xml
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
@@ -26,21 +26,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import it.polito.ic2020.did_kidbalanceapplication.MainActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeight
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentAddChildBinding
 import kotlinx.android.synthetic.main.fragment_add_child.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.xmlpull.v1.XmlSerializer
-import java.io.*
-import java.net.URL
-import java.nio.charset.Charset
+import java.io.FileNotFoundException
+import java.io.IOException
 import java.util.*
 
 
@@ -52,22 +45,22 @@ class AddChild : Fragment() {
 
     private fun insertCalendar(s: String){
         trS = true
-        val sharedPref = requireActivity().getSharedPreferences("calendar",Context.MODE_PRIVATE)
+        val sharedPref = requireActivity().getSharedPreferences("calendar", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
-        editor.putString("c",s)
+        editor.putString("c", s)
         editor.apply()
     }
 
     private fun getCalendar(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("calendar", Context.MODE_PRIVATE)
         //println("info nella shared GET: "+sharedPreferences.getString("c","defValue"))
-        return sharedPreferences.getString("c","")
+        return sharedPreferences.getString("c", "")
     }
 
     private fun resetCalendar() {
-        val sharedPref = requireActivity().getSharedPreferences("calendar",Context.MODE_PRIVATE)
+        val sharedPref = requireActivity().getSharedPreferences("calendar", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
-        editor.putString("c","")
+        editor.putString("c", "")
         editor.apply()
     }
 
@@ -94,67 +87,63 @@ class AddChild : Fragment() {
         )
         childWeightViewModel = ViewModelProvider(this).get(ChildWeightViewModel::class.java)
         binding.saveName.isEnabled=false
-        var calendar = false
-        var etname = false
-        var etaltezza = false
-        var etsurname = false
-        var etgender = false
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val dayOfMonth = c.get(Calendar.DAY_OF_MONTH)
+        val maxdate = System.currentTimeMillis()
         var monthC = month+1
         //println("get.get: "+getCalendar().toString())
         //val s = getCalendar().toString()
         //binding.etCompleanno.text = getCalendar().toString()
+
         binding.calendar.setOnClickListener{
-            val dpd = this.context.let { it1 ->
-                it1?.let { it2 ->
-                    DatePickerDialog(it2, { view: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-                        monthC = month+1
-                        et_compleanno.text = ""+ dayOfMonth +"/"+monthC+"/"+year+""
-                        val str = ""+ dayOfMonth +"/"+monthC+"/"+year+""
-                        insertCalendar(str)
-                        println("mese: "+monthC)
-                    }, year, month, dayOfMonth)
-                }
-            }
-            dpd?.show()
-            calendar = true
-            println("calendar "+calendar)
-            if (calendar && etname && etaltezza && etsurname && etgender){
+            val dpd = DatePickerDialog( requireContext(), { view: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+                println("new DP")
+                    monthC = month + 1
+                    et_compleanno.text = "" + dayOfMonth + "/" + monthC + "/" + year + ""
+                    val str = "" + dayOfMonth + "/" + monthC + "/" + year + ""
+                    insertCalendar(str)
+                    println("mese: " + monthC)
+                }, year, month, dayOfMonth)
+            dpd.datePicker.maxDate = maxdate
+            dpd.show()
+
+            if(!binding.etCompleanno.text.isEmpty() && !binding.etName.text.isEmpty() &&
+                    !binding.etAltezza.text.isEmpty() && !binding.etSurname.text.isEmpty()
+                    && !binding.radioButtonGroup.isActivated){
                 binding.saveName.isEnabled=true
             }
         }
         binding.etName.doAfterTextChanged {
-            etname = true
-            println("et name "+etname)
-            if(calendar && etname && etaltezza && etsurname && etgender){
+            if(!binding.etCompleanno.text.isEmpty() && !binding.etName.text.isEmpty() &&
+                    !binding.etAltezza.text.isEmpty() && !binding.etSurname.text.isEmpty()
+                    && !binding.radioButtonGroup.isActivated){
                 binding.saveName.isEnabled=true
             }
         }
 
         binding.etAltezza.doAfterTextChanged {
-            etaltezza = true
-            println(etaltezza)
-            if(calendar && etname && etaltezza && etsurname && etgender){
+            if(!binding.etCompleanno.text.isEmpty() && !binding.etName.text.isEmpty() &&
+                    !binding.etAltezza.text.isEmpty() && !binding.etSurname.text.isEmpty()
+                    && !binding.radioButtonGroup.isActivated){
                 binding.saveName.isEnabled=true
             }
         }
 
         binding.etSurname.doAfterTextChanged {
-            etsurname = true
-            println("et altezza2 "+etsurname)
-            if(calendar && etname && etaltezza && etsurname && etgender){
+            if(!binding.etCompleanno.text.isEmpty() && !binding.etName.text.isEmpty() &&
+                    !binding.etAltezza.text.isEmpty() && !binding.etSurname.text.isEmpty()
+                    && !binding.radioButtonGroup.isActivated){
                 binding.saveName.isEnabled=true
             }
         }
 
         binding.radioButtonGroup.setOnCheckedChangeListener { group, checkedId ->
-            etgender = true
-            println("malechecked "+etgender)
-            if(calendar && etname && etaltezza && etsurname && etgender){
+            if(!binding.etCompleanno.text.isEmpty() && !binding.etName.text.isEmpty() &&
+                    !binding.etAltezza.text.isEmpty() && !binding.etSurname.text.isEmpty()
+                    && !binding.radioButtonGroup.isActivated){
                 binding.saveName.isEnabled=true
             }
         }
@@ -269,6 +258,16 @@ class AddChild : Fragment() {
 
 
             // }
+
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true /* enabled by default */) {
+                    override fun handleOnBackPressed() {
+                        // Handle the back button event
+                        findNavController().navigate(R.id.child_list_parentFragment)
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
             return binding.root
         }
 
@@ -281,7 +280,7 @@ class AddChild : Fragment() {
         val gender: String
         val punteggio:Int = 0
 
-        if(inputCheck(firstName,surname,height,genderCode)){
+        if(inputCheck(firstName, surname, height, genderCode)){
             if(genderCode==R.id.female_rb) {
                 gender= 'F'.toString()
                 picture=R.drawable.ic_f
@@ -290,7 +289,7 @@ class AddChild : Fragment() {
                 gender= 'M'.toString()
                 picture=R.drawable.ic_m
             }
-            val user = ChildWeight(0,firstName,surname, height.toString().toDouble(),gender,picture,punteggio)
+            val user = ChildWeight(0, firstName, surname, height.toString().toDouble(), gender, picture, punteggio)
 
             //Add Data to Database
             childWeightViewModel.addChildWeight(user)
@@ -298,7 +297,7 @@ class AddChild : Fragment() {
                     // findNavController().navigate((R.id.action_addChild2_to_homeFragment))
             //new child?
             firstChildAdded()
-            val alert_intro = ""
+            val alert_intro = binding.etName.text.toString() +" "+ resources.getString(R.string.added_child)
             val alert_text = resources.getString(R.string.another_child)
             val yes_text = resources.getString(R.string.yes_text)
             val no_text = resources.getString(R.string.no_text)
@@ -316,19 +315,19 @@ class AddChild : Fragment() {
             alert.show()
         }else
         {
-            Toast.makeText(requireContext(), "Please fill out all fields",Toast.LENGTH_LONG ).show()
+            Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_LONG).show()
         }
 
     }
 
-    private fun inputCheck(firstName:String, surname:String, height:Editable,gender:Int):Boolean{
+    private fun inputCheck(firstName: String, surname: String, height: Editable, gender: Int):Boolean{
         return !(TextUtils.isEmpty(firstName)&&TextUtils.isEmpty(surname)&&height.isEmpty()&&gender==null)
     }
 
     private fun firstChildAdded(){
-        val sharedPref = requireActivity().getSharedPreferences("firstChildAdded",Context.MODE_PRIVATE)
+        val sharedPref = requireActivity().getSharedPreferences("firstChildAdded", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
-        editor.putBoolean("Added",true)
+        editor.putBoolean("Added", true)
         editor.apply()
         println("inserito primo figlio")
     }

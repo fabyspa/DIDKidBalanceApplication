@@ -25,7 +25,7 @@ class EditHeightFragment : Fragment(R.layout.fragment_edit_height){
             val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
             val bambinone = db.childDataBaseDao().getAllChildData(idPressed)
             withContext(Dispatchers.Main) {
-                editHeight.text.append((bambinone.altezza/10).toString())
+                editHeight.text.append((bambinone.altezza).toInt().toString())
             }
         }
 

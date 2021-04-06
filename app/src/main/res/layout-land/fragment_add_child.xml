@@ -100,6 +100,7 @@
             style="@style/FormStyle"
             android:hint="@string/child_height"
             android:inputType="numberDecimal"
+            android:maxLength="3"
             app:layout_constraintBottom_toTopOf="@+id/radio_button_group"
             app:layout_constraintEnd_toEndOf="@+id/et_name"
             app:layout_constraintHorizontal_bias="0.5"

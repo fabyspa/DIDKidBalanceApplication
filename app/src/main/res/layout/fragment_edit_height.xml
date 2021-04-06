@@ -42,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeApp"
-        app:layout_constraintVertical_bias="0.01999998"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.7" />
 
     <Button
@@ -61,7 +61,8 @@
         android:id="@+id/editHeight"
         style="@style/FormStyle"
         android:hint="@string/new_height_hint"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"

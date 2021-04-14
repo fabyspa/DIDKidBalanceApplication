@@ -54,6 +54,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var chrono = false
     private var lvl = 1
     lateinit var childWeightViewModel: ChildWeightViewModel
+    val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
 
     fun onBoardingFinished(): Boolean{
         val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
@@ -214,8 +215,15 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         println(bambinone)
-                        bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*0.8).toInt()
+                        bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.8).toInt()
                         db.childDataBaseDao().update(bambinone)
+                        if(bambinone.punteggio>=100){
+                            println("NEXTPLANET")
+                            bambinone.punteggio=bambinone.punteggio-100;
+                            val previewsPlanet= planets.indexOf(bambinone.planet)
+                            bambinone.planet= planets[previewsPlanet+1]
+                            db.childDataBaseDao().update(bambinone)
+                        }
 
                     }
                     //setResult(RESULT_OK, intent)

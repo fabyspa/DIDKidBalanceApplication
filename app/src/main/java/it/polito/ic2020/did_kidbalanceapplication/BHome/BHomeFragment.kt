@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 
 class BHomeFragment : Fragment() {
     private  lateinit var viewModel: BHomeViewModel
-
+    val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
     private lateinit var binding: FragmentBHomeBinding
 
     public fun newInstance(): BHomeFragment {
@@ -51,6 +51,24 @@ class BHomeFragment : Fragment() {
          )
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
 
+        binding.piu20.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+                val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
+                var bambinone = db.childDataBaseDao().getAllChildData(id)
+                bambinone.punteggio = bambinone.punteggio + 20
+                db.childDataBaseDao().update(bambinone)
+                activity?.finish()
+                if(bambinone.punteggio>=100){
+                    println("NEXTPLANET")
+                    bambinone.punteggio=bambinone.punteggio-100;
+                    val previewsPlanet= planets.indexOf(bambinone.planet)
+                    bambinone.planet= planets[previewsPlanet+1]
+                    db.childDataBaseDao().update(bambinone)
+                }
+
+            }
+        }
         binding.button.setOnClickListener{
          view: View ->
          view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)

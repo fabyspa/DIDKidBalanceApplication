@@ -279,7 +279,7 @@ class AddChild : Fragment() {
         val picture :Int
         val gender: String
         val punteggio:Int = 0
-        val startPlanet:String= "Earth"
+        val startPlanet:String= "Moon"
 
         if(inputCheck(firstName, surname, height, genderCode)){
             if(genderCode==R.id.female_rb) {

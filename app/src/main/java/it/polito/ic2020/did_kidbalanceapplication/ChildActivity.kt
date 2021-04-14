@@ -61,6 +61,7 @@ private lateinit var binding:ActivityChildBinding
                 val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(this@ChildActivity)
                 val child = db.childDataBaseDao().getAllChildData(id)
                 binding.progressBar2.progress=child.punteggio
+                binding.pianetaDestinazione.text="TO " + child.planet
             }
 
 //            bundle.putInt("id", id)

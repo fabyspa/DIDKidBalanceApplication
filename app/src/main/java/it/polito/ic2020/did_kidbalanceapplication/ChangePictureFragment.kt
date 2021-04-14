@@ -90,21 +90,27 @@ class ChangePictureFragment : Fragment() {
                         }
                         db.childDataBaseDao().update(child)
                         println(binding.changeProf.id)
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             activity?.userPicture?.setImageResource(
                                     when (i) {
-                                        0 ->  R.drawable.ic_b_half_moon
-                                        1 ->  R.drawable.ic_b_planet_earth
-                                        2 ->  R.drawable.ic_b_ufo
-                                        3 ->  R.drawable.ic_f
-                                        4 ->  R.drawable.ic_b_monkey
-                                        5 ->  R.drawable.ic_m
-                                        6 ->  R.drawable.ic_b_satellite
-                                        7 ->  R.drawable.ic_b_telescope
-                                        8 ->  R.drawable.ic_b_rocket
+                                        0 -> R.drawable.ic_b_half_moon
+                                        1 -> R.drawable.ic_b_planet_earth
+                                        2 -> R.drawable.ic_b_ufo
+                                        3 -> R.drawable.ic_f
+                                        4 -> R.drawable.ic_b_monkey
+                                        5 -> R.drawable.ic_m
+                                        6 -> R.drawable.ic_b_satellite
+                                        7 -> R.drawable.ic_b_telescope
+                                        8 -> R.drawable.ic_b_rocket
                                         else -> R.drawable.kid
+                                    }.also {
+                                        withContext(Dispatchers.Main) {
+                                            Toast.makeText(activity, "Image Updated!", Toast.LENGTH_LONG).show()
+                                        }
                                     })
+
                             findNavController().navigateUp()
+
                         }
 
                         Log.i("CPF","IMAGE"+ binding.changeProf.drawable)

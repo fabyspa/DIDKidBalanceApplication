@@ -57,6 +57,11 @@ private lateinit var binding:ActivityChildBinding
         if(extra!=null) {
             val childName = extra.get("name").toString()
             id =extra.get("id").toString().toInt()
+            lifecycleScope.launch(Dispatchers.IO) {
+                val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(this@ChildActivity)
+                val child = db.childDataBaseDao().getAllChildData(id)
+                binding.progressBar2.progress=child.punteggio
+            }
 
 //            bundle.putInt("id", id)
 //            val fragInfo : Fragment = ChangePictureFragment.newInstance()!!

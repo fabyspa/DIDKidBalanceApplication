@@ -15,5 +15,6 @@ data class ChildWeight (
         var altezza: Double,
         val gender: String,
         var picture: Int,
-        var punteggio:Int
+        var punteggio:Int,
+        var planet:String
 )

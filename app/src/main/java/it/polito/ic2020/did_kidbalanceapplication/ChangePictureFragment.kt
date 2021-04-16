@@ -62,6 +62,8 @@ class ChangePictureFragment : Fragment() {
         // val myValue = arguments?.get("id")
         binding = DataBindingUtil.inflate<FragmentChangePictureBinding>(inflater, R.layout.fragment_change_picture, container, false)
 
+        activity?.userPicture?.isClickable = false
+
         val grid: androidx.gridlayout.widget.GridLayout = binding.gridLayout
         val childCount: Int = grid.childCount
 
@@ -106,6 +108,7 @@ class ChangePictureFragment : Fragment() {
                                     }.also {
                                         withContext(Dispatchers.Main) {
                                             Toast.makeText(activity, "Image Updated!", Toast.LENGTH_LONG).show()
+                                            activity?.userPicture?.isClickable = true
                                         }
                                     })
 

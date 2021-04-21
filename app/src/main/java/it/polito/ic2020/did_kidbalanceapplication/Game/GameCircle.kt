@@ -47,8 +47,8 @@ import java.util.concurrent.TimeUnit
 class GameCircle : Fragment(R.layout.fragment_circle_game) {
     //Need config
     private var nb_bloc_start = 1
-    private var nb_bloc_4_win = 7
-    private var default_life = 2
+    private var nb_bloc_4_win = 100
+    private var default_life = 5
     private var poids_du_mode = 1.toDouble()
     private var score = 0.0
     private var chrono = false
@@ -73,8 +73,8 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         val extras: Bundle? = this.arguments
         if (extras != null) {
             nb_bloc_start = extras.getInt("nb_bloc_start", 1)
-            nb_bloc_4_win = extras.getInt("nb_bloc_4_win",7)
-            default_life = extras.getInt("default_life", 2)
+            nb_bloc_4_win = extras.getInt("nb_bloc_4_win",100)
+            default_life = extras.getInt("default_life", 5)
             poids_du_mode = extras.getDouble("poids_du_mode", 1.toDouble())
             lvl = extras.getInt("lvl", 1)
             score = extras.getDouble("score", 0.0)
@@ -176,9 +176,15 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                 lbl_round,
                 score,
                 chrono,
-                timer
+                timer,
+                returnHome,
+                //hide_game2
         )
 
+        returnHome.setOnClickListener {
+            println("return Home CLiccato")
+            findNavController().navigate(R.id.BHomeFragment2)
+        }
 
         //quantique
         val thread: Thread = object : Thread() {
@@ -191,6 +197,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                     }
                 } while (!game.end)
                 if (game.win) {
+                    hide_game2.visibility = View.VISIBLE
                     //get next view  for game
                     println("game.win =1")
                     lifecycleScope.launch(Dispatchers.IO){
@@ -207,6 +214,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                     //Toast.makeText(context,"Avanzamento verso nuovo pianeta",Toast.LENGTH_LONG).show()
                     Log.i("scorend", String.valueOf(game.score))
                 } else {
+                    hide_game2.visibility = View.VISIBLE
                     val intent = Intent()
                     intent.putExtra("exit", true)
                     lifecycleScope.launch(Dispatchers.IO){
@@ -238,8 +246,8 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                 object : OnBackPressedCallback(true /* enabled by default */) {
                     override fun handleOnBackPressed() {
                         // Handle the back button event
-                        //findNavController().navigate(R.id.BHomeFragment2)
-                        activity?.finish()
+                        findNavController().navigate(R.id.BHomeFragment2)
+                        //activity?.finish()
                     }
                 }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

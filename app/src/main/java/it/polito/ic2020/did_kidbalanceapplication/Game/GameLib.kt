@@ -1,14 +1,21 @@
 package it.polito.ic2020.did_kidbalanceapplication.Game
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.graphics.Color
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.helper.widget.Layer
+import androidx.navigation.Navigation
 import java.util.*
 import androidx.navigation.fragment.findNavController
+import it.polito.ic2020.did_kidbalanceapplication.ChildActivity
+import it.polito.ic2020.did_kidbalanceapplication.R
+import kotlinx.android.synthetic.main.fragment_circle_game.view.*
 
 
 class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
@@ -25,7 +32,9 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
     lbl_round: TextView,
     score: Double,
     chrono: Boolean,
-    lbl_timer: TextView
+    lbl_timer: TextView,
+    returnHome: Button,
+    //hide_game2: View
 ) {
     private var checkPosition = 0
     private var roundCounter = 0
@@ -53,6 +62,8 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
 */
     private val lbl_life: TextView
     private val btn_start: Button
+    private val returnHome: Button
+    //private val hide_game2: View
 
     // private Button btn_new;
     private val lbl_round: TextView
@@ -177,7 +188,7 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
         if(life<=0){end()}
         //Set le background du start à gris
         val startButton = btn_start
-        startButton.setBackgroundColor(Color.GRAY)
+        startButton.setBackgroundColor(Color.CYAN)
 
         //reset les score et round
         roundCounter = 0
@@ -253,9 +264,13 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
                 if (chrono) pauseTimer()
                 message(btn_start, "You lose")
                 btn_start.isClickable = false
+                btn_start.setBackgroundColor(Color.GRAY)
                 println("win: "+win)
-                end()
+                returnHome.visibility = View.VISIBLE
+                //hide_game2.visibility = View.VISIBLE
+                //end()
                 //newGame()
+
             }
         }
 
@@ -353,6 +368,8 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
         this.lvl = lvl
         this.lbl_life = lbl_life
         this.btn_start = btn_start
+        this.returnHome = returnHome
+        //this.hide_game2 = hide_game2
         // this.btn_new = btn_new;
         this.lbl_round = lbl_round
         def_score = score

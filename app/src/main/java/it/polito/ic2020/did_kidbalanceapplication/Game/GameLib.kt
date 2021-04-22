@@ -34,7 +34,7 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
     chrono: Boolean,
     lbl_timer: TextView,
     returnHome: Button,
-    //hide_game2: View
+    hide_game2: View
 ) {
     private var checkPosition = 0
     private var roundCounter = 0
@@ -63,7 +63,7 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
     private val lbl_life: TextView
     private val btn_start: Button
     private val returnHome: Button
-    //private val hide_game2: View
+    private val hide_game2: View
 
     // private Button btn_new;
     private val lbl_round: TextView
@@ -142,17 +142,20 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
                 myButton.isEnabled = true
             }
         }, (roundCounter + 1) * 500.toLong())
+        /*
         if (chrono) {
             Log.i("Chrono :", "on")
             timerSec = roundCounter * 2 * 1000 + 1000.toLong()
             startTimer()
         }
 
+         */
+
         //Disable le button start
         btn_start.isEnabled = false
     }
 
-    private fun startTimer() {
+  /*  private fun startTimer() {
         timer = object : CountDownTimer(timerSec, 100) {
             override fun onTick(millisUntilFinished: Long) {
                 timerSec = millisUntilFinished
@@ -169,6 +172,8 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
             }
         }.start()
     }
+
+   */
 
     private fun pauseTimer() {
         timer!!.cancel()
@@ -188,11 +193,11 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
         if(life<=0){end()}
         //Set le background du start à gris
         val startButton = btn_start
-        startButton.setBackgroundColor(Color.CYAN)
+        startButton.setBackgroundColor(Color.rgb(157, 221, 237))
 
         //reset les score et round
         roundCounter = 0
-        score = def_score
+        score = score + def_score
 
 
         //Affiche le score
@@ -267,9 +272,9 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
                 btn_start.setBackgroundColor(Color.GRAY)
                 println("win: "+win)
                 returnHome.visibility = View.VISIBLE
-                //hide_game2.visibility = View.VISIBLE
+                hide_game2.visibility = View.VISIBLE
                 //end()
-                //newGame()
+                newGame()
 
             }
         }
@@ -369,7 +374,7 @@ class GameLib @SuppressLint("SetTextI18n") internal constructor(//Need config
         this.lbl_life = lbl_life
         this.btn_start = btn_start
         this.returnHome = returnHome
-        //this.hide_game2 = hide_game2
+        this.hide_game2 = hide_game2
         // this.btn_new = btn_new;
         this.lbl_round = lbl_round
         def_score = score

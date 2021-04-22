@@ -62,17 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/hide_game2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/lbl_lvl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/main"
-        app:layout_constraintTop_toTopOf="@+id/main" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_start"
         android:layout_width="176dp"
@@ -89,6 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/hide_game2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleY="2"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/hider" />
+
     <Button
         android:id="@+id/returnHome"
         android:layout_width="wrap_content"
@@ -96,10 +93,10 @@
         android:layout_gravity="center"
         android:text="Return Home"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/lbl_lvl"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lbl_score" />
+        app:layout_constraintTop_toTopOf="@+id/hide_game2" />
 
     <FrameLayout
         android:id="@+id/main"

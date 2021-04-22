@@ -178,7 +178,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                 chrono,
                 timer,
                 returnHome,
-                //hide_game2
+                hide_game2
         )
 
         returnHome.setOnClickListener {
@@ -197,7 +197,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                     }
                 } while (!game.end)
                 if (game.win) {
-                    hide_game2.visibility = View.VISIBLE
+                    //hide_game2.visibility = View.VISIBLE
                     //get next view  for game
                     println("game.win =1")
                     lifecycleScope.launch(Dispatchers.IO){
@@ -214,7 +214,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                     //Toast.makeText(context,"Avanzamento verso nuovo pianeta",Toast.LENGTH_LONG).show()
                     Log.i("scorend", String.valueOf(game.score))
                 } else {
-                    hide_game2.visibility = View.VISIBLE
+                    //hide_game2.visibility = View.VISIBLE
                     val intent = Intent()
                     intent.putExtra("exit", true)
                     lifecycleScope.launch(Dispatchers.IO){
@@ -331,7 +331,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         println("salvo var:  "+salvo)
 
     }
-
+/*
     internal fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == lvl + 1) {
@@ -353,6 +353,6 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         //setResult(RESULT_OK, intent)
         //finish()
     }
-
+*/
 
 }

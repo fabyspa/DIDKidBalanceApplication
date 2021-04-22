@@ -54,6 +54,8 @@ class logGFragment: Fragment(){
                 } else if (pin2.text.toString().trim().length !in 4..4){
                     //Toast.makeText(context,"Check Pin, seems to be wrong",Toast.LENGTH_LONG).show()
                     pin2.error= resources.getString(R.string.pin_check)
+                } else if(pin2.text.toString() != pin1.text.toString()){
+                    pin2.error= resources.getString(R.string.pin_check)
                 } else {
                     answer.error=resources.getString(R.string.unsw_question)
                 }

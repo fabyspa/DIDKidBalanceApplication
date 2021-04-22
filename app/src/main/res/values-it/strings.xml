@@ -64,8 +64,10 @@
     <!-- grafico -->
     <string name="header_graph">Andamento peso del bambino</string>
     <string name="header_home_g">Seleziona un bambino per vederne i dati sul peso</string>
+    <string name="header_home_g_first">Utiliza il pulsante in basso per creare un nuovo profilo bambino</string>
     <string name="nuovo_b"><u>crea un nuovo profilo bambino</u></string>
     <string name="welcome_header">Bentornato, </string>
+    <string name="welcome_first_time">Benvenuto, </string>
     <string name="intro_pesate">Ultime pesate</string>
     <string name="no_pesate">Non ci sono informazioni su </string>
     <string name="BMI_intro">Ultimo valore di BMI</string>

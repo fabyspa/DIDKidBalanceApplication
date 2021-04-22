@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -69,7 +70,9 @@ class homeFragment : Fragment() {
             //val fileName = "Nofigli.txt"
             //val file = File(fileName)
             //File(context?.filesDir?.absolutePath,"Nofigli.txt").writeText("creato")
-            findNavController().navigate(R.id.child_list_parentFragment)
+            val NoChild = "noChild"
+            val bundle = bundleOf("NoChild" to NoChild)
+            findNavController().navigate(R.id.child_list_parentFragment, bundle)
         }
 
 

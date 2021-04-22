@@ -25,11 +25,24 @@ class child_list_parentFragment : Fragment()   {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val b = this.arguments
+        val firstTime = b?.get("NoChild")
+        println("FIRST TIME" + firstTime)
+
         // Inflate the layout for this fragment
         val GName = File(context?.filesDir?.absolutePath+"/name.txt").readText()
         println(GName)
         val view= inflater.inflate(R.layout.fragment_child_list_parent, container, false)
-        view.welcome_header.text = """${getString(R.string.welcome_header)} $GName!"""
+
+        if(firstTime == null){
+            println("ci sono bambini")
+            view.welcome_header.text = """${getString(R.string.welcome_header)} $GName!"""
+        } else {
+            println("no child")
+            view.welcome_header.text = """${getString(R.string.welcome_first_time)} $GName!"""
+            view.header_home_g.text = getString(R.string.header_home_g_first)
+        }
+
 
         view.nuovo_b.setOnClickListener {
             findNavController().navigate(R.id.action_child_list_parentFragment_to_addChild2)

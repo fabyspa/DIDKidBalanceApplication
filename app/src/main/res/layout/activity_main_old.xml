@@ -117,7 +117,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bonus1"
+                android:id="@+id/ic_fuel"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

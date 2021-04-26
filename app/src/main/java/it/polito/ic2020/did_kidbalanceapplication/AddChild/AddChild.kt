@@ -280,6 +280,7 @@ class AddChild : Fragment() {
         val gender: String
         val punteggio:Int = 0
         val startPlanet:String= "Moon"
+        val bonus:String="Null"
 
         if(inputCheck(firstName, surname, height, genderCode)){
             if(genderCode==R.id.female_rb) {
@@ -290,7 +291,7 @@ class AddChild : Fragment() {
                 gender= 'M'.toString()
                 picture=R.drawable.ic_m
             }
-            val user = ChildWeight(0, firstName, surname, height.toString().toDouble(), gender, picture, punteggio,startPlanet)
+            val user = ChildWeight(0, firstName, surname, height.toString().toDouble(), gender, picture, punteggio,startPlanet,bonus)
 
             //Add Data to Database
             childWeightViewModel.addChildWeight(user)

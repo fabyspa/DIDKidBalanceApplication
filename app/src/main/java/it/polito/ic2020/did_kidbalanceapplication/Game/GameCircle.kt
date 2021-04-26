@@ -58,6 +58,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var lvl = 1
     lateinit var childWeightViewModel: ChildWeightViewModel
     val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
+    var bonus = listOf("Null","Fuel", "Rocket Thruster", "New Wings")
 
     fun onBoardingFinished(): Boolean{
         val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
@@ -209,6 +210,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         println(bambinone)
+
                         bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.5).toInt()
                         db.childDataBaseDao().update(bambinone)
 
@@ -222,11 +224,32 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                     intent.putExtra("exit", true)
                     lifecycleScope.launch(Dispatchers.IO){
                         val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
-
                         val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext().applicationContext)
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
-                        println(bambinone)
-                        bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                        when (game.score.toInt()){
+                            //questo deve essere 20 ma per debug
+                            in 10..20 -> {
+                                if (bambinone.bonus == "Null") {
+                                    bambinone.bonus = bonus[1]
+                                    activity?.ic_fuel?.alpha=1.0F
+                                    println("bonus" + bambinone.bonus)
+                                    withContext(Dispatchers.Main) {
+                                        alertBonus()
+                                    }
+                                }
+                            }
+
+                            in 30..39 -> bambinone.bonus = bonus[2]
+                            in 40..100 -> bambinone.bonus= bonus[3]
+                        }
+                        withContext(Dispatchers.Main) {
+                            when (bonus.indexOf(bambinone.bonus)) {
+                                0 -> bambinone.punteggio = (bambinone.punteggio + game.score.toInt()).toInt()
+                                1 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*2).toInt()
+                                2 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*3).toInt()
+                                3 ->bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*4).toInt()
+                            }
+                        }
                         withContext(Dispatchers.Main) {
                             activity?.progressBar2?.progress = (bambinone.punteggio+game.score.toInt()*1.8).toInt()
                         }
@@ -273,6 +296,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     }
                                     else -> println("nessun pianeta raggiunto")
                                 }
+
                                 //alert raggiunto pianeta
                                 val alert = AlertDialog.Builder(requireContext())
                                 alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
@@ -290,6 +314,8 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                             val previewsPlanet= planets.indexOf(bambinone.planet)
                             bambinone.planet= planets[previewsPlanet+1]
                             db.childDataBaseDao().update(bambinone)
+
+
                         }
 
                     }
@@ -389,6 +415,17 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         }
         println("salvo var:  "+salvo)
 
+    }
+
+    private fun alertBonus() {
+        val alert = this.context?.let { AlertDialog.Builder(it) }
+        alert?.setTitle("WOOOOW")
+        alert?.setMessage("Sì fort frà")
+        //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+        alert?.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> witch
+        }
+
+        alert?.show()
     }
 /*
     internal fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {

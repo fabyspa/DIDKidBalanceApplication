@@ -5,9 +5,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -26,6 +23,7 @@ private lateinit var binding:ActivityChildBinding
 
     private  lateinit var viewModel: BHomeViewModel
     val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
+    var bonus = listOf("Null","Fuel", "Rocket Thruster", "New Wings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +46,30 @@ private lateinit var binding:ActivityChildBinding
         }
         alert.show()
 
-        bonus1.setOnClickListener{
+        ic_fuel.setOnClickListener{
             val alertBonus = AlertDialog.Builder(this)
-            alertBonus.setTitle("questi son bonus")
-            alertBonus.setMessage("più bonus hai sbloccato più velocemente andrai avanti")
+            alertBonus.setTitle("BONUS FUEL")
+            alertBonus.setMessage("To charge the rocket and go faster jump on board and record 20 points. You can do this!")
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-            alertBonus.setPositiveButton("amazing"){ dialog, witch -> witch
+            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
+            }
+            alertBonus.show()
+        }
+        bonus2.setOnClickListener{
+            val alertBonus = AlertDialog.Builder(this)
+            alertBonus.setTitle("BONUS ROCKET THRUSTER")
+            alertBonus.setMessage("To add a more powerful engine jump on board and record 30 points. You need to stay focus!")
+            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
+            }
+            alertBonus.show()
+        }
+        bonus3.setOnClickListener{
+            val alertBonus = AlertDialog.Builder(this)
+            alertBonus.setTitle("BONUS NEW WINGS")
+            alertBonus.setMessage("To add new powerful wings jump on board and record 40 points. That's really hard!")
+            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
             }
             alertBonus.show()
         }
@@ -103,7 +119,21 @@ private lateinit var binding:ActivityChildBinding
                     }
                     else -> println("nessun pianeta raggiunto")
                 }
+
+                when(bonus.indexOf(child.bonus)){
+
+                    1-> ic_fuel.alpha=1.0F
+                    else-> println("mancano le altre immagini")
+                    /*
+                    2->...propulsori +fuel
+                    3->...ali+prop+fuel
+                    }
+                    else-> println("nessun bonus raggiunto")
+                     */
+                }
+
             }
+
 
 //            bundle.putInt("id", id)
 //            val fragInfo : Fragment = ChangePictureFragment.newInstance()!!

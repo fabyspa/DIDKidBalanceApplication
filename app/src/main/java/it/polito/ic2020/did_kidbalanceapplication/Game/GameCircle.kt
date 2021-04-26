@@ -231,6 +231,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         db.childDataBaseDao().update(bambinone)
                         if(bambinone.punteggio>=100){
                             println("NEXTPLANET")
+
                             bambinone.punteggio=bambinone.punteggio-100;
                             withContext(Dispatchers.Main) {
                                 activity?.progressBar2?.progress = bambinone.punteggio-100
@@ -239,6 +240,28 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                             val previewsPlanet= planets.indexOf(bambinone.planet)
                             bambinone.planet= planets[previewsPlanet+1]
                             db.childDataBaseDao().update(bambinone)
+
+
+                            //"Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune"
+                            when (previewsPlanet){
+                                0-> ic_moon.setAlpha(1.0F)
+                                1-> ic_mars.setAlpha(1.0F)
+                                2-> ic_jupiter.setAlpha(1.0F)
+                                3-> ic_saturn.setAlpha(1.0F)
+                                4-> ic_uranus.setAlpha(1.0F)
+                                5-> ic_neptune.setAlpha(1.0F)
+                            }
+
+                            /*  //alert raggiunto pianeta
+                            val alert = AlertDialog.Builder(requireContext())
+                            alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
+                            alert.setMessage(resources.getString(R.string.pianeta_ragg_text))
+                            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+                            alert.setPositiveButton(resources.getString(R.string.pianeta_ragg_btn)){ dialog, witch -> witch
+                            }
+                            alert.show()
+                            */
+
                         }
 
                     }

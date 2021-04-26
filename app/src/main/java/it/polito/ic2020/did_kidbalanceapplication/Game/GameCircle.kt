@@ -234,6 +234,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                             bambinone.punteggio=bambinone.punteggio-100;
                             withContext(Dispatchers.Main) {
                                 activity?.progressBar2?.progress = bambinone.punteggio-100
+                                activity?.pianeta_destinazione?.text = planets[planets.indexOf(bambinone.planet)+1]
                             }
                             val previewsPlanet= planets.indexOf(bambinone.planet)
                             bambinone.planet= planets[previewsPlanet+1]

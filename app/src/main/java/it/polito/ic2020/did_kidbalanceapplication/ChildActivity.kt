@@ -67,7 +67,11 @@ private lateinit var binding:ActivityChildBinding
                 val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(this@ChildActivity)
                 val child = db.childDataBaseDao().getAllChildData(id)
                 binding.progressBar2.progress=child.punteggio
-                binding.pianetaDestinazione.text= resources.getString(R.string.testo_pianeta_destinazione) +" "+ child.planet
+                if (child.planet == "Moon") {
+                    binding.pianetaDestinazione.text= resources.getString(R.string.testo_pianeta_destinazione) +" the "+ child.planet
+                } else {
+                    binding.pianetaDestinazione.text= resources.getString(R.string.testo_pianeta_destinazione) +" "+ child.planet
+                }
                 println("indice pianeta: "+planets.indexOf(child.planet))
                 println("pianeta name: "+child.planet)
                 when (planets.indexOf(child.planet)-1){

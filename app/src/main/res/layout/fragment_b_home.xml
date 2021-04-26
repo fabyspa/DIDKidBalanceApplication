@@ -66,7 +66,7 @@
             android:id="@+id/rocket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha="100"
+            android:alpha="1.0"
             android:scaleType="fitEnd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

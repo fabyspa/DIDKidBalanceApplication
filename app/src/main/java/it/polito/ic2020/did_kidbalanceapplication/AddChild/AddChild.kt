@@ -298,20 +298,16 @@ class AddChild : Fragment() {
                     // findNavController().navigate((R.id.action_addChild2_to_homeFragment))
             //new child?
             firstChildAdded()
-            val alert_intro = binding.etName.text.toString() +" "+ resources.getString(R.string.added_child)
-            val alert_text = resources.getString(R.string.another_child)
-            val yes_text = resources.getString(R.string.yes_text)
-            val no_text = resources.getString(R.string.no_text)
 
             resetCalendar()
             //Toast.makeText(requireContext(), "Vuoi aggiungere un altro bambino?",Toast.LENGTH_LONG ).show()
             val alert = AlertDialog.Builder(requireContext())
-            alert.setTitle(alert_intro)
-            alert.setMessage(alert_text)
+            alert.setTitle(binding.etName.text.toString() +" "+ resources.getString(R.string.added_child))
+            alert.setMessage(resources.getString(R.string.another_child))
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-            alert.setPositiveButton(yes_text){ dialog, witch -> findNavController().navigate(R.id.action_addChild2_to_reloadAddChild)
+            alert.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> findNavController().navigate(R.id.action_addChild2_to_reloadAddChild)
             }
-            alert.setNegativeButton(no_text){ dialog, which -> findNavController().navigate(R.id.homeFragment)
+            alert.setNegativeButton(resources.getString(R.string.no_text)){ dialog, which -> findNavController().navigate(R.id.homeFragment)
             }
             alert.show()
         }else

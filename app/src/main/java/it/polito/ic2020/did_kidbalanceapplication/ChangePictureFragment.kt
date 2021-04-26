@@ -107,7 +107,7 @@ class ChangePictureFragment : Fragment() {
                                         else -> R.drawable.kid
                                     }.also {
                                         withContext(Dispatchers.Main) {
-                                            Toast.makeText(activity, "Image Updated!", Toast.LENGTH_LONG).show()
+                                            Toast.makeText(activity, resources.getString(R.string.new_img_selected), Toast.LENGTH_LONG).show()
                                             activity?.userPicture?.isClickable = true
                                         }
                                     })
@@ -135,7 +135,7 @@ class ChangePictureFragment : Fragment() {
 
         binding.changeProf.setOnClickListener {
             println("Click")
-            Toast.makeText(this.activity, "Image updated!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.activity, resources.getString(R.string.new_img_selected), Toast.LENGTH_SHORT).show()
             lifecycleScope.launch(Dispatchers.IO) {
                 val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(requireContext())
                 //if (param1 != -1) {

@@ -25,6 +25,8 @@ import it.polito.ic2020.did_kidbalanceapplication.MainActivity
 import it.polito.ic2020.did_kidbalanceapplication.R
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.databinding.FragmentBHomeBinding
+import kotlinx.android.synthetic.main.activity_child.*
+import kotlinx.android.synthetic.main.fragment_b_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
 class BHomeFragment : Fragment() {
     private  lateinit var viewModel: BHomeViewModel
     val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
+
     private lateinit var binding: FragmentBHomeBinding
 
     public fun newInstance(): BHomeFragment {
@@ -60,11 +63,14 @@ class BHomeFragment : Fragment() {
                 db.childDataBaseDao().update(bambinone)
                 activity?.finish()
                 if(bambinone.punteggio>=100){
-                    println("NEXTPLANET")
+                    println("NEXTPLANET home")
                     bambinone.punteggio=bambinone.punteggio-100;
+                   // ic_neptune.background.alpha=128
+                    //ic_uranus.setAlpha(0.5F)
                     val previewsPlanet= planets.indexOf(bambinone.planet)
                     bambinone.planet= planets[previewsPlanet+1]
                     db.childDataBaseDao().update(bambinone)
+
                 }
 
             }

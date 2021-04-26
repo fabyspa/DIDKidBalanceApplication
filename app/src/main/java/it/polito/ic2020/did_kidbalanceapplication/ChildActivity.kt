@@ -36,20 +36,14 @@ private lateinit var binding:ActivityChildBinding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_child)
         val extra: Bundle?= intent.extras
 
-        val alert_intro = resources.getString(R.string.alert_intro)
-        val alert_text = resources.getString(R.string.alert_text)
-        val yes_text = resources.getString(R.string.yes_text)
-        val no_text = resources.getString(R.string.no_text)
-
-
         //Check Wifi Connection
         val alert = AlertDialog.Builder(this)
-        alert.setTitle(alert_intro)
-        alert.setMessage(alert_text)
+        alert.setTitle(resources.getString(R.string.alert_intro))
+        alert.setMessage(resources.getString(R.string.alert_text))
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-        alert.setPositiveButton(yes_text){ dialog, witch -> witch
+        alert.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> witch
         }
-        alert.setNegativeButton(no_text){ dialog, which -> onBackPressed()
+        alert.setNegativeButton(resources.getString(R.string.no_text)){ dialog, which -> onBackPressed()
         }
         alert.show()
 
@@ -61,7 +55,7 @@ private lateinit var binding:ActivityChildBinding
                 val db: ChildWeightDatabase = ChildWeightDatabase.getInstance(this@ChildActivity)
                 val child = db.childDataBaseDao().getAllChildData(id)
                 binding.progressBar2.progress=child.punteggio
-                binding.pianetaDestinazione.text="TO " + child.planet
+                binding.pianetaDestinazione.text= resources.getString(R.string.testo_pianeta_destinazione) +" "+ child.planet
             }
 
 //            bundle.putInt("id", id)

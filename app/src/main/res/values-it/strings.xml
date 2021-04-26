@@ -5,7 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- home bambino -->
-    <string name="testo_pianeta_destinazione"> Verso la Luna </string>
+    <string name="testo_pianeta_destinazione"> Verso </string>
     <string name="ic_moon">icona Luna</string>
     <string name="ic_mars">icona Marte</string>
     <string name="ic_jupiter">icona Giove</string>
@@ -15,6 +15,15 @@
     <string name="ic_neptune">icona Nettuno</string>
     <string name="NomeApp">KidBalance</string>
     <string name="new_img_b_intro">Seleziona una nuova immagine per il tuo profilo!</string>
+    <string name="new_img_selected">Immagine aggiornata!</string>
+
+    <!-- pianeti -->
+    <string name="planet_moon">Luna</string>
+    <string name="planet_mars">Marte</string>
+    <string name="planet_jupiter">Giove</string>
+    <string name="planet_saturn">Saturno</string>
+    <string name="planet_uranus">Urano</string>
+    <string name="planet_neptune">Nettuno</string>
 
 
     <string name="parent_acc"><u>Accedi al profilo genitore</u></string>
@@ -30,7 +39,7 @@
     <string name="child_sex_m">Maschio</string>
     <string name="added_child"> aggiunto correttamente!</string>
     <string name="add_child_btn">Aggiungi bambino</string>
-    <string name="another_child">Vuoi aggiungere un altro bambino?</string>
+    <string name="another_child">Vuoi aggiungere un altro bambino? \nPotrai farlo anche in seguito</string>
 
 
     <!-- pin -->
@@ -95,6 +104,9 @@
     <string name="yes_text">Si</string>
     <string name="no_text">No</string>
     <string name="start_btn">Inizia</string>
+    <string name="pianeta_ragg_intro">Congratulazioni!</string>
+    <string name="pianeta_ragg_text">Hai raggiunto  </string>
+    <string name="pianeta_ragg_btn">Fantastico!</string>
 
     <!-- intro -->
     <string name="next_btn">Avanti</string>

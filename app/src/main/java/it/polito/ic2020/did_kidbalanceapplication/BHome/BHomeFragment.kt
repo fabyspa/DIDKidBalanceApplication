@@ -92,19 +92,16 @@ class BHomeFragment : Fragment() {
 
 
         // This callback will only be called when MyFragment is at least Started.
-        /*
         val callback: OnBackPressedCallback =
                 object : OnBackPressedCallback(true /* enabled by default */) {
                     override fun handleOnBackPressed() {
                         // Handle the back button event
-                        val `in` = Intent(context, MainActivity::class.java)
-                        context?.startActivity(`in`)
+                        //val `in` = Intent(context, MainActivity::class.java)
+                        //context?.startActivity(`in`)
+                        activity?.finish()
                     }
                 }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-
-         */
-
 
 
 

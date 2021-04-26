@@ -20,8 +20,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.alpha
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -30,11 +28,9 @@ import it.polito.ic2020.did_kidbalanceapplication.Game.GameLib
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightDatabase
 import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
-import kotlinx.android.synthetic.main.activity_child.*
-import kotlinx.android.synthetic.main.fragment_b_home.*
 import kotlinx.android.synthetic.main.fragment_circle_game.*
 import kotlinx.android.synthetic.main.fragment_game.*
-import kotlinx.android.synthetic.main.fragment_game.rocket
+import kotlinx.android.synthetic.main.activity_child.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -60,8 +56,6 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var lvl = 1
     lateinit var childWeightViewModel: ChildWeightViewModel
     val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
-
-   // val planets = listOf(resources.getString(R.string.planet_moon), resources.getString(R.string.planet_mars), resources.getString(R.string.planet_jupiter),resources.getString(R.string.planet_saturn),resources.getString(R.string.planet_uranus),resources.getString(R.string.planet_neptune))
 
     fun onBoardingFinished(): Boolean{
         val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
@@ -231,36 +225,20 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         println(bambinone)
                         bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                        withContext(Dispatchers.Main) {
+                            activity?.progressBar2?.progress = (bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                        }
                         db.childDataBaseDao().update(bambinone)
                         if(bambinone.punteggio>=100){
-                            println("NEXTPLANET game circle")
-
+                            println("NEXTPLANET")
                             bambinone.punteggio=bambinone.punteggio-100;
+                            withContext(Dispatchers.Main) {
+                                activity?.progressBar2?.progress = bambinone.punteggio-100
+                                activity?.pianeta_destinazione?.text = planets[planets.indexOf(bambinone.planet)+1]
+                            }
                             val previewsPlanet= planets.indexOf(bambinone.planet)
-
                             bambinone.planet= planets[previewsPlanet+1]
                             db.childDataBaseDao().update(bambinone)
-
-                        //"Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune"
-                            when (previewsPlanet){
-                                0-> ic_moon.setAlpha(1.0F)
-                                1-> ic_mars.setAlpha(1.0F)
-                                2-> ic_jupiter.setAlpha(1.0F)
-                                3-> ic_saturn.setAlpha(1.0F)
-                                4-> ic_uranus.setAlpha(1.0F)
-                                5-> ic_neptune.setAlpha(1.0F)
-                            }
-
-                           /*  //alert raggiunto pianeta
-                           val alert = AlertDialog.Builder(requireContext())
-                           alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
-                           alert.setMessage(resources.getString(R.string.pianeta_ragg_text))
-                           //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-                           alert.setPositiveButton(resources.getString(R.string.pianeta_ragg_btn)){ dialog, witch -> witch
-                           }
-                           alert.show()
-                           */
-
                         }
 
                     }

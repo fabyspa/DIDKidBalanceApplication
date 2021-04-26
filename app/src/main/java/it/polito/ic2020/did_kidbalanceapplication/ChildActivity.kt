@@ -35,7 +35,7 @@ private lateinit var binding:ActivityChildBinding
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_child)
         val extra: Bundle?= intent.extras
-
+//
         val planets = listOf("The Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
 
         //Check Wifi Connection

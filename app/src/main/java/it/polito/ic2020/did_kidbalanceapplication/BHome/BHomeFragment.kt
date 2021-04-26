@@ -54,6 +54,8 @@ class BHomeFragment : Fragment() {
          )
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
 
+        activity?.userPicture?.isClickable = true
+
         binding.piu20.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
@@ -76,8 +78,9 @@ class BHomeFragment : Fragment() {
             }
         }
         binding.button.setOnClickListener{
-         view: View ->
-         view.findNavController().navigate (R.id.action_BHomeFragment2_to_gameFragment)
+            activity?.userPicture?.isClickable = false
+         //view: View ->
+         view?.findNavController()?.navigate (R.id.action_BHomeFragment2_to_gameFragment)
         }
 
         lifecycleScope.launch(Dispatchers.IO){

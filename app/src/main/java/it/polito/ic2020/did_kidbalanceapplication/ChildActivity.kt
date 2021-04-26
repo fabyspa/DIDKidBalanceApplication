@@ -25,6 +25,7 @@ private lateinit var binding:ActivityChildBinding
  var id:Int = 0
 
     private  lateinit var viewModel: BHomeViewModel
+    val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,16 @@ private lateinit var binding:ActivityChildBinding
         }
         alert.show()
 
+        bonus1.setOnClickListener{
+            val alertBonus = AlertDialog.Builder(this)
+            alertBonus.setTitle("questi son bonus")
+            alertBonus.setMessage("più bonus hai sbloccato più velocemente andrai avanti")
+            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+            alertBonus.setPositiveButton("amazing"){ dialog, witch -> witch
+            }
+            alertBonus.show()
+        }
+
         //nome del profilo
         if(extra!=null) {
             val childName = extra.get("name").toString()
@@ -56,6 +67,42 @@ private lateinit var binding:ActivityChildBinding
                 val child = db.childDataBaseDao().getAllChildData(id)
                 binding.progressBar2.progress=child.punteggio
                 binding.pianetaDestinazione.text= resources.getString(R.string.testo_pianeta_destinazione) +" "+ child.planet
+                println("indice pianeta: "+planets.indexOf(child.planet))
+                println("pianeta name: "+child.planet)
+                when (planets.indexOf(child.planet)-1){
+                    0-> ic_moon.alpha = 1.0F
+                    1-> {
+                        ic_moon?.alpha = 1.0F
+                        ic_mars?.alpha = 1.0F
+                    }
+                    2-> {
+                        ic_moon?.alpha = 1.0F
+                        ic_mars?.alpha = 1.0F
+                        ic_jupiter?.alpha = 1.0F
+                    }
+                    3-> {
+                        ic_moon?.alpha = 1.0F
+                        ic_mars?.alpha = 1.0F
+                        ic_jupiter?.alpha = 1.0F
+                        ic_saturn?.alpha = 1.0F
+                    }
+                    4-> {
+                        ic_moon?.alpha = 1.0F
+                        ic_mars?.alpha = 1.0F
+                        ic_jupiter?.alpha = 1.0F
+                        ic_saturn?.alpha = 1.0F
+                        ic_uranus?.alpha = 1.0F
+                    }
+                    5-> {
+                        ic_moon?.alpha = 1.0F
+                        ic_mars?.alpha = 1.0F
+                        ic_jupiter?.alpha = 1.0F
+                        ic_saturn?.alpha = 1.0F
+                        ic_uranus?.alpha = 1.0F
+                        ic_neptune?.alpha = 1.0F
+                    }
+                    else -> println("nessun pianeta raggiunto")
+                }
             }
 
 //            bundle.putInt("id", id)

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -41,6 +43,12 @@ class child_list_parentFragment : Fragment()   {
             println("no child")
             view.welcome_header.text = """${getString(R.string.welcome_first_time)} $GName!"""
             view.header_home_g.text = getString(R.string.header_home_g_first)
+            view.nuovo_b.layout(0,0,0,0)
+            view.nuovo_b.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                horizontalBias = 0.5f
+                verticalBias = 0.3f
+            }
+            view.nuovo_b.customSize = 150
         }
 
 

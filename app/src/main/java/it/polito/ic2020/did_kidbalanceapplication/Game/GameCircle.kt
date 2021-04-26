@@ -4,6 +4,7 @@ import android.app.Activity.RESULT_OK
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.Network
@@ -20,6 +21,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -236,32 +238,58 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                             withContext(Dispatchers.Main) {
                                 activity?.progressBar2?.progress = bambinone.punteggio-100
                                 activity?.pianeta_destinazione?.text = planets[planets.indexOf(bambinone.planet)+1]
+                                //"Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune"
+                                when (planets.indexOf(bambinone.planet)-1){
+                                    0-> activity?.ic_moon?.alpha = 1.0F
+                                    1-> {
+                                        activity?.ic_moon?.alpha = 1.0F
+                                        activity?.ic_mars?.alpha = 1.0F
+                                    }
+                                    2-> {
+                                        activity?.ic_moon?.alpha = 1.0F
+                                        activity?.ic_mars?.alpha = 1.0F
+                                        activity?.ic_jupiter?.alpha = 1.0F
+                                    }
+                                    3-> {
+                                        activity?.ic_moon?.alpha = 1.0F
+                                        activity?.ic_mars?.alpha = 1.0F
+                                        activity?.ic_jupiter?.alpha = 1.0F
+                                        activity?.ic_saturn?.alpha = 1.0F
+                                    }
+                                    4-> {
+                                        activity?.ic_moon?.alpha = 1.0F
+                                        activity?.ic_mars?.alpha = 1.0F
+                                        activity?.ic_jupiter?.alpha = 1.0F
+                                        activity?.ic_saturn?.alpha = 1.0F
+                                        activity?.ic_uranus?.alpha = 1.0F
+                                    }
+                                    5-> {
+                                        activity?.ic_moon?.alpha = 1.0F
+                                        activity?.ic_mars?.alpha = 1.0F
+                                        activity?.ic_jupiter?.alpha = 1.0F
+                                        activity?.ic_saturn?.alpha = 1.0F
+                                        activity?.ic_uranus?.alpha = 1.0F
+                                        activity?.ic_neptune?.alpha = 1.0F
+                                    }
+                                    else -> println("nessun pianeta raggiunto")
+                                }
+                                //alert raggiunto pianeta
+                                val alert = AlertDialog.Builder(requireContext())
+                                alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
+                                alert.setMessage(resources.getString(R.string.pianeta_ragg_text) + " "+planets[planets.indexOf(bambinone.planet)])
+                                //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+                                alert.setPositiveButton(resources.getString(R.string.pianeta_ragg_btn)){ dialog, witch -> witch
+                                }
+                                alert.show()
+                                /*
+                                if(BONUS ){
+                                    //alert moltiplicatore
+                                }
+                                 */
                             }
                             val previewsPlanet= planets.indexOf(bambinone.planet)
                             bambinone.planet= planets[previewsPlanet+1]
                             db.childDataBaseDao().update(bambinone)
-
-
-                            //"Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune"
-                            when (previewsPlanet){
-                                0-> ic_moon.setAlpha(1.0F)
-                                1-> ic_mars.setAlpha(1.0F)
-                                2-> ic_jupiter.setAlpha(1.0F)
-                                3-> ic_saturn.setAlpha(1.0F)
-                                4-> ic_uranus.setAlpha(1.0F)
-                                5-> ic_neptune.setAlpha(1.0F)
-                            }
-
-                            /*  //alert raggiunto pianeta
-                            val alert = AlertDialog.Builder(requireContext())
-                            alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
-                            alert.setMessage(resources.getString(R.string.pianeta_ragg_text))
-                            //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-                            alert.setPositiveButton(resources.getString(R.string.pianeta_ragg_btn)){ dialog, witch -> witch
-                            }
-                            alert.show()
-                            */
-
                         }
 
                     }

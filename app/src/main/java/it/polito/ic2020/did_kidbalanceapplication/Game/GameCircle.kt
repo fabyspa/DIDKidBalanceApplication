@@ -30,6 +30,7 @@ import it.polito.ic2020.did_kidbalanceapplication.database.ChildWeightViewModel
 import it.polito.ic2020.did_kidbalanceapplication.database.GameWeight
 import kotlinx.android.synthetic.main.fragment_circle_game.*
 import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.android.synthetic.main.activity_child.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -224,10 +225,16 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         println(bambinone)
                         bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                        withContext(Dispatchers.Main) {
+                            activity?.progressBar2?.progress = (bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                        }
                         db.childDataBaseDao().update(bambinone)
                         if(bambinone.punteggio>=100){
                             println("NEXTPLANET")
                             bambinone.punteggio=bambinone.punteggio-100;
+                            withContext(Dispatchers.Main) {
+                                activity?.progressBar2?.progress = bambinone.punteggio-100
+                            }
                             val previewsPlanet= planets.indexOf(bambinone.planet)
                             bambinone.planet= planets[previewsPlanet+1]
                             db.childDataBaseDao().update(bambinone)

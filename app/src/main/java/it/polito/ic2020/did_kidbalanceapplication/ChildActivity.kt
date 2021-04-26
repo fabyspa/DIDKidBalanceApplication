@@ -25,7 +25,6 @@ private lateinit var binding:ActivityChildBinding
  var id:Int = 0
 
     private  lateinit var viewModel: BHomeViewModel
-    val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +35,8 @@ private lateinit var binding:ActivityChildBinding
         viewModel = ViewModelProvider(this).get(BHomeViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_child)
         val extra: Bundle?= intent.extras
+
+        val planets = listOf("The Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
 
         //Check Wifi Connection
         val alert = AlertDialog.Builder(this)

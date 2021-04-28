@@ -1,10 +1,8 @@
 package it.polito.ic2020.did_kidbalanceapplication
 
-import android.app.Activity.RESULT_OK
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.Network
@@ -18,8 +16,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -43,7 +39,6 @@ import java.io.File
 import java.lang.String
 import java.net.URL
 import java.nio.charset.Charset
-import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -228,19 +223,28 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         when (game.score.toInt()){
                             //questo deve essere 20 ma per debug
-                            in 10..20 -> {
+                            in 10..29 -> {
                                 if (bambinone.bonus == "Null") {
                                     bambinone.bonus = bonus[1]
                                     activity?.ic_fuel?.alpha=1.0F
                                     println("bonus" + bambinone.bonus)
                                     withContext(Dispatchers.Main) {
-                                        alertBonus()
+                                       // alertBonus()
+                                        val alert = AlertDialog.Builder(requireContext())
+                                        alert.setTitle(resources.getString(R.string.bonus_title))
+                                        //mettere punteggio aggiornato
+                                        alert.setMessage(resources.getString(R.string.bonus1_body) + " " + game.score.toInt()*2)
+                                        //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+                                        alert.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
+                                        }
+                                        alert.show()
                                     }
                                 }
                             }
 
                             in 30..39 -> bambinone.bonus = bonus[2]
                             in 40..100 -> bambinone.bonus= bonus[3]
+
                         }
                         withContext(Dispatchers.Main) {
                             when (bonus.indexOf(bambinone.bonus)) {
@@ -302,7 +306,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                 alert.setTitle(resources.getString(R.string.pianeta_ragg_intro))
                                 alert.setMessage(resources.getString(R.string.pianeta_ragg_text) + " "+planets[planets.indexOf(bambinone.planet)])
                                 //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-                                alert.setPositiveButton(resources.getString(R.string.pianeta_ragg_btn)){ dialog, witch -> witch
+                                alert.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
                                 }
                                 alert.show()
                                 /*
@@ -417,16 +421,16 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
 
     }
 
-    private fun alertBonus() {
+    /*private fun alertBonus() {
         val alert = this.context?.let { AlertDialog.Builder(it) }
-        alert?.setTitle("WOOOOW")
+        alert?.setTitle("WOOOW")
         alert?.setMessage("Sì fort frà")
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
         alert?.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> witch
         }
 
         alert?.show()
-    }
+    }*/
 /*
     internal fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)

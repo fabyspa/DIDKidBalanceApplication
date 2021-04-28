@@ -106,7 +106,7 @@
     <string name="start_btn">Inizia</string>
     <string name="pianeta_ragg_intro">Congratulazioni!</string>
     <string name="pianeta_ragg_text">Hai raggiunto  </string>
-    <string name="pianeta_ragg_btn">Fantastico!</string>
+    <string name="amazing_btn">Fantastico!</string>
 
     <!-- intro -->
     <string name="next_btn">Avanti</string>
@@ -121,4 +121,10 @@
     <string name="fifth_intro">Supera i tuoi record!</string>
     <string name="fifth_main">Cerca di ottenere il punteggio più alto e insieme scopriremo tutto l\'universo.</string>
     <string name="play_btn">Gioca!</string>
+
+    <!-- alert bonus-->
+    <string name="bonus_title">Ben fatto!</string>
+    <string name="bonus1_body">Hai totalizzato più di 10 punti, hai guadagnato un moltiplicatore di x1.2 \nIl punteggio finale è </string>
+    <string name="bonus2_body"></string>
+    <string name="bonus3_body"></string>
 </resources>

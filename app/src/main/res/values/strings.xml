@@ -105,7 +105,7 @@
     <string name="start_btn">Start</string>
     <string name="pianeta_ragg_intro">Congratulations!</string>
     <string name="pianeta_ragg_text">You reached </string>
-    <string name="pianeta_ragg_btn">Amazing!</string>
+    <string name="amazing_btn">Amazing!</string>
 
 
     <!-- intro -->
@@ -121,4 +121,10 @@
     <string name="fifth_intro">Beat your records!</string>
     <string name="fifth_main">Try to get the highest number of points and together we will discover the universe!</string>
     <string name="play_btn">Play!</string>
+
+    <!-- alert bonus-->
+    <string name="bonus_title">Well done!</string>
+    <string name="bonus1_body">You scored more than 10 points, you earned a multiplier x1.2 \nYour final score is </string>
+    <string name="bonus2_body"></string>
+    <string name="bonus3_body"></string>
 </resources>

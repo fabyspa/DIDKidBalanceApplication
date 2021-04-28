@@ -217,7 +217,7 @@
                     android:layout_width="82dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/radiobutton_off_background" />
+                    app:srcCompat="@mipmap/ic_thrusters" />
 
                 <ImageView
                     android:id="@+id/bonus3"

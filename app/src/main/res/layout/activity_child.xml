@@ -206,7 +206,7 @@
 
                 <ImageView
                     android:id="@+id/ic_fuel"
-                    android:layout_width="30dp"
+                    android:layout_width="82dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:alpha="0.2"
@@ -215,16 +215,16 @@
                 <ImageView
                     android:id="@+id/bonus2"
                     android:layout_width="82dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_thrusters" />
+                    app:srcCompat="@drawable/ic_propulsor" />
 
                 <ImageView
                     android:id="@+id/bonus3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="82dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/radiobutton_off_background" />
+                    app:srcCompat="@drawable/ic_wings" />
             </LinearLayout>
 
         </LinearLayout>

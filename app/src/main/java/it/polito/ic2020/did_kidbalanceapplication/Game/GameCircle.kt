@@ -255,7 +255,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                             }
                         }
                         withContext(Dispatchers.Main) {
-                            activity?.progressBar2?.progress = (bambinone.punteggio+game.score.toInt()*1.8).toInt()
+                            activity?.progressBar2?.progress = bambinone.punteggio
                         }
                         db.childDataBaseDao().update(bambinone)
                         if(bambinone.punteggio>=100){

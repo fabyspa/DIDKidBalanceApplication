@@ -174,6 +174,10 @@ class AddChild : Fragment() {
             }
 
         }
+        binding.cancel.setOnClickListener {
+            resetCalendar()
+            findNavController().navigate(R.id.child_list_parentFragment)
+        }
        /* binding.resetButton.setOnClickListener{
             val dir: File = requireContext().filesDir
             if(dir.isDirectory){

@@ -229,8 +229,8 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     activity?.ic_fuel?.alpha=1.0F
                                     println("bonus" + bambinone.bonus)
                                     withContext(Dispatchers.Main) {
-                                       // alertBonus()
-                                        val alert = AlertDialog.Builder(requireContext())
+                                        alertBonus(game.score.toInt(), 1)
+                                        /*val alert = AlertDialog.Builder(requireContext())
                                         alert.setTitle(resources.getString(R.string.bonus_title))
                                         //mettere punteggio aggiornato
                                         alert.setMessage(resources.getString(R.string.bonus1_body) + " " + game.score.toInt()*2)
@@ -238,6 +238,8 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                         alert.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
                                         }
                                         alert.show()
+
+                                         */
                                     }
                                 }
                             }
@@ -421,16 +423,25 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
 
     }
 
-    /*private fun alertBonus() {
+    private fun alertBonus(s: Int, b: Int) {
+        var multipl = "0"
+        when(b){
+            1 -> {
+                //str = R.
+                multipl = "1.2"
+            }
+            2 -> multipl = "1.5"
+            3 -> multipl = "1.8"
+        }
         val alert = this.context?.let { AlertDialog.Builder(it) }
         alert?.setTitle("WOOOW")
-        alert?.setMessage("Sì fort frà")
+        alert?.setMessage("Sì fort frà, hai totalizzato $s punti, ora vai a $multipl")
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
         alert?.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> witch
         }
 
         alert?.show()
-    }*/
+    }
 /*
     internal fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)

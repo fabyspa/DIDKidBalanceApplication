@@ -46,6 +46,7 @@ private lateinit var binding:ActivityChildBinding
         }
         alert.show()
 
+        //bonus1
         ic_fuel.setOnClickListener{
             val alertBonus = AlertDialog.Builder(this)
             alertBonus.setTitle("BONUS FUEL")

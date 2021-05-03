@@ -89,7 +89,7 @@
                     style="@style/ic_pianeti"
                     android:layout_height="match_parent"
 
-                    android:alpha="0.5"
+                    android:alpha="0.2"
 
                     android:contentDescription="@string/ic_mars"
                     app:layout_constraintEnd_toStartOf="@+id/ic_jupiter"
@@ -102,7 +102,7 @@
                     style="@style/ic_pianeti"
                     android:layout_height="match_parent"
 
-                    android:alpha="0.5"
+                    android:alpha="0.2"
 
                     android:contentDescription="@string/ic_jupiter"
                     app:layout_constraintEnd_toStartOf="@+id/userPicture"
@@ -127,7 +127,7 @@
                     style="@style/ic_pianeti"
                     android:layout_height="match_parent"
 
-                    android:alpha="0.5"
+                    android:alpha="0.2"
 
                     android:contentDescription="@string/ic_saturn"
                     app:layout_constraintEnd_toStartOf="@+id/ic_uranus"
@@ -140,7 +140,7 @@
                     style="@style/ic_pianeti"
                     android:layout_height="match_parent"
 
-                    android:alpha="0.5"
+                    android:alpha="0.2"
 
                     android:contentDescription="@string/ic_uranus"
                     app:layout_constraintEnd_toStartOf="@+id/ic_neptune"
@@ -153,7 +153,7 @@
                     style="@style/ic_pianeti"
                     android:layout_height="match_parent"
 
-                    android:alpha="0.5"
+                    android:alpha="0.2"
 
                     android:contentDescription="@string/ic_neptune"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -217,6 +217,7 @@
                     android:layout_width="82dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
+                    android:alpha="0.2"
                     app:srcCompat="@drawable/ic_propulsor" />
 
                 <ImageView
@@ -224,6 +225,7 @@
                     android:layout_width="82dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:alpha="0.2"
                     app:srcCompat="@drawable/ic_wings" />
             </LinearLayout>
 

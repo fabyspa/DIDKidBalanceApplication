@@ -244,7 +244,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         when (game.score.toInt()){
                             //questo deve essere 20 ma per debug
-                            in 1..5 -> {
+                            in 20..29 -> {
                                 if (getbonus()?.size == 1) {
                                     setbonus("Fuel")
                                     println("10-20"+getbonus().toString())
@@ -267,7 +267,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                 }
                             }
 
-                            in 6..8 -> {
+                            in 30..39 -> {
                                 if (getbonus()?.size!! < 3) {
                                     bambinone.bonus = bonus[2]
                                     activity?.bonus2?.alpha=1.0F
@@ -293,7 +293,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     }
                                 }
                             }
-                            in 9..100 -> {
+                            in 40..100 -> {
                                 if (getbonus()?.size!! < 4) {
                                     bambinone.bonus = bonus[3]
                                     activity?.bonus3?.alpha=1.0F
@@ -327,9 +327,9 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         withContext(Dispatchers.Main) {
                             when (bonus.indexOf(bambinone.bonus)) {
                                 0 -> bambinone.punteggio = (bambinone.punteggio + game.score.toInt()).toInt()
-                                1 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*2).toInt()
-                                2 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*3).toInt()
-                                3 ->bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*4).toInt()
+                                1 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.2).toInt()
+                                2 -> bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.5).toInt()
+                                3 ->bambinone.punteggio=(bambinone.punteggio+game.score.toInt()*1.8).toInt()
                             }
                         }
                         withContext(Dispatchers.Main) {

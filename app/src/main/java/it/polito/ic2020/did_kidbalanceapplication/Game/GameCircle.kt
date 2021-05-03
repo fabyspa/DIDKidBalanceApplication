@@ -294,6 +294,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                 }
                             }
                             in 40..100 -> {
+                                //fake commit
                                 if (getbonus()?.size!! < 4) {
                                     bambinone.bonus = bonus[3]
                                     activity?.bonus3?.alpha=1.0F

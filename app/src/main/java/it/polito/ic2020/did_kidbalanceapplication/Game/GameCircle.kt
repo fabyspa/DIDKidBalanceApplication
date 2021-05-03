@@ -52,14 +52,35 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     private var chrono = false
     private var lvl = 1
     lateinit var childWeightViewModel: ChildWeightViewModel
-    val planets = listOf("Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune")
-    var bonus = listOf("Null","Fuel", "Rocket Thruster", "New Wings")
+    val planets = listOf("Moon","Mars","Jupiter","Saturn","Uranus","Neptune")
+    var bonus = listOf("Null","Fuel","Rocket Thruster","New Wings")
 
     fun onBoardingFinished(): Boolean{
         val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
         val sharedPreferences = requireActivity().getSharedPreferences("onBoarding"+id, Context.MODE_PRIVATE)
         println("from game circle_ "+sharedPreferences.getBoolean("Finished", false))
         return sharedPreferences.getBoolean("Finished", false)
+    }
+
+    private fun setbonus(s: kotlin.String){
+        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+        val sharedPref = requireActivity().getSharedPreferences("bonus"+id, Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        var a = getbonus()
+        if (a != null) {
+            a.add(s)
+        }
+        editor.putStringSet("bonus", a)
+        editor.apply()
+    }
+
+    private fun getbonus(): MutableSet<kotlin.String>? {
+        val id = requireActivity().intent!!.extras?.get("id").toString().toInt()
+        val a = mutableSetOf<kotlin.String>()
+        a.add("Null")
+        val sharedPreferences = requireActivity().getSharedPreferences("bonus"+id, Context.MODE_PRIVATE)
+        //println("info nella shared GET: "+sharedPreferences.getString("c","defValue"))
+        return sharedPreferences.getStringSet("bonus",a)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -223,8 +244,10 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         when (game.score.toInt()){
                             //questo deve essere 20 ma per debug
-                            in 10..29 -> {
-                                if (bambinone.bonus == "Null") {
+                            in 1..5 -> {
+                                if (getbonus()?.size == 1) {
+                                    setbonus("Fuel")
+                                    println("10-20"+getbonus().toString())
                                     bambinone.bonus = bonus[1]
                                     activity?.ic_fuel?.alpha=1.0F
                                     println("bonus" + bambinone.bonus)
@@ -244,8 +267,61 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                 }
                             }
 
-                            in 30..39 -> bambinone.bonus = bonus[2]
-                            in 40..100 -> bambinone.bonus= bonus[3]
+                            in 6..8 -> {
+                                if (getbonus()?.size!! < 3) {
+                                    bambinone.bonus = bonus[2]
+                                    activity?.bonus2?.alpha=1.0F
+                                    if(getbonus()?.size!! == 1){
+                                        println("getbonus.size è 1")
+                                        setbonus("Fuel")
+                                        activity?.ic_fuel?.alpha=1.0F
+                                    }
+                                    setbonus("Rocket Thruster")
+                                    println("bonus" + bambinone.bonus)
+                                    withContext(Dispatchers.Main) {
+                                        alertBonus(game.score.toInt(), 2)
+                                        /*val alert = AlertDialog.Builder(requireContext())
+                                        alert.setTitle(resources.getString(R.string.bonus_title))
+                                        //mettere punteggio aggiornato
+                                        alert.setMessage(resources.getString(R.string.bonus1_body) + " " + game.score.toInt()*2)
+                                        //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+                                        alert.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
+                                        }
+                                        alert.show()
+
+                                         */
+                                    }
+                                }
+                            }
+                            in 9..100 -> {
+                                if (getbonus()?.size!! < 4) {
+                                    bambinone.bonus = bonus[3]
+                                    activity?.bonus3?.alpha=1.0F
+                                    println("bonus" + bambinone.bonus)
+                                    when (getbonus()?.size) {
+                                        1 -> {
+                                            setbonus("Fuel")
+                                            setbonus("Rocket Thruster")
+                                            activity?.ic_fuel?.alpha=1.0F
+                                            activity?.bonus2?.alpha=1.0F
+                                        }
+                                    }
+                                    setbonus("New Wings")
+                                    withContext(Dispatchers.Main) {
+                                        alertBonus(game.score.toInt(), 3)
+                                        /*val alert = AlertDialog.Builder(requireContext())
+                                        alert.setTitle(resources.getString(R.string.bonus_title))
+                                        //mettere punteggio aggiornato
+                                        alert.setMessage(resources.getString(R.string.bonus1_body) + " " + game.score.toInt()*2)
+                                        //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
+                                        alert.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
+                                        }
+                                        alert.show()
+
+                                         */
+                                    }
+                                }
+                            }
 
                         }
                         withContext(Dispatchers.Main) {
@@ -262,13 +338,13 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         db.childDataBaseDao().update(bambinone)
                         if(bambinone.punteggio>=100){
                             println("NEXTPLANET")
-
+                            println("Bambinone.planet: "+bambinone.planet)
                             bambinone.punteggio=bambinone.punteggio-100;
                             withContext(Dispatchers.Main) {
                                 activity?.progressBar2?.progress = bambinone.punteggio-100
                                 activity?.pianeta_destinazione?.text = planets[planets.indexOf(bambinone.planet)+1]
                                 //"Moon", "Mars", "Jupiter","Saturn","Uranus","Neptune"
-                                when (planets.indexOf(bambinone.planet)-1){
+                                when (planets.indexOf(bambinone.planet)){
                                     0-> activity?.ic_moon?.alpha = 1.0F
                                     1-> {
                                         activity?.ic_moon?.alpha = 1.0F

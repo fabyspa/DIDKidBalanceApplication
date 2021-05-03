@@ -122,15 +122,17 @@ private lateinit var binding:ActivityChildBinding
                 }
 
                 when(bonus.indexOf(child.bonus)){
-
                     1-> ic_fuel.alpha=1.0F
-                    else-> println("mancano le altre immagini")
-                    /*
-                    2->...propulsori +fuel
-                    3->...ali+prop+fuel
+                    2-> {
+                        ic_fuel.alpha=1.0F
+                        binding.bonus2.alpha = 1.0F
+                    }
+                    3 -> {
+                        ic_fuel.alpha=1.0F
+                        binding.bonus2.alpha = 1.0F
+                        binding.bonus3.alpha = 1.0F
                     }
                     else-> println("nessun bonus raggiunto")
-                     */
                 }
 
             }

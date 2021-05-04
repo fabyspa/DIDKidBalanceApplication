@@ -40,6 +40,7 @@
     <string name="added_child"> aggiunto correttamente!</string>
     <string name="add_child_btn">Aggiungi bambino</string>
     <string name="another_child">Vuoi aggiungere un altro bambino? \nPotrai farlo anche in seguito</string>
+    <string name="cancel_btn">Annulla</string>
 
 
     <!-- pin -->
@@ -128,4 +129,13 @@
     <string name="bonus_pt1">Hai totalizzato </string>
     <string name="bonus_pt2">punti, hai guadagnato un moltiplicatore x</string>
     <string name="bonus_pt3">\nIl tuo punteggio finale è </string>
+
+    <string name="bonus_fuel_title">Bonus carburante!</string>
+    <string name="bonus_fuel_body">Per caricare il razzo e andare più veloce sali sulla pedana e totalizza più di 20 punti. \nPuoi farcela!</string>
+    <string name="bonus_thruster_title">Bonus propulsori!</string>
+    <string name="bonus_thruster_body">Per ottenere un motore più potente sali sulla pedana e totalizza più di 30 punti. \nDevi concentrarti!</string>
+    <string name="bonus_wings_title">Bonus nuove ali!</string>
+    <string name="bonus_wings_body">Per ottenere delle nuove ali potenziate sali sulla pedana e totalizza più di 40 punti. \nÈ molto difficile!</string>
+    <string name="ok_btn">Ok!</string>
+
 </resources>

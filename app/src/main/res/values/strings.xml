@@ -38,6 +38,7 @@
     <string name="added_child"> successfully added!</string>
     <string name="add_child_btn">Add child</string>
     <string name="another_child">Do you want to add another child? \nYou can also do it later</string>
+    <string name="cancel_btn">Cancel</string>
 
 
     <!-- pin -->
@@ -128,4 +129,12 @@
     <string name="bonus_pt1">You scored </string>
     <string name="bonus_pt2">points, you earned a x</string>
     <string name="bonus_pt3">multiplier. \nYour final score is </string>
+
+    <string name="bonus_fuel_title">Bonus fuel!</string>
+    <string name="bonus_fuel_body">To charge the rocket and go faster jump on board and score more than 20 points. \nYou can do this!</string>
+    <string name="bonus_thruster_title">Bonus rocket thruster!</string>
+    <string name="bonus_thruster_body">To add a more powerful engine jump on board and score more than 30 points. \nYou need to stay focus!</string>
+    <string name="bonus_wings_title">Bonus new wings!</string>
+    <string name="bonus_wings_body">To add new powerful wings jump on board and score more than 40 points. \nThat\'s really hard!</string>
+    <string name="ok_btn">Ok!</string>
 </resources>

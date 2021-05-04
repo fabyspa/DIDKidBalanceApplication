@@ -244,7 +244,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         when (game.score.toInt()){
                             //questo deve essere 20 ma per debug
-                            in 5..29 -> {
+                            in 20..29 -> {
                                 if (getbonus()?.size == 1) {
                                     setbonus("Fuel")
                                     println("10-20"+getbonus().toString())
@@ -279,7 +279,6 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     setbonus("Rocket Thruster")
                                     println("bonus" + bambinone.bonus)
                                     withContext(Dispatchers.Main) {
-                                        println("siamo quiiii " + game.score + "in int " + game.score.toInt())
                                         alertBonus(game.score.toInt(), 2)
                                         /*val alert = AlertDialog.Builder(requireContext())
                                         alert.setTitle(resources.getString(R.string.bonus_title))
@@ -506,12 +505,17 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
         var final_s = 0
         when(b){
             1 -> {
-                //str = R.
                 multipl = 1.2
                 final_s=(s*multipl).toInt()
             }
-            2 -> multipl = 1.5
-            3 -> multipl = 1.8
+            2 -> {
+                multipl = 1.5
+                final_s=(s*multipl).toInt()
+            }
+            3 -> {
+                multipl = 1.8
+                final_s=(s*multipl).toInt()
+            }
         }
         val alert = this.context?.let { AlertDialog.Builder(it) }
         alert?.setTitle(resources.getString(R.string.bonus_title))

@@ -49,28 +49,28 @@ private lateinit var binding:ActivityChildBinding
         //bonus1
         ic_fuel.setOnClickListener{
             val alertBonus = AlertDialog.Builder(this)
-            alertBonus.setTitle("BONUS FUEL")
-            alertBonus.setMessage("To charge the rocket and go faster jump on board and record 20 points. You can do this!")
+            alertBonus.setTitle(resources.getString(R.string.bonus_fuel_title))
+            alertBonus.setMessage(resources.getString(R.string.bonus_fuel_body))
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
+            alertBonus.setPositiveButton(resources.getString(R.string.ok_btn)){ dialog, witch -> witch
             }
             alertBonus.show()
         }
         bonus2.setOnClickListener{
             val alertBonus = AlertDialog.Builder(this)
-            alertBonus.setTitle("BONUS ROCKET THRUSTER")
-            alertBonus.setMessage("To add a more powerful engine jump on board and record 30 points. You need to stay focus!")
+            alertBonus.setTitle(resources.getString(R.string.bonus_thruster_title))
+            alertBonus.setMessage(resources.getString(R.string.bonus_thruster_body))
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
+            alertBonus.setPositiveButton(resources.getString(R.string.ok_btn)){ dialog, witch -> witch
             }
             alertBonus.show()
         }
         bonus3.setOnClickListener{
             val alertBonus = AlertDialog.Builder(this)
-            alertBonus.setTitle("BONUS NEW WINGS")
-            alertBonus.setMessage("To add new powerful wings jump on board and record 40 points. That's really hard!")
+            alertBonus.setTitle(resources.getString(R.string.bonus_wings_title))
+            alertBonus.setMessage(resources.getString(R.string.bonus_wings_body))
             //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-            alertBonus.setPositiveButton("Got it!"){ dialog, witch -> witch
+            alertBonus.setPositiveButton(resources.getString(R.string.ok_btn)){ dialog, witch -> witch
             }
             alertBonus.show()
         }

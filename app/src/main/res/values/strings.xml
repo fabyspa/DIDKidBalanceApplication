@@ -125,6 +125,7 @@
     <!-- alert bonus-->
     <string name="bonus_title">Well done!</string>
     <string name="bonus1_body">You scored more than 10 points, you earned a multiplier x1.2 \nYour final score is </string>
-    <string name="bonus2_body"></string>
-    <string name="bonus3_body"></string>
+    <string name="bonus_pt1">You scored </string>
+    <string name="bonus_pt2">points, you earned a x</string>
+    <string name="bonus_pt3">multiplier. \nYour final score is </string>
 </resources>

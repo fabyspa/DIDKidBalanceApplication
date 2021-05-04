@@ -125,6 +125,7 @@
     <!-- alert bonus-->
     <string name="bonus_title">Ben fatto!</string>
     <string name="bonus1_body">Hai totalizzato più di 10 punti, hai guadagnato un moltiplicatore di x1.2 \nIl punteggio finale è </string>
-    <string name="bonus2_body"></string>
-    <string name="bonus3_body"></string>
+    <string name="bonus_pt1">Hai totalizzato </string>
+    <string name="bonus_pt2">punti, hai guadagnato un moltiplicatore x</string>
+    <string name="bonus_pt3">\nIl tuo punteggio finale è </string>
 </resources>

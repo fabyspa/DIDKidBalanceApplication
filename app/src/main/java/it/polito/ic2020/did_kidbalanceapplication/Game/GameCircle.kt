@@ -244,7 +244,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                         var bambinone = db.childDataBaseDao().getAllChildData(id)
                         when (game.score.toInt()){
                             //questo deve essere 20 ma per debug
-                            in 20..29 -> {
+                            in 5..29 -> {
                                 if (getbonus()?.size == 1) {
                                     setbonus("Fuel")
                                     println("10-20"+getbonus().toString())
@@ -279,6 +279,7 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
                                     setbonus("Rocket Thruster")
                                     println("bonus" + bambinone.bonus)
                                     withContext(Dispatchers.Main) {
+                                        println("siamo quiiii " + game.score + "in int " + game.score.toInt())
                                         alertBonus(game.score.toInt(), 2)
                                         /*val alert = AlertDialog.Builder(requireContext())
                                         alert.setTitle(resources.getString(R.string.bonus_title))
@@ -501,20 +502,24 @@ class GameCircle : Fragment(R.layout.fragment_circle_game) {
     }
 
     private fun alertBonus(s: Int, b: Int) {
-        var multipl = "0"
+        var multipl = 0.0
+        var final_s = 0
         when(b){
             1 -> {
                 //str = R.
-                multipl = "1.2"
+                multipl = 1.2
+                final_s=(s*multipl).toInt()
             }
-            2 -> multipl = "1.5"
-            3 -> multipl = "1.8"
+            2 -> multipl = 1.5
+            3 -> multipl = 1.8
         }
         val alert = this.context?.let { AlertDialog.Builder(it) }
-        alert?.setTitle("WOOOW")
-        alert?.setMessage("Sì fort frà, hai totalizzato $s punti, ora vai a $multipl")
+        alert?.setTitle(resources.getString(R.string.bonus_title))
+        alert?.setMessage(resources.getString(R.string.bonus_pt1) + " $s " + resources.getString(R.string.bonus_pt2) + "$multipl " + resources.getString(R.string.bonus_pt3) + " $final_s")
+
+        //alert?.setMessage("Sì fort frà, hai totalizzato $s punti, ora vai a $multipl. Il punteggio finale è $final_s")
         //alert.setPositiveButton("Ok", DialogInterface.OnClickListener(function = x))
-        alert?.setPositiveButton(resources.getString(R.string.yes_text)){ dialog, witch -> witch
+        alert?.setPositiveButton(resources.getString(R.string.amazing_btn)){ dialog, witch -> witch
         }
 
         alert?.show()

@@ -7,6 +7,19 @@
     android:layout_gravity="bottom">
 
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/hide_game2"
+        app:layout_constraintStart_toStartOf="@+id/hide_game2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/lbl_round"
         android:layout_width="wrap_content"

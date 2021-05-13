@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
@@ -74,6 +75,16 @@ class homeFragment : Fragment() {
             val bundle = bundleOf("NoChild" to NoChild)
             findNavController().navigate(R.id.child_list_parentFragment, bundle)
         }
+
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true /* enabled by default */) {
+                    override fun handleOnBackPressed() {
+                        // Handle the back button event
+                        //findNavController().navigate(R.id.BHomeFragment2)
+                        activity?.finish()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
 
     return view
